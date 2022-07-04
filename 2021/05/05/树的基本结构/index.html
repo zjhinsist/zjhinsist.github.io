@@ -1,0 +1,883 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>树的基本结构 | 追夢赤子心</title><meta name="keywords" content="数据结构"><meta name="author" content="追夢赤子心"><meta name="copyright" content="追夢赤子心"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="树的定义树与线性表不同的地方是：线性表有唯一 的直接前趋，和唯一的直接后继，但是树有唯一的直接前趋，不唯一的直接后继 树是n（n≥0）个结点的有限集。 若n == 0, 称为**空树**  若 n > 0，则它满足以下两个条件：   有且仅有一个特定的称为根的节点 其余节点可分为m（m≥0）个互不相交的有限集T1， T2,  T3·····其中每一个集合本身有是一颗树，并成为根的子树  树的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树的基本结构">
+<meta property="og:url" content="https://zjhinsist.github.io/2021/05/05/%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:site_name" content="追夢赤子心">
+<meta property="og:description" content="树的定义树与线性表不同的地方是：线性表有唯一 的直接前趋，和唯一的直接后继，但是树有唯一的直接前趋，不唯一的直接后继 树是n（n≥0）个结点的有限集。 若n == 0, 称为**空树**  若 n > 0，则它满足以下两个条件：   有且仅有一个特定的称为根的节点 其余节点可分为m（m≥0）个互不相交的有限集T1， T2,  T3·····其中每一个集合本身有是一颗树，并成为根的子树  树的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zjhinsist.github.io/images/wallhaven-e7ek7k.jpg">
+<meta property="article:published_time" content="2021-05-05T02:17:29.000Z">
+<meta property="article:modified_time" content="2022-06-07T11:40:29.331Z">
+<meta property="article:author" content="追夢赤子心">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zjhinsist.github.io/images/wallhaven-e7ek7k.jpg"><link rel="shortcut icon" href="/images/favicon.png"><link rel="canonical" href="https://zjhinsist.github.io/2021/05/05/%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//hm.baidu.com"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?8e0bea59278578fc3250fb82b0f8ecf5";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '树的基本结构',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-07 19:06:33'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><link rel="stylesheet" href="/css/modify.css"><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/favicon.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/wallhaven-e7ek7k.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">追夢赤子心</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">树的基本结构</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-05T02:17:29.000Z" title="发表于 2021-05-05 10:05:00">2021-05-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-07T11:40:29.331Z" title="更新于 2022-06-07 19:06:33">2022-06-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="树的基本结构"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><div class="top-img" style="background-image: url('/images/wallhaven-e7ek7k.jpg');"></div><article class="post-content" id="article-container"><h1 id="树的定义"><a href="#树的定义" class="headerlink" title="树的定义"></a>树的定义</h1><p>树与线性表不同的地方是：线性表有唯一 的直接前趋，和唯一的直接后继，但是树有唯一的直接前趋，不唯一的直接后继</p>
+<p><strong>树</strong>是n（n≥0）个结点的<strong>有限集</strong>。</p>
+<pre><code>若n == 0, 称为**空树**
+
+若 n &gt; 0，则它满足以下两个条件：
+</code></pre>
+<ol>
+<li><strong>有且仅有一个</strong>特定的称为<strong>根</strong>的节点</li>
+<li><strong>其余节点</strong>可分为m（m≥0）个互不相交的有限集T1， T2,  T3·····其中每一个集合本身有是一颗树，并成为根的<strong>子树</strong></li>
+</ol>
+<h2 id="树的基本术语"><a href="#树的基本术语" class="headerlink" title="树的基本术语"></a>树的基本术语</h2><ol>
+<li><p><strong>根节点</strong>：非空树中无前趋结点的结点</p>
+</li>
+<li><p>节点的<strong>度</strong>：结点拥有的子树数</p>
+</li>
+<li><p>树的<strong>度</strong>：树内各节点的度的最大值</p>
+</li>
+<li><p>当<strong>度=0</strong>时的结点：终端节点</p>
+</li>
+<li><p>当<strong>度≠0</strong>时的结点：称为<strong>分支结点，非终端结点</strong>，根节点以外的分支结点称为<strong>内部结点</strong></p>
+</li>
+<li><p>结点的子树的跟称为该节点的<strong>孩子</strong>，该节点称为孩子的<strong>双亲</strong></p>
+</li>
+<li><p>拥有同一个双亲的一类结点，称为兄弟结点</p>
+</li>
+<li><p>双亲在同一层的结点，称为堂兄弟结点</p>
+</li>
+<li><p>结点的<strong>祖先</strong>：从根节点到该节点所经分支上的所有结点</p>
+</li>
+<li><p>树的<strong>深度</strong>：树中结点的最大层次</p>
+</li>
+<li><p><strong>有序树</strong>：树中结点的各子树从左至右有次序（最左边的为第一个孩子）</p>
+</li>
+<li><p><strong>无序树</strong>：树中结点的各子树无次序。</p>
+</li>
+<li><p><strong>森林</strong>：是m(m≥0)颗互不相交的树的集合</p>
+<pre><code>        把根节点删除树，就变成了森林。
+
+        一棵树可以看成一个特殊的森林
+
+        给森林中各子树加上一个双亲结点，森林就变成了树
+</code></pre>
+<p>树结构和线性结构的比较</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">线性结构</th>
+<th align="center"></th>
+<th align="center">树结构</th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">第一个元素</td>
+<td align="center">无前趋</td>
+<td align="center">根节点（只有一个）</td>
+<td align="center">无双亲</td>
+</tr>
+<tr>
+<td align="center">最后一个元素</td>
+<td align="center">无后继</td>
+<td align="center">叶子节点</td>
+<td align="center">无孩子</td>
+</tr>
+<tr>
+<td align="center">其他元素</td>
+<td align="center">一个前趋一个后继</td>
+<td align="center">其他结点—–中间节点</td>
+<td align="center">一个双亲多个孩子</td>
+</tr>
+<tr>
+<td align="center">一对一</td>
+<td align="center"></td>
+<td align="center">一对多</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h2 id="二叉树的定义"><a href="#二叉树的定义" class="headerlink" title="二叉树的定义"></a>二叉树的定义</h2><p>最多只有两个叉的树</p>
+<p>在计算的 时候普通树（多叉树）若不转换为二叉树，则运算很难实现</p>
+<p><strong>二叉树的优点</strong>：</p>
+<ol>
+<li>二叉树的结构最简单，规律性最强</li>
+<li>可以证明，<strong>所有树</strong>都能转为唯一对应的二叉树，不失一般性</li>
+</ol>
+<p><strong>二叉树</strong>是n（n≥0）个结点的有限集，他或者是空集（n=0），或者由一个<strong>根节点</strong>及<strong>两颗互不相交</strong>的分别称作这个跟的<strong>左子树</strong>和<strong>右子树</strong>的二叉树组成</p>
+<pre><code>特点：
+</code></pre>
+<ol>
+<li>每个结点最多有俩孩子（二叉树中不存在度大于2的结点）</li>
+<li>子树有左右之分，其次序不能颠倒</li>
+<li>二叉树可以是空集合，跟可以有空的左子树或空的右子树</li>
+</ol>
+<p><strong>注</strong>：二叉树<strong>不是</strong>树的特殊情况，他们是两个概念</p>
+<pre><code>        二叉树的子树，要区分左子树和右子树，即使只有一颗子树也要区分，说明他是左子树还是右子树
+
+        当树结点只有一个孩子时，就**无序区分**它是左还是右的次序，因此二者是不同的
+
+        （也就是说二叉树每个结点的位置或者说次序都是固定的，可以是空，但是不能说他没有位置，而树的结点位置是相对于别的结点来说的，没有别的结点时，他就无所谓左右了）
+</code></pre>
+<h2 id="案例引入"><a href="#案例引入" class="headerlink" title="案例引入"></a>案例引入</h2><ol>
+<li><p>数据压缩问题</p>
+<p>将数据文件转换成由0，1组成的二进制码，称之为编码</p>
+</li>
+<li><p>利用二叉树求解表达式的值</p>
+</li>
+</ol>
+<p><img src="/2021/05/05/%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/OIP-C.jpeg"></p>
+<pre><code>二叉树的抽象数据类型定义
+</code></pre>
+<p>ADT BinaryTree</p>
+<p>{</p>
+<pre><code>    数据对象D：D是具有相同特侦的数据元素的集合。
+
+    数据关系：若D是空集，则R是空集
+
+                        若D不是空集，则R={H}; H,是如下二元关系：
+
+                            1 root唯一       // 关于跟的说明
+
+                            2 子树不相交
+
+                            3 关于数据元素的说明
+
+                            4 关于左子树和右子树的说明
+
+    基本操作：// 至少有20个
+
+    CreateBiTree（&amp;T, definition）
+
+            初始条件：definition给出二叉树T的定义
+
+            操作结果：按definition构造二叉树T
+
+    PreOrderTraverse（T）：
+
+        初始条件：二叉树T存在
+
+        操作结果：先遍历T，对每一个结点访问一次
+
+    InOrderTraverse（T）
+
+        初始条件：二叉树存在
+
+        操作结果：中序遍历T，对每一个节点访问一次
+
+    PostOrderTraverse（T）
+
+        初始条件：二叉树T存在
+
+        操作结果：后序遍历T，对每一个结点访问一次
+</code></pre>
+<p>}ADT BinaryTree</p>
+<h2 id="二叉树的性质和存储结构"><a href="#二叉树的性质和存储结构" class="headerlink" title="二叉树的性质和存储结构"></a>二叉树的性质和存储结构</h2><h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><ol>
+<li><p>性质一：</p>
+<p>在二叉树的第i层上<strong>至多</strong>由 2^(i-1)次方 个结点</p>
+<pre><code>    第一层	2^0 = 1
+
+    第二层	2^1 = 2
+
+    第三层    2^2 = 4
+
+    第四层    2^3 = 8
+</code></pre>
+<p>第i层上至少有<strong>1</strong>个结点</p>
+</li>
+<li><p>性质二：</p>
+<p>深度为k的二叉树总共<strong>至多</strong>有2^k - 1个节点</p>
+<p>证明：使用性质一，可得到每一层之间的数量是等比数列</p>
+<pre><code>    深度为k的二叉树的最大节点数为等比数列的前n项和
+
+    深度为k的二叉树总共至少有k个结点
+</code></pre>
+</li>
+<li><p>性质三：</p>
+<p>对任何一颗二叉树T，如果其叶子树为n0，度为2的节点数为n2，则n0 = n2 + 1</p>
+<p>总边数 B = n - 1 (n 是总结点数)				B = n2 * 2 + n1 * 1;(n2 是度为二的节点数， n1是度为一的节点数)</p>
+<p>由上可得   n = n2 * 2 + n1 * 1 + 1;</p>
+<p>又因为 n = n2 + n1 + n0(n0 是叶子结点)</p>
+<p>所以   n2 + n1 + n0 = n2 * 2 + n1 * 1 + 1    ======&gt;    n0 = n2 + 1</p>
+</li>
+<li><p>满二叉树：</p>
+<p>一颗深度为k且有2^k - 1个结点的二叉树称为<strong>满二叉树</strong></p>
+<p>特点：</p>
+<ol>
+<li>每层上的结点数都是最大结点数（即<strong>每层都满</strong>）</li>
+<li>叶子节点全部在最底层</li>
+</ol>
+<p>对满二叉树节点位置进行编号：</p>
+<pre><code>编号规则：从根节点位置进行编号，**自上而下，自左而右**
+
+每一个节点位置都有元素
+</code></pre>
+<p>满二叉树在同样深度的二叉树中<strong>结点</strong>个数最多</p>
+<p>满二叉树在同样深度的二叉树中<strong>叶子结点</strong>个数最多</p>
+</li>
+<li><p>完全二叉树</p>
+<p>深度为k的具有n个结点的二叉树，当且仅当其每一个结点都与深度为k的<strong>满二叉树</strong>中<strong>编号</strong>为1 ~ n的结点<strong>一一对应</strong>时，称之为<strong>完全二叉树</strong></p>
+<p>可以不满，但是存在的位置的结点排序后，必须与满二叉树对应的结点顺序一一对应</p>
+<p>特点：1.叶子只能分布在层次最大的两层上</p>
+<pre><code>        2. 对于任意一个，如果其中右子树的最大层次为i 则其左子树最大层次必是i或i+1
+</code></pre>
+</li>
+<li><p>性质4：具有n个结点的完全二叉树的深度为[log2^n] + 1</p>
+<pre><code>性质四表明了完全二叉树**结点数n**与完全二叉树**深度k**之间的关系
+</code></pre>
+</li>
+<li><p>性质5：如果对一颗有n个结点的<strong>完全二叉树</strong>（深度为龙[㏒2^n] )的点按层编号（从第一层到【log2^n】+1 层，每层从左到右），则对任一结点i（1≤ i ≤ n ）有：</p>
+<p>如果 i == 1 则节点i 是二叉树的跟， 无双亲，如果i &gt; 1,则其<strong>双亲是节点[ i / 2 ]</strong></p>
+<p>如果2i &gt;  n则节点i为叶子结点， 无左孩子；否则，其左孩子的结点是2i</p>
+<p>如果2i+1&gt;n ，则结点i无右孩子；否则，其右孩子的结点2i + 1</p>
+</li>
+</ol>
+<h3 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h3><p><strong>二叉树的顺序存储</strong>：</p>
+<p><img src="https://tse3-mm.cn.bing.net/th/id/OIP-C.8V7Ws-i2tRKrL131-XgDfQHaEi?pid=ImgDet&amp;rs=1"></p>
+<pre><code>实现：按**满二叉树**的结点层次编号，依次存放二叉树中的数据元素
+
+#define MAXSIZE 100
+
+Typedef TElemType SqBiTree[MAXSIZE]
+
+SqBiTree bt
+</code></pre>
+<p>当存储非完全二叉树，和满二叉树的时候，再遇见空元素的时候需要使用0来占位</p>
+<p>特点：</p>
+<pre><code>结点关系，蕴含在其存储结构中，浪费空间，适于存放**满二叉树和完全二叉树**
+</code></pre>
+<p> <strong>二叉树的链式存储结构</strong></p>
+<p><img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.RFeB-STdSGUiPBwFzaX4oAHaEe?pid=ImgDet&amp;rs=1"></p>
+<pre><code>二叉树结点的特点， 一个双亲两个孩子
+
+链式存储方式：
+
+    一个结点中有三个元素， 数据， 左节点指针，右节点指针
+
+**二叉链表**的存储结构：
+</code></pre>
+<p>typedef struct BiNode</p>
+<p>{</p>
+<pre><code>TRlemType data;    //  数据元素
+
+struct BiNode *lchild, *rchild;   //  左右孩子指针
+</code></pre>
+<p>}BiNode, *BiTree;</p>
+<p>在n个结点的二叉链表中，右（n+1）个空指针域</p>
+<pre><code>    **注（自己理解）**：可以理解为原先全部都是空结点，现在每多加一个，就消耗一个空结点，多出两个空结点，所以每添加一个结点，就多出一个空结点
+
+    **分析**：必有2n个链域，除根节点外，每个结点有且仅有一个双亲，所以，只有n-1个结点的链域，存放指针，指向非空子女结点。
+
+        空指针数目 ===== 2n -(n-1) = n+1; 
+
+**三叉链表**
+
+相比于二叉链表多出一个**双亲指针**
+</code></pre>
+<h2 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h2><ul>
+<li>遍历定义：顺着某一条搜索路经巡防二叉树中的结点，使得每一个结点均被访问一次，而且仅被访问一次（又称周游）<ul>
+<li>访问的含义很广，可以是对节点做各种处理，如：输出节点的信息，修改节点的数据值等，但要求这种访问不破坏原来的数据结构</li>
+</ul>
+</li>
+<li>遍历目的——–得到树中结点的一个线性排列</li>
+<li>遍历用途——–它是树结构插入，删除，修改，查找和排序运算的前提，是二叉树一切运算的基础和核心</li>
+</ul>
+<p>遍历方法</p>
+<pre><code>假设L：遍历左子树， D：访问访问根节点 R: 遍历右子树
+
+则遍历正二叉树方案共有：
+
+DLR, LDR. LRD. DRL. RDL. RLD  六种
+</code></pre>
+<ul>
+<li>若规定先左后右，则只有前三种情况</li>
+<li>DLR—- 先（根）序遍历</li>
+<li>LDR—–中（根）序遍历</li>
+<li>LRD —- 后（根）序遍历</li>
+<li>若二叉树为空，则空操作，否则<ul>
+<li>先访问根节点</li>
+<li>先序遍历左子树</li>
+<li>先序遍历右子树</li>
+</ul>
+</li>
+</ul>
+<p><img src="/%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/R-C.608c8097c86cd104cf316b016bdf59c6rik=906GMV+HH93ypw&amp;riu=http://img.blog.csdn.png"></p>
+<p>例题——-已知先序和中序序列求二叉树</p>
+<ul>
+<li>若二叉树中各个结点的值均不相同，则二叉树点的先序序列，中序序列和后序序列都是唯一的</li>
+<li>由二叉树的<strong>先序序列</strong>和<strong>中序序列</strong>，或由二叉树的<strong>后序序列</strong>和<strong>中序序列</strong>可以可以确定唯一一颗二叉树</li>
+<li>已知二叉树的先序和中序序列，构造出相应的二叉树</li>
+</ul>
+<p>先序：A B C D E F G H I J</p>
+<p>中序：C D B F E A I H G J</p>
+<p>先找根节点：</p>
+<pre><code>由先序可知A必是根节点， B必是左节点的根节点， G是右结点的根节点
+
+由中序可知C D B F E是左节点， I H G J是右节点
+
+        CD是B的左结点， EF是B的右节点， IH是G的左节点，J是H的右节点
+
+由先序可知，C，E， H是根节点， 由中序可知D， F是右节点， I是左节点
+</code></pre>
+<p><strong>遍历算法</strong>（递归型）：</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 以下是伪代码(先序遍历)</span><br>Status <span class="hljs-title function_">PreOrderTraverse</span><span class="hljs-params">(BiTree T)</span><br>{<br>    <span class="hljs-keyword">if</span>(T == <span class="hljs-literal">NULL</span>)<span class="hljs-keyword">return</span> OK;<br>    <span class="hljs-keyword">else</span><br>    {<br>        visit(T); <span class="hljs-comment">// 访问根节点的一些方法 例如：printf("%d", T);</span><br>        PrrOrderTraverse(T-&gt;lchild); <span class="hljs-comment">// 递归遍历左子树</span><br>        PreOrderTraverse(T-&gt;rchild);  <span class="hljs-comment">//  递归遍历右子树</span><br>    }<br>}<br><br><span class="hljs-comment">// 以下是算法的真代码（先序遍历）</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">Pre</span><span class="hljs-params">(BiTree *T)</span><br>{<br>    <span class="hljs-keyword">if</span>(T != <span class="hljs-literal">NULL</span>)<br>    {<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\t"</span>, T-&gt;data);<br>        Pre(T-&gt;lchild);<br>        Pre(T-&gt;rchild);<br>    }<br>}<br><br><span class="hljs-comment">//  一下是伪代码（中序遍历）</span><br>Status <span class="hljs-title function_">InOrderTraverse</span><span class="hljs-params">(BiTree T)</span><br>{<br>    <span class="hljs-keyword">if</span>(T == <span class="hljs-literal">NULL</span>)<span class="hljs-keyword">return</span> OK;<br>    <span class="hljs-keyword">else</span><br>    {<br>        InOrderTraverse(T-&gt;lchild); <span class="hljs-comment">// 递归遍历左子树</span><br>        visit(T); <span class="hljs-comment">// 访问根节点</span><br>        InOrderTraverse(T-&gt;rchild); <span class="hljs-comment">// 递归遍历右子树</span><br>    }<br>}<br><span class="hljs-comment">// 以下是算法的真代码（中序遍历）</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">In</span><span class="hljs-params">(BiTree *T)</span><br>{<br>    <span class="hljs-keyword">if</span>(T != <span class="hljs-literal">NULL</span>)<br>    {<br>        Pre(T-&gt;lchild);<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\t"</span>, T-&gt;data);<br>        Pre(T-&gt;rchild);<br>    }<br>}<br><span class="hljs-comment">//  一下是伪代码（后序遍历）</span><br>Status <span class="hljs-title function_">PostOrderTraverse</span><span class="hljs-params">(BiTree T)</span><br>{<br>    <span class="hljs-keyword">if</span>(T == <span class="hljs-literal">NULL</span>)<span class="hljs-keyword">return</span> OK;<br>    <span class="hljs-keyword">else</span><br>    {<br>        InOrderTraverse(T-&gt;lchild); <span class="hljs-comment">// 递归遍历左子树</span><br>        InOrderTraverse(T-&gt;rchild); <span class="hljs-comment">// 递归遍历右子树</span><br>        visit(T); <span class="hljs-comment">// 访问根节点</span><br>    }<br>}<br><span class="hljs-comment">// 以下是算法的真代码（后序遍历）</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">Post</span><span class="hljs-params">(BiTree *T)</span><br>{<br>    <span class="hljs-keyword">if</span>(T != <span class="hljs-literal">NULL</span>)<br>    {<br>        Pre(T-&gt;lchild);<br>        Pre(T-&gt;rchild);<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\t"</span>, T-&gt;data);<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>看这三种算法：如果去掉输出语句，从递归的角度看，三种算法是完全相同的，或说这三种算法的访问路径是相同的，只是访问结点的时机不同</p>
+<p>如下图所示：从虚线出发到终点的路径上，每个结点经过三次：</p>
+<p><strong>第一次</strong>经过时访问 = <strong>先序</strong>遍历</p>
+<p><strong>第二次</strong>经过时访问 = <strong>中序</strong>遍历</p>
+<p><strong>第三次</strong>经过时访问 = <strong>后序</strong>遍历</p>
+<p><img src="/%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/R-C.608c8097c86cd104cf316b016bdf59c6rik=906GMV+HH93ypw&amp;riu=http://img.blog.csdn.png"></p>
+<p><strong>遍历算法</strong>（非递归型）：</p>
+<p>中序遍历<strong>非递归</strong>算法</p>
+<pre><code>二叉树**中序遍历的非递归算法的关键**：在中序遍历过某节点的整个左子树后，如何找到该节点的**根**及**右子树**
+</code></pre>
+<p>基本思想：</p>
+<ul>
+<li>建立一个栈</li>
+<li>根节点进栈，遍历左子树</li>
+<li>根节点出栈，输出根节点，遍历右子树</li>
+</ul>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c">Status <span class="hljs-title function_">InOrderTraverse</span><span class="hljs-params">(BiTree T)</span><br>{<br>    BiTree p; <br>    InitStack(S);<br>    p = T;<br>    <span class="hljs-keyword">while</span>( p || !StackEmpty(S))<br>    {<br>        <span class="hljs-keyword">if</span>(p) <span class="hljs-comment">// 先判断是否为空</span><br>        {<br>            Push(S,p);  <span class="hljs-comment">// 不为空，就压栈，再往下走</span><br>            p = p-&gt;lchild; <br>        }<br>        <span class="hljs-keyword">else</span><br>        {<br>            Pop(S,q); <span class="hljs-comment">// 空的话就把根节点出栈， 并指向右节点</span><br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%c"</span>,q-&gt;data);<br>            p = q-&gt;rchild;<br>        }<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p><strong>二叉树的层次遍历</strong></p>
+<p>从根节点开始，按照<strong>从上到下，从左到右</strong>的顺序访问每一个结点，每一个结点仅仅访问一次</p>
+<p>算法设计思路：<strong>使用一个队列</strong></p>
+<ol>
+<li>将根节点入队</li>
+<li>对不空时循环：从队列中出列一个结点*p，访问它<ul>
+<li>若他有左孩子结点，将左孩子结点进队</li>
+<li>若他有右孩子结点，将右孩子结点进队</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 队列类型定义</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span></span><br><span class="hljs-class">{</span><br>    BTNode data[MaxSize]; <span class="hljs-comment">// 存放在队中元素</span><br>    <span class="hljs-type">int</span> front, rear; <span class="hljs-comment">// 队头和队尾指针</span><br>}SqQueue;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">LevelOrder</span><span class="hljs-params">(BTNode *b)</span><br>{<br>    BTNode *p;<br>    SqQueue *qu;<br>    InitQueue(qu);   <span class="hljs-comment">//  初始化队列</span><br>    enQueue(qu, b);  <span class="hljs-comment">// 根节点指针进入队列</span><br>    <span class="hljs-keyword">while</span>(!QueueEmpty(qu))<br>    {<br>        deQueue(qu,p); <span class="hljs-comment">// 出队根节点</span><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%c"</span>, p-&gt;data);<br>        <span class="hljs-keyword">if</span>(p-&gt;lchild != <span class="hljs-literal">NULL</span>) <span class="hljs-comment">// 如果根节点有左孩子。则将其入队</span><br>        {<br>            enQueue(qu, p-&gt;lchild);<br>        }<br>        <span class="hljs-keyword">if</span>(p-&gt;rchild != <span class="hljs-literal">NULL</span>) <span class="hljs-comment">// 如果根节点有右孩子，则将其入队</span><br>        {<br>            enQueue(qu, p-&gt;rchild);<br>        }<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+
+
+<p><strong>二叉树的建立</strong></p>
+<p>按先序遍历序列建立二叉树的二叉链表</p>
+<ol>
+<li>从键盘输入二叉树的结点信息，建立二叉树的存储结构</li>
+<li>在建立二叉树的过程中<strong>按照二叉树的先序方式建立</strong></li>
+</ol>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BiTree</span></span><br><span class="hljs-class">{</span><br>	<span class="hljs-type">char</span> data;<br>	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BiTree</span> *<span class="hljs-title">lchild</span>;</span><br>	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BiTree</span> *<span class="hljs-title">rchild</span>;</span><br>}BiTree, *BiNode;<br><br>BiNode <span class="hljs-title function_">CreatBiTree</span><span class="hljs-params">(BiNode T)</span> <span class="hljs-comment">// 这里的返回值时BiNode类型的，而且必须是这个类型的，因为在这里面还有动态申请空间的条件，所以需要使用返回值来带回申请空间的地址</span><br>{<br>	<span class="hljs-type">char</span> ch;<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%c"</span>, &amp;ch);<br>	<span class="hljs-keyword">if</span>(ch == <span class="hljs-string">'#'</span>)<br>	{<br>		T = <span class="hljs-literal">NULL</span>;<br>	}<br>	<span class="hljs-keyword">else</span><br>	{<br>		T = (BiNode)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(BiTree));<br>		T-&gt;data = ch;<br>		T-&gt;lchild = CreatBiTree(T-&gt;lchild);<br>		T-&gt;rchild = CreatBiTree(T-&gt;rchild);<br>	}<br>	<span class="hljs-keyword">return</span> T;<br>}<br><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">PreBiTree</span><span class="hljs-params">(BiNode T)</span><br>{<br>	<span class="hljs-keyword">if</span>(T)<br>	{<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%c"</span>, T-&gt;data);<br>		PreBiTree(T-&gt;lchild);<br>		PreBiTree(T-&gt;rchild);<br>	}<br>}<br><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>{<br>	BiNode T;<br>	T = CreatBiTree(T);<br>	PreBiTree(T);<br><br>}<br><br></code></pre></td></tr></tbody></table></figure>
+
+
+
+<p><strong>二叉树遍历算法的应用</strong>—复制二叉树、</p>
+<p>如果是空树，递归结束</p>
+<p><strong>否则</strong>，申请新节点空间，复制根节点</p>
+<pre><code>递归复制左子树
+
+递归复制右子树
+</code></pre>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c">BiTree * <span class="hljs-title function_">Copy</span><span class="hljs-params">(BiTree T, BiTree *NewT)</span><br>{<br>    <span class="hljs-keyword">if</span>(T==<span class="hljs-literal">NULL</span>)<span class="hljs-comment">// 如果是空树则返回空</span><br>    {<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;<br>    }<br>    <span class="hljs-keyword">else</span><br>    {<br>        NewT = (BiTree)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(BiTree));<br>        NewT-&gt;data = T-&gt;data;<br>        Newt-&gt;lchild = Copy(T-&gt;lchild, NewT-&gt;lchild);<br>        NewT-&gt;rchild = Copy(T-&gt;rchild, NewT-&gt;rchild);<br>    }<br>    <span class="hljs-keyword">return</span> NewT;<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p><strong>二叉树遍历算法的应用—计算二叉树深度</strong></p>
+<p>如果是空树，则深度为零</p>
+<p>否则，递归计算左子树的深度记为m，递归计算右子树的深度为n，二叉树的深度则为m与n的较大者加1</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">Depth</span><span class="hljs-params">(BiTree *T)</span><br>{<br>	<span class="hljs-type">int</span> m, n;<br>	m = n = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">if</span>(T == <span class="hljs-literal">NULL</span>)<br>	{<br>		<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>	}<br>	<span class="hljs-keyword">else</span><br>	{<br>		m = Depth(T-&gt;lchild);<br>		n = Depth(T-&gt;rchild);<br>		<span class="hljs-keyword">if</span>( m &gt; n)<br>		{<br>			<span class="hljs-keyword">return</span> (m+<span class="hljs-number">1</span>);<br>		}<br>		<span class="hljs-keyword">else</span><br>		{<br>			<span class="hljs-keyword">return</span> (n+<span class="hljs-number">1</span>);<br>		}<br>	}<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p><strong>计算二叉树结点总数</strong></p>
+<p>如果是空树，则结点个数为0；</p>
+<p>否则，结点个数的为左子树的结点个数+右子树的结点个数</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">BNumber</span><span class="hljs-params">(BiNode T)</span><br>{<br>	<span class="hljs-type">int</span> m, n;<br>	<span class="hljs-keyword">if</span>(T==<span class="hljs-literal">NULL</span>)<br>	{<br>		<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>	}<br>	<span class="hljs-keyword">else</span><br>	{<br>		m = BNumber(T-&gt;lchild);<br>		n = BNumber(T-&gt;rchild);<br>		<span class="hljs-keyword">return</span> m+n + <span class="hljs-number">1</span>;<br>	}<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p><strong>计算二叉树叶子节点数</strong></p>
+<p>如果是空树，则叶子节点个数为零</p>
+<p>否则，为左子树的叶子节点个数+右子树叶子节点个数</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">LeafCount</span><span class="hljs-params">(BiNode T)</span><br>{<br>	<span class="hljs-keyword">if</span>(T == <span class="hljs-literal">NULL</span>)<br>	{<br>		<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>	}<br>	<span class="hljs-keyword">if</span>( T-&gt;lchild == <span class="hljs-literal">NULL</span> &amp;&amp; T-&gt;rchild == <span class="hljs-literal">NULL</span>)<br>	{<br>		<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>	}<br>	<span class="hljs-keyword">else</span><br>	{<br>		<span class="hljs-keyword">return</span> LeafCount(T-&gt;lchild) + LeafCount(T-&gt;rchild);<br>	}<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+
+
+<p><strong>线索二叉树</strong></p>
+<p>在二叉树中寻找前趋和后继的方法：</p>
+<ol>
+<li>通过将二叉树遍历寻找———费时间</li>
+<li>再增设前趋，后继指针域———–增加了存储负担</li>
+<li><strong>利用二叉链表中空指针域</strong></li>
+</ol>
+<p>二叉树中空指针域的数量：</p>
+<ul>
+<li>具有n个结点的二叉链表中，一共有2n个指针域，因为n个结点中有 n-1个孩子，即2n个指针域中，有n-1个用来指示节点的左右孩子，其余<strong>n+1个指针域为空</strong></li>
+</ul>
+<p><strong>利用二叉链表中的空指针域</strong>：</p>
+<pre><code>如果某个节点中的左孩子为空，则将空的左孩子指针域改为**指向其前趋**，如果某个节点的右孩子为空，则将空的右孩子指针域改位**指向其后继**
+
+-----这种**改变指向的指针**称为“**线索**”
+
+加上了线索的二叉树称为**线索二叉树**
+
+为了区分lchild和rchild指针到底是指向孩子的指针还是指向前趋或者后继的指针，对二叉链表中的**每一个结点增设两个标致域 ltag和rtag**，并约定
+
+ltag = 0	lchild指向该节点的**左孩子**
+
+ltag = 1	lchild指向该节点的**前趋**
+
+rtag = 0	rchild指向该节点的**右孩子**
+
+rtag = 1	rchild指向该节点的**后继**
+</code></pre>
+<p>当我们遇到二叉树的第一个元素和最后一个元素的时候，会有两个空的指针，我们可以增设一个头结点</p>
+<pre><code>ltag = 0，lchild指向根节点	
+
+rtag = 1， rchild指向遍历序列中最后一个结点
+
+遍历序列中的第一个结点的lc域和最后一个结点的rc域都指向头结点
+</code></pre>
+<h2 id="树和森林"><a href="#树和森林" class="headerlink" title="树和森林"></a>树和森林</h2><p><strong>树</strong>：是n（n≥0）个结点的有限集。若n = 0，称为空树；</p>
+<pre><code>若n &gt; 0
+
+1. **有且仅有一个**特定的称为**根**的结点
+2. **其余结点**可分为m（m≥0）个互不相交的有限集T1，T2，T3，·····，Tn
+</code></pre>
+<p><strong>森林</strong>：是m（m大于等于0）棵互不相交的树的集合</p>
+<h3 id="树的存储结构"><a href="#树的存储结构" class="headerlink" title="树的存储结构"></a><strong>树的存储结构</strong></h3><ol>
+<li><p><strong>双亲表示法</strong></p>
+<p><img src="/%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/src=http://www.myexception.cn/img/2012/10/16/1424065464.gif&amp;refer=http://www.myexception.gif"></p>
+<p><strong>实现</strong>：定义结构数组</p>
+<pre><code>        存放树的结点；
+
+        每个结点含两个域
+</code></pre>
+<ul>
+<li><strong>数据域</strong>：存放结点本身信息</li>
+<li><strong>双亲域</strong>：指示本节点的双亲结点在数组中的位置</li>
+<li>特点：找双亲容易，找孩子难</li>
+</ul>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">PTNode</span></span><br><span class="hljs-class">{</span><br>    TElemType data;<br>    <span class="hljs-type">int</span> parent; <span class="hljs-comment">// 双亲位置</span><br>}PTNode;<br><span class="hljs-comment">// 树结构</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAX_TREE_SIZE 100</span><br><span class="hljs-keyword">typedef</span> strcut<br>{<br>    PTNode nodes[MAX_TREE_SIZE];<br>    <span class="hljs-type">int</span> r, n; <span class="hljs-comment">// 根节点的位置和结点个数</span><br>}PTree；<br></code></pre></td></tr></tbody></table></figure>
+</li>
+<li><p><strong>孩子表示法</strong></p>
+</li>
+</ol>
+<p><img src="/%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/src=http://img-blog.csdnimg.cn/20200202192003457.gif&amp;refer=http://img-blog.csdnimg.gif"></p>
+<pre><code>    把每个结点的孩子结点排列起来，看成是一个线性表，用单链表存储，把n个结点有n个孩子链表（叶子的孩子链表为空表）。而n个头指针由组成一个线性表，用顺序表（含n个元素的结构数组）存储
+</code></pre>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 孩子结点结构：</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CTNode</span></span><br><span class="hljs-class">{</span><br>    <span class="hljs-type">int</span> child;<br>    strcut CTNode *next;<br>}*ChildPtr;<br><span class="hljs-comment">// 双亲结点结构</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span></span><br><span class="hljs-class">{</span><br>    TElemType data;<br>    Child firstchild;<span class="hljs-comment">// 孩子链表头指针</span><br>}CTBox;<br><span class="hljs-comment">// 树结构</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span></span><br><span class="hljs-class">{</span><br>    CTBox nodes[MAX_TREE_SIZE];<br>    <span class="hljs-type">int</span> n,r;<span class="hljs-comment">// 结点数和根节点的位置</span><br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p><strong>特点</strong>：找孩子容易，找双亲难</p>
+<p>为了解决找双亲难的问题，可以在双亲结点中再加一项，双亲的下标，这种存储结构我们称作<strong>带双亲的孩子链表</strong></p>
+<ol start="3">
+<li><p><strong>孩子兄弟表示法</strong>（二叉树表示法，二叉链表表示法）</p>
+<p>实现：用二叉链表作树的存储结构，链表中每个结点的两个指针域分别指向其中<strong>第一个孩子结点</strong> 和<strong>下一个兄弟结点</strong></p>
+<p>typedef strcut CSNode</p>
+<p>{</p>
+<pre><code>ElemType data；
+
+strcut CSNode *firstchild， *nextsibling；
+</code></pre>
+<p>}CSNode， *CSTree；</p>
+<p><img src="/%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/src=http://www.pianshen.com/images/453/cc517c2353eb55fee933453aec89c3d5.png&amp;refer=http://www.pianshen.jpeg"></p>
+</li>
+</ol>
+<h3 id="树与二叉树的转换"><a href="#树与二叉树的转换" class="headerlink" title="树与二叉树的转换"></a>树与二叉树的转换</h3><ul>
+<li>将树转换成二叉树进行处理，利用二叉树的算法来实现对数的操作</li>
+<li>由于树和二叉树都可以用二叉链表作存储结构，则<strong>以二叉链表做媒介</strong>可以导出树与二叉树之间的一个对应关系</li>
+</ul>
+<ol>
+<li><p>将树转换成二叉树</p>
+<p><img src="/%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/src=http://img2020.cnblogs.com/blog/1751378/202005/1751378-20200506192124082-324325099.png&amp;refer=http://img2020.cnblogs.jpeg"></p>
+<ul>
+<li>加线:在兄弟之间加一连线</li>
+<li>抹线：对每个结点，除了其左孩子外，去除其与其他孩子之间的联系</li>
+<li>旋转：以树的根节点为轴心，将整数顺时针旋转45°</li>
+<li>树变二叉树：兄弟相连留长子</li>
+</ul>
+</li>
+<li><p>二叉树转换成树</p>
+<p><img src="/%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/src=http://img.it610.com/image/product/eafe87d274944f49aa0ffe888bbc924a.jpg&amp;refer=http://img.it610.jpeg"></p>
+<ol>
+<li><p>加线：若p结点是双亲结点的左孩子，则将p的右孩子，右孩子的右孩子…….延分支找到所有的右孩子，都与p的双亲用节点线连起来</p>
+</li>
+<li><p>抹线：抹掉原二叉树中双亲与右孩子之间的连线</p>
+</li>
+<li><p>调整：将结点按层次排列，形成树结构</p>
+<p>二叉树变树：</p>
+<p>左孩右右连双亲， 去掉原来右孩线</p>
+</li>
+</ol>
+</li>
+<li><p><strong>森林转换成二叉树</strong>（二叉树与多棵树之间的关系）</p>
+<p><img src="/%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/src=http://image.bubuko.com/info/201802/20180204213705761316.jpg&amp;refer=http://image.bubuko.jpeg"></p>
+<ul>
+<li>将各棵树分别转换成二叉树</li>
+<li>将每棵树的结点用线相连</li>
+<li>已第一颗树根结点为二叉树的根，再以根节点为轴心，顺时针旋转构成二叉树型结构</li>
+<li>森林变二叉树；树变二叉根相连</li>
+</ul>
+</li>
+<li><p><strong>二叉树转换成森林</strong></p>
+<p>将森林转换成二叉树的方法倒过来即可</p>
+<ol>
+<li><p>抹线：将二叉树中根节点与其右孩子连线，及沿右分支搜索到的所有右孩子间的连线全部抹掉，使之编成孤立的二叉树</p>
+</li>
+<li><p>还原，将孤立的二叉树还原成树</p>
+<p>二叉树变森林：</p>
+<p>去掉全部右孩线，孤立二叉再还原</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="树的遍历"><a href="#树的遍历" class="headerlink" title="树的遍历"></a>树的遍历</h3><ul>
+<li>先根（次序）遍历：<ul>
+<li>若树不空，则先访问根节点，然后依次先根遍历各个子树</li>
+</ul>
+</li>
+<li>后跟（次序）遍历：<ul>
+<li>若树不空，则先依次后跟遍历各棵子树，然后访问根节点</li>
+</ul>
+</li>
+<li>按层次遍历<ul>
+<li>若树不空，则自上而下自左而右访问每个结点</li>
+</ul>
+</li>
+</ul>
+<h3 id="森林的遍历"><a href="#森林的遍历" class="headerlink" title="森林的遍历"></a>森林的遍历</h3><p>将森林看作由三部分组成</p>
+<ol>
+<li>森林中第一棵树的根节点</li>
+<li>森林中第一棵树的子树森林</li>
+<li>森林中其他树构成的森林</li>
+</ol>
+<p>先序遍历</p>
+<p>若森林不空，则</p>
+<pre><code>1. 访问森林中第一颗树的根节点
+2. 先序遍历森林中第一颗树的子树森林
+3. 先序遍历森林中（除第一颗树之外）其余树构成的森林
+</code></pre>
+<p>即：依次从左至右对森林中的每一颗树进行先根遍历</p>
+<h1 id="哈夫曼树"><a href="#哈夫曼树" class="headerlink" title="哈夫曼树"></a>哈夫曼树</h1><p><strong>基本概念</strong></p>
+<p>在进行百分制转换成五分制的时候，我们需要依次比较</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">if</span>(score &lt; <span class="hljs-number">60</span>)<br>{<br>    grade = <span class="hljs-string">'E'</span>;<br>}<br><span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( score &lt; <span class="hljs-number">70</span>)<br>{<br>    grade = <span class="hljs-string">'D'</span><br>}<br><span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( score &lt; <span class="hljs-number">80</span>)<br>{<br>    grade = <span class="hljs-string">'C'</span><br>}<br><span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( score &lt; <span class="hljs-number">90</span>)<br>{<br>    grade = <span class="hljs-string">'B'</span><br>}<br><span class="hljs-keyword">else</span><br>{<br>    grade = <span class="hljs-string">'A'</span><br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>在这种情况下，假如数据查找量很多，而且成绩集中分布在CB这里，那么在使用这种方法那就比较不明智，我们可是用树来分割这些比较的先后，可以先比较中间的</p>
+<pre><code>哈夫曼树（最优二叉树）
+</code></pre>
+<h2 id="哈夫曼树的基本概念"><a href="#哈夫曼树的基本概念" class="headerlink" title="哈夫曼树的基本概念"></a>哈夫曼树的基本概念</h2><ol>
+<li><p><strong>路径</strong>：从树中一个结点到另一个结点之间的<strong>分支</strong>构成这两个结点间的路径</p>
+</li>
+<li><p><strong>结点的路径长度</strong>：两节点间路径上的<strong>分支数</strong></p>
+</li>
+<li><p><strong>树的路径长度</strong>：从<strong>树根</strong>到每一个结点的<strong>路径长度之和</strong>，记作TL</p>
+<ul>
+<li>节点数目相同的二叉树中，完全二叉树是路径长度最短的二叉树</li>
+</ul>
+</li>
+<li><p><strong>权</strong>：将树中结点赋给一个有着某种含义的数值，则称这个数值为<strong>该点的权</strong></p>
+</li>
+<li><p><strong>结点的带权路径长度</strong>：从<strong>根</strong>结点到该节点之间的<strong>路径长度</strong>与该节点的<strong>权</strong>的<strong>乘积</strong></p>
+</li>
+<li><p><strong>树的带权路径长度</strong>：树中所有<strong>叶子</strong>结点的<strong>带权路径长度之和</strong></p>
+<pre><code>相同权值，相同数目的叶子结点，不同的二叉树，树的带权路径长度是不同的
+</code></pre>
+</li>
+</ol>
+<p><strong>哈夫曼树</strong>：最优树（带权路径长度最短的树）</p>
+<pre><code>    **注**：”带权路径长度最短“是在“度相同”的树中比较而得到的结果，因此有最优二叉树，最有三叉树
+</code></pre>
+<p><strong>哈夫曼树</strong>：最优二叉树（带权路径长度最短的二叉树）</p>
+<pre><code>    满二叉树不一定是哈夫曼树， 在哈夫曼树中权值较大的离根节点比较近，权值较小的里根节点比较远
+
+    具有相同带权结点的哈夫曼树不唯一
+</code></pre>
+<h2 id="哈夫曼树及其应用"><a href="#哈夫曼树及其应用" class="headerlink" title="哈夫曼树及其应用"></a>哈夫曼树及其应用</h2><h3 id="哈夫曼树构造算法1："><a href="#哈夫曼树构造算法1：" class="headerlink" title="哈夫曼树构造算法1："></a>哈夫曼树构造算法1：</h3><p>哈夫曼算法（构造哈夫曼树的方法）</p>
+<pre><code>贪心算法：构造哈夫曼树时首先先责权值小的叶子结点
+</code></pre>
+<ol>
+<li>根据n个给定的权值{W1，W2，W3，······，Wn}构成n棵二叉树森林F = {T1,T2,·····，T3}；其中Ti只有一个带权为Wi的根节点<ul>
+<li><strong>构造森林全是根</strong></li>
+</ul>
+</li>
+<li>在F中选择两颗根节点的权值最小的树作为左右子树，构造一棵新的二叉树，且设置新的二叉树的根节点的权值为其左右子树上根节点的权值之和<ul>
+<li><strong>选用两小造新树</strong></li>
+</ul>
+</li>
+<li>在F中删除这两颗树，同时将新的到的二叉树加入到森林中<ul>
+<li><strong>删除两小添新人</strong></li>
+</ul>
+</li>
+<li>重复2和3，直到森林中只有一颗树为止，这棵树极为哈夫曼树<ul>
+<li><strong>重复2 3 得单根</strong>；</li>
+</ul>
+</li>
+<li>哈夫曼树中的结点度为零，和度为二，没有度为一的结点</li>
+<li><strong>总结</strong>：<ol>
+<li>在哈夫曼算法中，初始时有n棵二叉树，需要经过n-1次合并最终形成哈夫曼树</li>
+<li>经过n-1次合并产生n-1个新节点，这n-1个新节点都是具有两个孩子的分支结点</li>
+<li>可见哈夫曼树中共有n+n-1 = 2n-1个结点，且具有分支节点的度均不为1</li>
+</ol>
+</li>
+</ol>
+<h2 id="哈夫曼树构造算法的实现"><a href="#哈夫曼树构造算法的实现" class="headerlink" title="哈夫曼树构造算法的实现"></a>哈夫曼树构造算法的实现</h2><p>采用顺序存储结构——一维数组</p>
+<p>结点类型定义</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span></span><br><span class="hljs-class">{</span><br>    <span class="hljs-type">int</span> weight; <span class="hljs-comment">// 这个点的权重</span><br>    <span class="hljs-type">int</span> parent, lch, rch;  <span class="hljs-comment">// 父母和左右孩子的位置</span><br>}HTNode, *HuffmanTree;<br></code></pre></td></tr></tbody></table></figure>
+
+<p>哈夫曼树中共有2n-1个结点不使用0下标，数组大小为2n</p>
+<ol>
+<li>初始化HT[1……2n-1]:lch = rch = parent = 0;</li>
+<li>输入初始n个叶子节点：置HT[1……n]的weight值</li>
+</ol>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">CreatHuffmanTree</span><span class="hljs-params">(HuffmanTree HT, <span class="hljs-type">int</span> n)</span><br>{<br>    <span class="hljs-type">int</span> i, m, k;<br>    <span class="hljs-keyword">if</span>( n &lt;= <span class="hljs-number">1</span>)<br>    {<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    }<br>    m = <span class="hljs-number">2</span>*n - <span class="hljs-number">1</span>;<br>    HT = (HuffmanTree)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(HTNode)*(m+<span class="hljs-number">1</span>));<br>    <span class="hljs-keyword">for</span>(i = <span class="hljs-number">1</span>; i &lt;= m; i++)<br>    {<br>        HT[i].parent = <span class="hljs-number">0</span>;<br>        HT[i].rch = <span class="hljs-number">0</span>;<br>        HT[i].lch = <span class="hljs-number">0</span>;<br>    }<br>    <span class="hljs-keyword">for</span>( i = <span class="hljs-number">1</span>; i &lt;= n; i++)<br>    {<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;HT[i].weight);<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<ol start="3">
+<li>进行一下n-1次合并，依次产生n-1个结点，HT[i] i = n+1 …… 2n-1；<ul>
+<li>在HT[1…i-1]中选两个未被选过的（从parent == 0）中选择weight值最小的两个结点HT[s1]和HT[s2], s1, s2为两个最小结点下标</li>
+<li>修改HT[s1]和HT[s2]的parent值，HT[s1].parent = i, 和HT[s2].parent = i;</li>
+<li>修改产生的HT[i]:<ul>
+<li>HT[i].weight = HT[s1].weight + HT[s2].weight;</li>
+<li>HT[i].lch = s1; HT[i].rch = s2;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">for</span>(i = n+<span class="hljs-number">1</span>; i &lt;= m; i++)<br>{<br>    <span class="hljs-type">int</span> min1, min2,temp;<br>    min1 = <span class="hljs-number">1</span>;<br>    min2 = <span class="hljs-number">2</span>;<br>    temp;<br>    <span class="hljs-keyword">for</span>(k = <span class="hljs-number">1</span>; k &lt; i; k++)<br>    {<br>        <span class="hljs-keyword">if</span>(HT[k].parent != <span class="hljs-number">0</span>)<br>        {<br>            <span class="hljs-keyword">if</span>(HT[min1].weight &gt; HT[min2].weight)<br>            {<br>                temp = min1;<br>                min1 = min2;<br>                min2 = temp;<br>            }<br>            <span class="hljs-keyword">if</span>(HT[min1].weight &gt; HT[k].weight)<br>            {<br>                min1 = k;<br>            }<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( HT[min2].weight &gt; HT[k].weight )<br>            {<br>                min2 = k;<br>            }<br>        }<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="哈夫曼编码1—哈夫曼编码思想"><a href="#哈夫曼编码1—哈夫曼编码思想" class="headerlink" title="哈夫曼编码1—哈夫曼编码思想"></a>哈夫曼编码1—哈夫曼编码思想</h2><p>在远程通讯中，要将待传字符转换成由二进制的字符串</p>
+<p>若A– 00， B— 01，C–10， D–11</p>
+<p>则ABACCDA 转换成二进制的话就是 00010010101100</p>
+<p>若将编码设计为长度不等  二进制编码，即让待转字符串中出现次数较多的字符采用尽可能短的编码，则转换的二进制字符串变可能减少</p>
+<p>A–0，B–00，C—1，D—01；那么ABACCDA就能转换为 000011010这个二进制编码</p>
+<p>但是前面的0000这个会有三种不同的情况 可能是AAAA， ABA， BB这三种情况</p>
+<p>所以为了不出现这种情况：</p>
+<p><strong>关键</strong>：要设计长度不等的编码，则必须使任一字符的编码都<strong>不是</strong>另一个字符编码的<strong>前缀</strong>—–&gt;前缀码</p>
+<p><strong>解决方法</strong>：–哈夫曼编码</p>
+<ol>
+<li><p>统计字符集中每个字符在电文中出现的平均概率（概率越大，要求编码越短）。</p>
+</li>
+<li><p>利用哈夫曼树的特点：权越大的离根越近，<strong>将每个字符的概率作为权值，构造哈夫曼树</strong>。概率越大的结点，路径越短，</p>
+</li>
+<li><p>在哈夫曼树的每个分支上标0或1；</p>
+<p>把结点的左分支标0， 右分支标1</p>
+<p>把从根到每个叶子的路径上的标号连接起来，作为该叶子代表的<strong>字符的编码</strong></p>
+<p><strong>两个问题</strong></p>
+<ol>
+<li><p>为什么哈夫曼编码能够保证是前缀编码？</p>
+<ul>
+<li>因为没有一片树叶是另一片树叶的祖先，所以每个叶节点的编码就不可能是其他叶结点的编码的前缀</li>
+</ul>
+</li>
+<li><p>为什么哈夫曼编码能过保证字符编码总长度最短？</p>
+<ul>
+<li>因为哈夫曼树带权路径长度最短，故字符编码的总长最短</li>
+</ul>
+<p>性质一：哈夫曼编码是前缀码</p>
+<p>性质二：哈夫曼编码是最优前缀码</p>
+</li>
+</ol>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://zjhinsist.github.io">追夢赤子心</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://zjhinsist.github.io/2021/05/05/%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/">https://zjhinsist.github.io/2021/05/05/%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://zjhinsist.github.io" target="_blank">追夢赤子心</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></div><div class="post_share"><div class="social-share" data-image="/images/wallhaven-e7ek7k.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/05/05/%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0/"><img class="prev-cover" src="/images/wallhaven-o3qry5.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">线性表算法的实现</div></div></a></div><div class="next-post pull-right"><a href="/2021/05/05/%E6%A0%91%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/"><img class="next-cover" src="/images/wallhaven-pk1kxj.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">树的代码实现</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/05/05/HuffmanTree/" title="哈夫曼编译码器（实现中英文）"><img class="cover" src="/images/wallhaven-57zvj9.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-05</div><div class="title">哈夫曼编译码器（实现中英文）</div></div></a></div><div><a href="/2021/05/05/%E4%B8%B2%E6%95%B0%E7%BB%84%E5%B9%BF%E4%B9%89%E8%A1%A8/" title="串数组广义表"><img class="cover" src="/images/wallhaven-m9mj5m.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-05</div><div class="title">串数组广义表</div></div></a></div><div><a href="/2021/05/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/" title="数据结构基本原理"><img class="cover" src="/images/191616-16539093763995.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-05</div><div class="title">数据结构基本原理</div></div></a></div><div><a href="/2022/05/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="数据结构排序算法"><img class="cover" src="/images/wallhaven-z8rwqo.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-05</div><div class="title">数据结构排序算法</div></div></a></div><div><a href="/2021/05/05/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" title="栈和队列代码实现"><img class="cover" src="/images/wallhaven-9mo7kw.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-05</div><div class="title">栈和队列代码实现</div></div></a></div><div><a href="/2022/05/05/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97%E5%8E%9F%E7%90%86/" title="栈和队列原理"><img class="cover" src="/images/wallhaven-9my5gk.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-05</div><div class="title">栈和队列原理</div></div></a></div></div></div><hr><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">Gitalk</span><span class="switch-btn"></span><span class="second-comment">Livere</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div><div><div id="lv-container" data-id="city" data-uid="MTAyMC81NjMzNi8zMjc5OQ=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/favicon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info__name">追夢赤子心</div><div class="author-info__description">假如生活欺骗了你，不要悲伤，不要心急！忧郁的日子里须要镇静：相信吧，快乐的日子将会来临！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/zjhinsist"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/zjhinsist" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2152889763@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Trying to do better.</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text">树的定义</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD"><span class="toc-number">1.1.</span> <span class="toc-text">树的基本术语</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.2.</span> <span class="toc-text">二叉树的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%E5%BC%95%E5%85%A5"><span class="toc-number">1.3.</span> <span class="toc-text">案例引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%80%A7%E8%B4%A8%E5%92%8C%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">1.4.</span> <span class="toc-text">二叉树的性质和存储结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%B4%A8"><span class="toc-number">1.4.1.</span> <span class="toc-text">性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">1.4.2.</span> <span class="toc-text">存储结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">1.5.</span> <span class="toc-text">二叉树的遍历</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E5%92%8C%E6%A3%AE%E6%9E%97"><span class="toc-number">1.6.</span> <span class="toc-text">树和森林</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">1.6.1.</span> <span class="toc-text">树的存储结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%91%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.6.2.</span> <span class="toc-text">树与二叉树的转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">1.6.3.</span> <span class="toc-text">树的遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%AE%E6%9E%97%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">1.6.4.</span> <span class="toc-text">森林的遍历</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91"><span class="toc-number">2.</span> <span class="toc-text">哈夫曼树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">2.1.</span> <span class="toc-text">哈夫曼树的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8"><span class="toc-number">2.2.</span> <span class="toc-text">哈夫曼树及其应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91%E6%9E%84%E9%80%A0%E7%AE%97%E6%B3%951%EF%BC%9A"><span class="toc-number">2.2.1.</span> <span class="toc-text">哈夫曼树构造算法1：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91%E6%9E%84%E9%80%A0%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.3.</span> <span class="toc-text">哈夫曼树构造算法的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%811%E2%80%94%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81%E6%80%9D%E6%83%B3"><span class="toc-number">2.4.</span> <span class="toc-text">哈夫曼编码1—哈夫曼编码思想</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/07/03/Python%E7%AC%94%E8%AE%B0%EF%BC%88%E9%80%9F%E8%BF%87%EF%BC%89/" title="python基础"><img src="/images/191616-16539093763995.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="python基础"></a><div class="content"><a class="title" href="/2022/07/03/Python%E7%AC%94%E8%AE%B0%EF%BC%88%E9%80%9F%E8%BF%87%EF%BC%89/" title="python基础">python基础</a><time datetime="2022-07-03T07:00:13.000Z" title="发表于 2022-07-03 15:07:00">2022-07-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/03/%E6%96%87%E6%A1%A3%E6%89%AB%E6%8F%8FOCR%E8%AF%86%E5%88%AB/" title="文档扫描OCR识别"><img src="/images/wallhaven-57zvj9.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="文档扫描OCR识别"></a><div class="content"><a class="title" href="/2022/07/03/%E6%96%87%E6%A1%A3%E6%89%AB%E6%8F%8FOCR%E8%AF%86%E5%88%AB/" title="文档扫描OCR识别">文档扫描OCR识别</a><time datetime="2022-07-03T07:00:13.000Z" title="发表于 2022-07-03 15:07:00">2022-07-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/03/%E9%93%B6%E8%A1%8C%E5%8D%A1%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB-OpenCv/" title="银行卡数字识别_OpenCv"><img src="/images/wallhaven-m9mj5m.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="银行卡数字识别_OpenCv"></a><div class="content"><a class="title" href="/2022/07/03/%E9%93%B6%E8%A1%8C%E5%8D%A1%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB-OpenCv/" title="银行卡数字识别_OpenCv">银行卡数字识别_OpenCv</a><time datetime="2022-07-03T01:32:03.000Z" title="发表于 2022-07-03 09:07:00">2022-07-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/" title="计算机视觉"><img src="/images/wallhaven-e7ek7k.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机视觉"></a><div class="content"><a class="title" href="/2022/06/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/" title="计算机视觉">计算机视觉</a><time datetime="2022-06-28T12:06:46.000Z" title="发表于 2022-06-28 20:06:00">2022-06-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/16/JAVA%E7%AC%94%E8%AE%B0/" title="JAVA笔记"><img src="/images/wallhaven-q28x3l.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JAVA笔记"></a><div class="content"><a class="title" href="/2022/05/16/JAVA%E7%AC%94%E8%AE%B0/" title="JAVA笔记">JAVA笔记</a><time datetime="2022-05-16T06:49:44.000Z" title="发表于 2022-05-16 14:05:00">2022-05-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">©2020 - 2022 By 追夢赤子心</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"></div></div><hr><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'ac7fc4fcfa8131bda97b',
+      clientSecret: 'bf6454387a0e69350ab995f1b5d7b51ca937546d',
+      repo: 'zjhinsist.github.io',
+      owner: 'zjhinsist',
+      admin: ['zjhinsist'],
+      id: '14657dfb7e6a685fd2efa02f876b42b7',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !true) {
+  if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Gitalk' === 'Livere' || !true) {
+  if (true) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="2257381805" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listfolded="false" data-order="random" data-preload="none" data-autoplay="false" muted=""></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

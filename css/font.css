@@ -1,0 +1,281 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 3455726 */
+  src: url('//at.alicdn.com/t/font_3455726_byxbx6thrqu.woff2?t=1654593423642') format('woff2'),
+       url('//at.alicdn.com/t/font_3455726_byxbx6thrqu.woff?t=1654593423642') format('woff'),
+       url('//at.alicdn.com/t/font_3455726_byxbx6thrqu.ttf?t=1654593423642') format('truetype');
+}
+
+/* 页脚透明 */
+#footer, #footer:before {
+  background: transparent!important
+}
+
+#page-header:not(.not-top-img):before {
+  background-color: transparent!important;
+}
+
+/* 头图透明 */
+#page-header{
+  background: transparent!important;
+}
+
+/*夜间模式伪类遮罩层透明*/
+[data-theme="dark"]
+  #footer::before{
+      background: transparent!important;
+    }
+[data-theme="dark"]
+  #page-header::before{
+    background: transparent!important;
+    }
+
+body {
+    cursor: url(https://cdn.jsdelivr.net/npm/kang-static/Hexo/img/default.cur), default;
+    font-family: FZFW,-apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Lato, Roboto, "PingFang SC", "STZhongsong", "Lantinghei SC", sans-serif;
+}
+
+a,
+img {
+    cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur),
+        default;
+}
+
+/* 字体 */
+@font-face{
+  font-family: 'FZFW' ;  
+  src: url('font.ttf'); 
+}
+body {
+font-family: FZFW,-apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Lato, Roboto, "PingFang SC", "STZhongsong", "Lantinghei SC", sans-serif
+}
+
+/* 应用于除了作者卡片以为的所有侧栏卡片 */
+.card-widget:not(.card-info) {
+  overflow: visible !important;
+  margin-top: 45px !important;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 0px !important;
+  font-family: 'SAOUI';
+  color: rgba(60,60,61,0.7);
+  font-weight: bold;
+}
+/* 修复一下对侧栏电子钟的覆盖 */
+.card-widget.card-clock {
+  overflow: hidden !important;
+  border-radius: 8px !important;
+  margin-top: 0px !important;
+}
+/* 定义标题栏的定位方式为绝对定位 */
+.item-headline {
+  font-family: 'SAOUI';
+  color: rgba(60,60,61,0.7);
+  font-weight: bold;
+  position: absolute;
+  z-index: 4;
+  height: 27px;
+  width: 65%;
+  top: -27px;
+  left: 7px;
+}
+/* 标题栏下各元素的层级，保证它们能显示在伪类之上 */
+.item-headline i {
+  position: relative;
+  top: 0px;
+  margin-left: 5%;
+  z-index: 2;
+}
+.item-headline span {
+  position: relative;
+  top: 0px;
+  z-index: 2;
+}
+.item-headline a {
+  position: relative;
+  top: 0px;
+  z-index: 2;
+}
+/* 梯形伪类 */
+.item-headline:after {
+  content: '';
+  position: absolute;
+  top: -3px; /*卡片顶部突起上下偏移量*/
+  right: 0;
+  bottom: 0;
+  left: -3px; /*卡片顶部突起左右偏移量*/
+  z-index: 1;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(255,255,255,0.9);
+  border-bottom: 0 solid #fff;
+  /* 关键形变 */
+  transform: perspective(20px) rotateX(3deg);
+  border-top-right-radius: 5px !important;
+  border-top-left-radius: 5px !important;
+}
+/* 下划线伪类 */
+.item-headline:before {
+  display: block;
+  width: 140%;
+  margin-top: 2px;
+  height: 2px;
+  content: '';
+  background: rgba(160,159,160,0.9);
+  border-radius: 5px;
+  top: 40px;
+  left: 0;
+  position: relative;
+}
+/* 针对手机样式的偏移量调整 */
+@media screen and (max-width: 800px) {
+  .item-headline {
+    left: 8px;
+  }
+}
+/* 夜间模式色彩适配，此处仅代表糖果屋夜间模式配色 */
+[data-theme="dark"] .card-widget:not(.card-info) {
+  color: rgba(255,255,255,0.7) !important;
+}
+[data-theme="dark"] .item-headline {
+  color: rgba(255,255,255,0.7) !important;
+}
+[data-theme="dark"] .item-headline:after {
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(0,0,0,0.5);
+  border-bottom: 0 solid rgba(0,0,0,0.5);
+}
+[data-theme="dark"] .item-headline:before {
+  background: rgba(255,255,255,0.9);
+}
+
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-dianying:before {
+  content: "\e65b";
+  color: #FFCC00;
+}
+
+.icon-biaoqian:before {
+  content: "\e669";
+}
+
+.icon-zhuye:before {
+  content: "\e619";
+}
+
+.icon-xiangzi:before {
+  content: "\e61e";
+}
+
+.icon-wenjianjia:before {
+  content: "\e702";
+}
+
+.icon-xiangshangjiantou:before {
+  content: "\e703";
+}
+
+.icon-lianjie:before {
+  content: "\e61a";
+}
+
+.icon-aixin:before {
+  content: "\e6ad";
+}
+
+.icon-pinglun:before {
+  content: "\e632";
+}
+
+.icon-sousuo:before {
+  content: "\e637";
+}
+
+.icon-liebiao:before {
+  content: "\e63f";
+}
+
+.icon-shuji:before {
+  content: "\e626";
+}
+
+.icon-boke:before {
+  content: "\e60b";
+}
+
+.icon-youjian:before {
+  content: "\e725";
+}
+
+.icon-259:before {
+  content: "\e73d";
+}
+
+.icon-github:before {
+  content: "\e722";
+}
+
+.icon-shuangxiangjiantou:before {
+  content: "\e612";
+}
+
+.icon-bilibili:before {
+  content: "\e609";
+}
+
+.icon-a-yinlebofangliebiaoyinle:before {
+  content: "\e787";
+}
+.fa-list {
+    color: #99CC33;
+}
+.fa-heart {
+    color: #ff0303;
+}
+.fa-link {
+   color: #2a92c6;
+}
+.fa-folder-open {
+    color: #deda48;
+}
+.fa-home{
+    color: #66cccc;
+}
+.fa-search{
+    color: #5bd88f;
+}
+.fa-archive{
+    color: #496ed6;
+}
+.fa-tags{
+    color: #c73838;
+}
+.fa-music{
+    color: #FFCC00;
+}
+.fa-video{
+    color: #FFCC00;
+}
+
+
+.fa-bars{
+    color: #20a5ae;
+}
+
+.fa-github{
+    color:#67acfe;
+}
+.fa-envelope{
+    color:#67acfe;
+}
+element.style {
+    background-image: url(/images/favicon.png);
+    background-color: #2980b9;
+}
