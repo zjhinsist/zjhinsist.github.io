@@ -470,14 +470,14 @@
 
   
   <url>
-    <loc>https://zjhinsist.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
+    <loc>https://zjhinsist.github.io/tags/Gitee/</loc>
     <lastmod>2022-07-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://zjhinsist.github.io/tags/Gitee/</loc>
+    <loc>https://zjhinsist.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2022-07-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -533,6 +533,13 @@
   </url>
   
   <url>
+    <loc>https://zjhinsist.github.io/tags/JAVA/</loc>
+    <lastmod>2022-07-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://zjhinsist.github.io/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%BA%8E%E9%80%BB%E8%BE%91/</loc>
     <lastmod>2022-07-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -547,13 +554,6 @@
   </url>
   
   <url>
-    <loc>https://zjhinsist.github.io/tags/JAVA/</loc>
-    <lastmod>2022-07-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://zjhinsist.github.io/tags/OpenCv/</loc>
     <lastmod>2022-07-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -561,14 +561,14 @@
   </url>
   
   <url>
-    <loc>https://zjhinsist.github.io/tags/SVM/</loc>
+    <loc>https://zjhinsist.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2022-07-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://zjhinsist.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>https://zjhinsist.github.io/tags/SVM/</loc>
     <lastmod>2022-07-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
