@@ -5,6 +5,14 @@
        url('//at.alicdn.com/t/font_3455726_byxbx6thrqu.ttf?t=1654593423642') format('truetype');
 }
 
+#pagination .page-number.current {
+	background:#ffffff00;
+	color: #000;
+}
+#pagination .pagination a {
+	color: #1fb7ff;
+}
+
 #aside-content .card-info #card-info-btn {
   background-color: #276791;
 }

@@ -1,3 +1,4 @@
+https://zjhinsist.github.io/2022/07/05/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/
 https://zjhinsist.github.io/comments/index.html
 https://zjhinsist.github.io/2022/07/03/%E6%96%87%E6%A1%A3%E6%89%AB%E6%8F%8FOCR%E8%AF%86%E5%88%AB/
 https://zjhinsist.github.io/2022/05/05/python%E4%B8%ADjieba%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/
@@ -68,3 +69,4 @@ https://zjhinsist.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/
 https://zjhinsist.github.io/tags/K-means/
 https://zjhinsist.github.io/tags/ComputerVision/
 https://zjhinsist.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/
+https://zjhinsist.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/
