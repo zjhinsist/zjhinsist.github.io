@@ -5,6 +5,10 @@
        url('//at.alicdn.com/t/font_3455726_byxbx6thrqu.ttf?t=1654593423642') format('truetype');
 }
 
+#aside-content .card-info #card-info-btn {
+  background-color: #276791;
+}
+
 /* 页脚透明 */
 #footer, #footer:before {
   background: transparent!important
