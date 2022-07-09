@@ -5,6 +5,10 @@
        url('//at.alicdn.com/t/font_3455726_byxbx6thrqu.ttf?t=1654593423642') format('truetype');
 }
 
+div#runtime {
+	width :242px;
+}
+
 /* #pagination .page-number.current {
 	background:#ffffff00;
 	color: #000;
