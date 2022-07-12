@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://zjhinsist.github.io/2022/07/05/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2022-07-08</lastmod>
+    <loc>https://zjhinsist.github.io/2022/07/12/%E6%B0%94%E6%B8%A9%E6%95%B0%E6%8D%AE%E6%9E%84%E5%BB%BA%E6%A8%A1%E5%9E%8B/</loc>
+    <lastmod>2022-07-12</lastmod>
   </url>
   <url>
     <loc>https://zjhinsist.github.io/2022/07/08/PyTorch/</loc>
+    <lastmod>2022-07-12</lastmod>
+  </url>
+  <url>
+    <loc>https://zjhinsist.github.io/2022/07/05/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2022-07-08</lastmod>
   </url>
   <url>
