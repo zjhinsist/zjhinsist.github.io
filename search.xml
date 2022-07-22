@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>git和github使用</title>
+      <link href="/2022/07/21/git%E5%92%8Cgithub%E4%BD%BF%E7%94%A8/"/>
+      <url>/2022/07/21/git%E5%92%8Cgithub%E4%BD%BF%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><ol><li><p>克隆别人的仓库</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">git clone 目标项目的地址<br></code></pre></td></tr></table></figure><p><img src="/2022/07/21/git%E5%92%8Cgithub%E4%BD%BF%E7%94%A8/image-20220721105318827.png" alt="image-20220721105318827"></p></li><li><p>我们在引用的时候可以注意一下 文件中Readme.md文件，一般作者都会把项目的使用方法放到这个文件中</p></li><li><p>我们还要注意：LICENSE许可证中 是否是MIT的，如果是MIT的话我们就可以放心使用，如果不是的话，我们在引用的时候就需要小心了</p></li><li><p>找开源项目的一些途径<br>• <a href="https://github.com/trending/">https://github.com/trending/</a><br>• <a href="https://github.com/521xueweihan/HelloGitHub">https://github.com/521xueweihan/HelloGitHub</a><br>• <a href="https://github.com/ruanyf/weekly">https://github.com/ruanyf/weekly</a><br>• <a href="https://www.zhihu.com/column/mm-fe">https://www.zhihu.com/column/mm-fe</a></p></li><li><p>特殊的查找资源小技巧-常用前缀后缀<br>• 找百科大全 awesome xxx<br>• 找例子 xxx sample<br>• 找空项目架子 xxx starter &#x2F; xxx boilerplate<br>• 找教程  xxx tutorial</p></li></ol><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>克隆仓库：git clone &lt;git地址&gt;<br>初始化仓库：git init </p><p>添加文件到暂存区：git add -A<br>把暂存区的文件提交到仓库：git commit -m “提交信息”<br>查看提交的历史记录：git log –stat</p><p>工作区回滚：git checkout <filename><br>撤销最后一次提交：git reset HEAD^1</filename></p><p>以当前分支为基础新建分支：git checkout -b <branchname><br>列举所有的分支：git branch<br>单纯地切换到某个分支：git checkout <branchname><br>删掉特定的分支：git branch -D <branchname><br>合并分支：git merge <branchname></branchname></branchname></branchname></branchname></p><p>推送当前分支最新的提交到远程：git push<br>拉取远程分支最新的提交到本地：git pull</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Anaconda使用方法</title>
+      <link href="/2022/07/21/Anaconda%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/"/>
+      <url>/2022/07/21/Anaconda%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="常用命令："><a href="#常用命令：" class="headerlink" title="常用命令："></a>常用命令：</h2><ol><li><p>查看版本号：</p><p>conda –version</p></li><li><p>创建新环境</p><p>conda create -n 环境名称 python&#x3D;python版本号</p></li><li><p>切换环境：</p><p>activate 环境名</p></li><li><p>下载包</p><p>conda install 包名</p></li><li><p>升级包</p><p>conda update 包名</p></li><li><p>删除包</p><p>conda remove 包名</p></li><li><p>删除环境：</p><p>conda remove -n 包名 –all（删除该环境下的所有包名）</p></li><li><p>查看所有虚拟环境:</p><p>conda env list</p></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Anaconda </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>花朵识别</title>
       <link href="/2022/07/20/%E8%8A%B1%E6%9C%B5%E8%AF%86%E5%88%AB/"/>
       <url>/2022/07/20/%E8%8A%B1%E6%9C%B5%E8%AF%86%E5%88%AB/</url>
