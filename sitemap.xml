@@ -591,7 +591,7 @@
   </url>
   
   <url>
-    <loc>https://zjhinsist.github.io/tags/JAVA/</loc>
+    <loc>https://zjhinsist.github.io/tags/LDA-theam-model/</loc>
     <lastmod>2022-07-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -599,13 +599,6 @@
   
   <url>
     <loc>https://zjhinsist.github.io/tags/MarkDown/</loc>
-    <lastmod>2022-07-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://zjhinsist.github.io/tags/LDA-theam-model/</loc>
     <lastmod>2022-07-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -634,6 +627,13 @@
   
   <url>
     <loc>https://zjhinsist.github.io/tags/jieba/</loc>
+    <lastmod>2022-07-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zjhinsist.github.io/tags/JAVA/</loc>
     <lastmod>2022-07-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -696,14 +696,14 @@
   </url>
   
   <url>
-    <loc>https://zjhinsist.github.io/tags/K-means/</loc>
+    <loc>https://zjhinsist.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</loc>
     <lastmod>2022-07-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://zjhinsist.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</loc>
+    <loc>https://zjhinsist.github.io/tags/K-means/</loc>
     <lastmod>2022-07-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
