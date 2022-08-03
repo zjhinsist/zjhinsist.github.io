@@ -2,12 +2,6 @@
   font-size: 20px;
 }
 
-@font-face {
-  font-family: "iconfont"; /* Project id 3455726 */
-  src: url('//at.alicdn.com/t/font_3455726_byxbx6thrqu.woff2?t=1654593423642') format('woff2'),
-       url('//at.alicdn.com/t/font_3455726_byxbx6thrqu.woff?t=1654593423642') format('woff'),
-       url('//at.alicdn.com/t/font_3455726_byxbx6thrqu.ttf?t=1654593423642') format('truetype');
-}
 
 div#runtime {
 	width :242px;
@@ -176,91 +170,6 @@ font-family: FZFW,-apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue
   background: rgba(255,255,255,0.9);
 }
 
-
-.iconfont {
-  font-family: "iconfont" !important;
-  font-size: 16px;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-dianying:before {
-  content: "\e65b";
-  color: #FFCC00;
-}
-
-.icon-biaoqian:before {
-  content: "\e669";
-}
-
-.icon-zhuye:before {
-  content: "\e619";
-}
-
-.icon-xiangzi:before {
-  content: "\e61e";
-}
-
-.icon-wenjianjia:before {
-  content: "\e702";
-}
-
-.icon-xiangshangjiantou:before {
-  content: "\e703";
-}
-
-.icon-lianjie:before {
-  content: "\e61a";
-}
-
-.icon-aixin:before {
-  content: "\e6ad";
-}
-
-.icon-pinglun:before {
-  content: "\e632";
-}
-
-.icon-sousuo:before {
-  content: "\e637";
-}
-
-.icon-liebiao:before {
-  content: "\e63f";
-}
-
-.icon-shuji:before {
-  content: "\e626";
-}
-
-.icon-boke:before {
-  content: "\e60b";
-}
-
-.icon-youjian:before {
-  content: "\e725";
-}
-
-.icon-259:before {
-  content: "\e73d";
-}
-
-.icon-github:before {
-  content: "\e722";
-}
-
-.icon-shuangxiangjiantou:before {
-  content: "\e612";
-}
-
-.icon-bilibili:before {
-  content: "\e609";
-}
-
-.icon-a-yinlebofangliebiaoyinle:before {
-  content: "\e787";
-}
 .fa-list {
     color: #99CC33;
 }
@@ -306,4 +215,10 @@ font-family: FZFW,-apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue
 element.style {
     background-image: url(/images/favicon.png);
     background-color: #2980b9;
+}
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
 }
