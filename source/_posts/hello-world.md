@@ -6,7 +6,7 @@ top_img: https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/blog-construct/ban
 ---
 Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
 
-## Quick Start
+## First
 
 ### Create a new post
 
