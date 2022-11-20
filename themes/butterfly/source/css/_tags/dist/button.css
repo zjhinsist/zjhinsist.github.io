@@ -1,0 +1,54 @@
+#article-container .btn-center {
+  margin: 0 0 20px;
+  text-align: center;
+}
+#article-container .btn-beautify {
+  display: inline-block;
+  margin: 0 4px 6px;
+  padding: 0 15px;
+  background-color: var(--btn-beautify-color, $btn-default-color);
+  color: $btn-color;
+  line-height: 2;
+}
+#article-container .btn-beautify.$color-types {
+  --btn-beautify-color: ;
+}
+#article-container .btn-beautify:hover {
+  background-color: var(--btn-hover-color);
+}
+#article-container .btn-beautify i + span {
+  margin-left: 6px;
+}
+#article-container .btn-beautify:not(.block) + .btn-beautify:not(.block) {
+  margin: 0 4px 20px;
+}
+#article-container .btn-beautify.block {
+  display: block;
+  margin: 0 0 20px;
+  width: fit-content;
+  width: -moz-fit-content;
+}
+#article-container .btn-beautify.block.center {
+  margin: 0 auto 20px;
+}
+#article-container .btn-beautify.block.right {
+  margin: 0 0 20px auto;
+}
+#article-container .btn-beautify.larger {
+  padding: 6px 15px;
+}
+#article-container .btn-beautify:hover {
+  text-decoration: none;
+}
+#article-container .btn-beautify.outline {
+  border: 1px solid transparent;
+  border-color: var(--btn-beautify-color, $btn-default-color);
+  background-color: transparent;
+  color: var(--btn-beautify-color, $btn-default-color);
+}
+#article-container .btn-beautify.outline:hover {
+  background-color: var(--btn-beautify-color, $btn-default-color);
+}
+#article-container .btn-beautify.outline:hover {
+  color: #fff !important;
+}

@@ -1,0 +1,91 @@
+- class_name: 大佬
+  class_desc: 大佬的博客
+  link_list:
+    - name: Akilar
+      link: https://akilar.top/
+      avatar: https://npm.elemecdn.com/akilar-candyassets/image/author3.webp
+      descr: 店长YYDS
+      siteshot: https://s3.bmp.ovh/imgs/2022/08/15/35a6cd1a33cf6b5d.jpg
+    - name: 安知鱼
+      link: https://anzhiy.cn/
+      avatar: https://image.anzhiy.cn/adminuploads/1/2022/09/15/63232b7d91d22.jpg
+      descr: 博客大佬
+    - name: Marcus的小窝
+      link: https://blog.marcus233.top/
+      avatar: https://bu.dusays.com/2022/09/15/632271409f592.png
+      descr: 一只有梦想的羊驼 
+
+- class_name: 博客
+  class_desc: 好友的博客
+  link_list:
+    - name: Classmate_Zhang
+      link: https://262259.xyz/
+      avatar: https://s3.bmp.ovh/imgs/2022/07/27/fc28cbf90fcd17d9.png
+      descr: 以梦为马，不负韶华
+      siteshot: https://s2.loli.net/2022/11/19/I1D6E9OyPWgvUx7.png
+    - name: SamのBlog
+      link: https://www.welucky.top/
+      avatar: https://pic1.imgdb.cn/item/635ceb7f16f2c2beb1e20c46.jpg
+      descr: 念念不忘，必有回响。
+      siteshot: https://pic.imgdb.cn/item/637773a616f2c2beb1011025.jpg
+    - name: 鲸落
+      link: https://xiaojunnanya.github.io/
+      avatar: https://xiaojunnanya.github.io/img/1.jpg
+      descr: 好友博客
+      siteshot: https://s3.bmp.ovh/imgs/2022/08/15/a6985f97b349e4e4.jpg
+    - name: 鹤行川
+      link: https://xenonaesir.github.io/
+      avatar: https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png
+      descr: 好友博客
+      siteshot: https://s3.bmp.ovh/imgs/2022/08/15/7b15e95a6f3fdd54.jpg
+    - name: StephenJie
+      link: https://zhaowenjie30.github.io/
+      avatar: https://s3.bmp.ovh/imgs/2022/09/03/6670e5d42feb4464.png
+      descr: 好友博客
+      siteshot: https://s3.bmp.ovh/imgs/2022/09/03/8e507cddcef07760.png
+    
+      
+
+- class_name: 友情链接
+  class_desc: 那些人，那些事
+  link_list:
+    - name: Hexo
+      link: https://hexo.io/zh-tw/
+      avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
+      descr: 快速、简单且强大的网页框架
+    # - name: Blog Garden
+    #   link: https://www.cnblogs.com/
+    #   avatar: https://images.cnblogs.com/cnblogs_com/blogs/690476/galleries/2153339/o_220505083030_bokeyuan.png
+    #   descr: 一个比较优秀的博客网址
+
+
+
+- class_name: 网站
+  class_desc: 值得推荐的网站
+  link_list:
+    - name: Youtube
+      link: https://www.youtube.com/
+      avatar: https://i.loli.net/2020/05/14/9ZkGg8v3azHJfM1.png
+      descr: 视频网站
+    - name: Weibo
+      link: https://www.weibo.com/
+      avatar: https://i.loli.net/2020/05/14/TLJBum386vcnI1P.png
+      descr: 中国最大的社交网站
+    - name: Twitter
+      link: https://twitter.com/
+      avatar: https://i.loli.net/2020/05/14/5VyHPQqR6LWF39a.png
+      descr: 社交分享平台
+    - name: wallhaven
+      link: https://wallhaven.cc/
+      avatar: https://s3.bmp.ovh/imgs/2022/11/09/abb6e40e9167b308.png
+      descr: The best wallpapers on the Net!
+      siteshot: https://s2.loli.net/2022/10/13/gniL4CPNOjrov27.png
+    - name: 樱花动漫
+      link: https://www.yhdmp.cc/
+      avatar: https://i.ibb.co/WcXVz91/QQ-20221102220959.png
+      descr: 动漫网站
+      siteshot: https://i.ibb.co/Y0Gsymn/QQ-20221102221130.png
+      
+
+    
+

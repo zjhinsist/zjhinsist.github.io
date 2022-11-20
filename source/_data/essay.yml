@@ -1,0 +1,16 @@
+- class_name: 即刻短文
+  essay_list:
+    - content: TMD，狗策一天天监视我，焯！受不了了
+      date: 2022/10/25
+    - content: 搜索🔍支持缩略图显示啦（默认获取文章内容的第一张图片）
+      date: 2022/10/23 08:00:00
+      from: Nuyoah
+    - content: 歌曲推荐
+      date: 2022/09/25
+      aplayer:
+        server: tencent
+        id: 001FGQba3i10mw
+    - content: 也不知道学校疫情什么时候好
+      date: 2022/11/17
+      image:
+        - https://s3.bmp.ovh/imgs/2022/11/08/3b73e41bdfc1757c.png

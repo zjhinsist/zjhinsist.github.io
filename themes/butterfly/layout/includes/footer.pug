@@ -1,0 +1,76 @@
+#footer_deal
+  a.deal_link(href="" title="mail")
+    i.iconfont.icon-mail
+  a.deal_link(href="" title="qq" target="_blank")
+    i.iconfont.icon-qq1
+  a.deal_link(href="" title="微博" target="_blank")
+    i.iconfont.icon-weibo1
+  a.deal_link(href="https://github.com/jayhrn" title="github"  target="_blank")
+    i.iconfont.icon-github1
+  img.footer_mini_logo.entered.loading(style="border-radius:50%" src='https://s3.bmp.ovh/imgs/2022/07/27/fc28cbf90fcd17d9.png' onclick="btf.scrollToDest(0,500)" title="返回顶部")
+  a.deal_link(href="" title="dribbble")
+    i.iconfont.icon-dribbble_F
+  a.deal_link(href="" title="facebook" target="_blank")
+    i.iconfont.icon-facebook1
+  a.deal_link(href="" title="Twitter" target="_blank")
+    i.iconfont.icon-twitter
+  a.deal_link(href="" title="Telegram" target="_blank")
+    i.iconfont.icon-telegram
+#Jay-footer
+  .footer-group
+    h3.footer-title 直达
+    .footer-links
+      a.footer-item(href="https://262259.xyz/" target="_blank") 我的主页
+      a.footer-item(href="/tags") 标签
+      a.footer-item(href="/comments") 留言板
+      a.footer-item(href="/link") 友链
+  .footer-group
+    h3.footer-title 分类
+    .footer-links
+      a.footer-item(href="/categories/JAVA/") JAVA
+      a.footer-item(href="/categories/Python/") Python
+      a.footer-item(href="/categories/hexo/") hexo
+      a.footer-item(href="/categories/个人日记/") 个人日记
+  .footer-group
+    h3.footer-title 关于
+    .footer-links
+      a.footer-item(href="/about/") 关于我
+      a.footer-item(href="/gallery") 图库
+      a.footer-item(href="/archives") 文章归档
+  .footer-group
+    h3.footer-title 友链
+    .footer-links#friend-links-in-footer
+  .footer-group
+    h3.footer-title 协议
+    .footer-links
+      a.footer-item(href="/privacy/") 隐私协议
+      a.footer-item(href="/cookies/") Cookie
+      a.footer-item(href="/cc/") 版权协议
+#footer-banner
+  .footer-banner-links
+    .footer-banner-left
+      .footer-banner-left
+        #footer-banner-tips
+        script(src='https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js')
+        script.
+          var typed = new Typed("#footer-banner-tips", {
+            strings: ["念念不忘，必有回响。", "Never forget, there will be echoes."],
+            startDelay: 200,
+            backDelay: 2000,
+            typeSpeed: 100,
+            loop: true,
+            backSpeed: 20
+          })
+
+    .footer-banner-right
+      a.footer-banner-link(href="https://hexo.io/zh-cn/" title="Hexo") 框架
+      a.footer-banner-link |
+      a.footer-banner-link(href="https://github.com/jerryc127/hexo-theme-butterfly" title="theme") 主题
+      a.footer-banner-link |
+      a.footer-banner-link(href="/" title="RSS") 订阅
+      a.footer-banner-link |
+      a.footer-banner-link(href="/about/" title="about") 关于
+      a.footer-banner-link |
+      a.footer-banner-link.cc(href="/cc/" title="cc协议")
+        i.iconfont.icon-cc
+        span 协议

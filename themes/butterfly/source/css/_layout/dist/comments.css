@@ -1,0 +1,56 @@
+#post-comment .comment-head {
+  margin-bottom: 20px;
+}
+#post-comment .comment-head .comment-headline {
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: 700;
+  font-size: 1.43em;
+}
+#post-comment .comment-head #comment-switch {
+  display: inline-block;
+  float: right;
+  margin: 2px auto 0;
+  padding: 4px 16px;
+  width: max-content;
+  border-radius: 8px;
+  background: $comments-switch-bg;
+}
+#post-comment .comment-head #comment-switch .first-comment {
+  color: $comments-switch-first-text;
+}
+#post-comment .comment-head #comment-switch .second-comment {
+  color: $comments-switch-second-text;
+}
+#post-comment .comment-head #comment-switch .switch-btn {
+  position: relative;
+  display: inline-block;
+  margin: -4px 8px 0;
+  width: 42px;
+  height: 22px;
+  border-radius: 34px;
+  background-color: $comments-switch-first-text;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: 0.4s;
+}
+#post-comment .comment-head #comment-switch .switch-btn:before {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: $comments-switch-round;
+  content: '';
+  transition: 0.4s;
+}
+#post-comment .comment-head #comment-switch .switch-btn.move {
+  background-color: $comments-switch-second-text;
+}
+#post-comment .comment-head #comment-switch .switch-btn.move:before {
+  transform: translateX(20px);
+}
+#post-comment .comment-wrap > div:nth-child(2) {
+  display: none;
+}

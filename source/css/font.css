@@ -1,0 +1,81 @@
+div#post {
+  font-size: 16px;
+}
+.article-content-text {
+  font-size: 17px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color:#49b1f5;
+  background-image:-webkit-linear-gradient(45deg,rgba(255,255,255,.4) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.4) 50%,rgba(255,255,255,.4) 75%,transparent 75%,transparent);
+  border-radius: 2em;
+}
+
+
+div#runtime {
+	width :242px;
+}
+
+/* #pagination .page-number.current {
+	background:#ffffff00;
+	color: #000;
+}
+#pagination .pagination a {
+	color: #1fb7ff;
+} */
+
+div#archive {
+  background: #ffffffd6;
+}
+
+div#post {
+  background: #ffffffd6;
+}
+
+#aside-content .card-info #card-info-btn {
+  background-color: #276791;
+  border-radius: 25px;
+}
+
+/* 页脚透明 */
+#footer, #footer:before {
+  background: transparent!important
+}
+
+#page-header:not(.not-top-img):before {
+  background-color: transparent!important;
+}
+
+
+/*夜间模式伪类遮罩层透明*/
+[data-theme="dark"]
+  #footer::before{
+      background: transparent!important;
+    }
+[data-theme="dark"]
+  #page-header::before{
+    background: transparent!important;
+    }
+
+body {
+    cursor: url(https://cdn.jsdelivr.net/npm/kang-static/Hexo/img/default.cur), default;
+    font-family: FZFW,-apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Lato, Roboto, "PingFang SC", "STZhongsong", "Lantinghei SC", sans-serif;
+}
+
+a,
+img {
+    cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur),
+        default;
+}
+
+/* 字体文件 */
+
+@font-face {
+  font-family: font-youyuan;
+  src: url(./font/SIMYOU.TTF);
+}
+body {
+font-family: font-youyuan, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Lato, Roboto, "PingFang SC", "STZhongsong", "Lantinghei SC", sans-serif;
+font-size: 17px;
+font-weight: bolder;
+}

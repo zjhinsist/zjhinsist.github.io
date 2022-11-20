@@ -1,0 +1,11 @@
+.hl-label {
+  padding: 2px 4px;
+  border-radius: 3px;
+  color: $btn-color;
+}
+.hl-label.default {
+  background-color: $btn-default-color;
+}
+.hl-label.$color-types {
+  background-color: ;
+}
