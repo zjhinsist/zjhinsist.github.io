@@ -50,9 +50,9 @@ hexo.extend.helper.register('cloudTags', function (options = {}) {
     const color = 'rgb(' + Math.floor(Math.random() * 201) + ', ' + Math.floor(Math.random() * 201) + ', ' + Math.floor(Math.random() * 201) + ')' // 0,0,0 -> 200,200,200
     style += ` color: ${color}`
     result += `<a href="${env.url_for(tag.path)}" style="${style}">${tag.name}<sup>${tag.length}</sup></a>`
+    })
+    return result
   })
-  return result
-})
 
 hexo.extend.helper.register('urlNoIndex', function (url = null) {
   return prettyUrls(url || this.url, { trailing_index: false, trailing_html: false })

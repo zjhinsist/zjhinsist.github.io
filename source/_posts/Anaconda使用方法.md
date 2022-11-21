@@ -1,9 +1,9 @@
 ---
 title: Anaconda使用方法
 date: 2022-07-21 09:48:37
-tags: Anaconda
+tags: Python
 description: Anaconda的使用方法
-background: url(https://s3.bmp.ovh/imgs/2022/08/08/e1c9bda47806a33d.png)
+cover: "https://s2.loli.net/2022/11/21/jHkgUWLVo2lnuYF.webp"
 categories: Python
 ---
 

@@ -2,7 +2,7 @@
 title: Gitee仓库创建方法
 date: 2022-05-05 09:56:34
 tags: Gitee
-background: url(https://s3.bmp.ovh/imgs/2022/08/08/e1c9bda47806a33d.png)
+cover: "https://s2.loli.net/2022/11/21/lR5VkPQzU2tcTAJ.jpg"
 description: Gitee仓库创建方法
 ---
 

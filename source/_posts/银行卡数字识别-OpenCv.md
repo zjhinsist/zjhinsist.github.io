@@ -1,10 +1,10 @@
 ---
 title: 银行卡数字识别_OpenCv
 date: 2022-07-03 09:32:03
-tags: OpenCv
+tags: 人工智能
 swiper_index: 4
 description: 银行卡数字识别，单纯的比较识别
-background: url(https://s3.bmp.ovh/imgs/2022/08/08/e1c9bda47806a33d.png)
+cover: "https://s2.loli.net/2022/11/21/rWoSUxItliEPYHk.webp"
 categories: 人工智能
 ---
 

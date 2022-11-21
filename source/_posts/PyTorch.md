@@ -1,8 +1,8 @@
 ---
 title: PyTorch
 date: 2022-07-08 09:40:33
-tags: PyTorch
-background: url(https://s3.bmp.ovh/imgs/2022/08/08/e1c9bda47806a33d.png)
+tags: 人工智能
+cover: "https://s2.loli.net/2022/11/21/rWoSUxItliEPYHk.webp"
 description: PyTorch的一些基础操作，勉勉强强应付一下日常工作
 categories: 人工智能
 ---

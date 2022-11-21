@@ -2,7 +2,7 @@
 title: JAVA笔记
 date: 2022-05-16 14:49:44
 tags: JAVA
-background: url(https://s3.bmp.ovh/imgs/2022/08/08/e1c9bda47806a33d.png)
+cover: "https://s2.loli.net/2022/11/21/Sm8lFrjtzUkihVy.webp"
 description: 学习笔记，记录一下
 categories: JAVA
 

@@ -1,7 +1,7 @@
 ---
 title: MarkDown上传图片的方法
 date: 2022-10-05 10:00:03
-tags: MarkDown
+tags: hexo
 background: url(https://s3.bmp.ovh/imgs/2022/08/08/e1c9bda47806a33d.png)
 description: MarkDown的基本操作
 categories: hexo

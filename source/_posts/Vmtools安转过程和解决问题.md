@@ -1,9 +1,8 @@
 ---
 title: Vmtools无法在虚拟机和物理机之间复制粘贴
-background: url(https://s3.bmp.ovh/imgs/2022/08/08/e1c9bda47806a33d.png)
 mathjax: false
 date: 2022-09-27 10:33:03
-tags:
+tags: 计算机基础
 description: 在安转完VmTools之后，还是无法在虚拟机和物理机之间进行复制粘贴
 categories: 计算机基础
 ---

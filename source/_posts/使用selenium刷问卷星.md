@@ -1,6 +1,6 @@
 ---
 title: 使用selenium刷问卷星
-background: url(https://s2.loli.net/2022/11/10/6ZiLp2Cz5VImawh.png)
+cover: "https://s2.loli.net/2022/11/21/jHkgUWLVo2lnuYF.webp"
 mathjax: false
 date: 2022-11-14 11:42:29
 tags: Python

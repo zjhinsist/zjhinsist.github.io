@@ -1,8 +1,8 @@
 ---
 title: 文档扫描OCR识别
 date: 2022-07-03 15:00:13
-tags: OpenCv 
-background: url(https://s3.bmp.ovh/imgs/2022/08/08/e1c9bda47806a33d.png)
+tags: 人工智能 
+cover: "https://s2.loli.net/2022/11/21/rWoSUxItliEPYHk.webp"
 description: 改文章使用了OCR自动字体识别
 categories: 人工智能
 ---

@@ -1,8 +1,8 @@
 ---
 title: JypyterThemes
 date: 2022-05-05 09:49:51
-tags: Jupyter
-background: url(https://s3.bmp.ovh/imgs/2022/08/08/e1c9bda47806a33d.png)
+tags: Python
+cover: "https://s2.loli.net/2022/11/21/jHkgUWLVo2lnuYF.webp"
 description: Jupyter原本主题太low了，可以按照这种方式改一下主题
 categories: Python
 ---

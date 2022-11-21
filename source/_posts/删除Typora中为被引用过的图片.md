@@ -1,8 +1,8 @@
 ---
 title: 删除Typora中未被引用过的图片
-background: url(https://s3.bmp.ovh/imgs/2022/08/08/e1c9bda47806a33d.png)
+cover: "https://s2.loli.net/2022/11/21/jHkgUWLVo2lnuYF.webp"
 date: 2022-09-19 09:53:54
-tags: Typtor
+tags: Python
 description: 删除Typora中为被引用过的图片
 categories: Python
 ---

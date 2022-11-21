@@ -1,8 +1,8 @@
 ---
 title: 哈夫曼编译码器（实现中英文）
 date: 2022-05-05 09:48:37
-tags: 数据结构
-background: url(https://s3.bmp.ovh/imgs/2022/08/08/e1c9bda47806a33d.png)
+tags: 计算机基础
+cover: "https://s2.loli.net/2022/11/21/jO1zT7NyZMcHpwr.webp"
 description: 数据结构实训的时候写的一些东西，希望对你们有帮助
 categories: 计算机基础
 ---

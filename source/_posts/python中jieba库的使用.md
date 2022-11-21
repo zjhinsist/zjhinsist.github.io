@@ -1,8 +1,8 @@
 ---
 title: python中jieba库的使用
 date: 2022-05-05 10:02:09
-tags: jieba
-background: url(https://s3.bmp.ovh/imgs/2022/08/08/e1c9bda47806a33d.png)
+tags: 人工智能
+cover: "https://s2.loli.net/2022/11/21/rWoSUxItliEPYHk.webp"
 swiper_index: 5
 description: python中jieba库的使用
 categories: 人工智能

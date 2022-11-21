@@ -4,17 +4,17 @@
 
 menu:
   文章: 
-    分类: /categories/ || fas fa-folder-open
+    分类: /categories/ || fa-fw fas fa-shapes faa-tada
     标签: /tags/ || fas fa-tags
-    归档: /archives/ || icon-wenjianhe
+    归档: /archives/ || fa-fw fas fa-archive faa-tada
   友链:
-    留言板: /comments/ || icon-gerenziliao
+    留言板: /comments/ || fa-fw fas fa-envelope faa-tada
     友人帐: /link/ || fas fa-link
   我的:
-    图库: /gallery/ || icon-tupian
-    追番: /bangumis/index.html
+    图库: /gallery/ || fa-fw fas fa-images faa-tada
+    追番: /bangumis/index.html || fa-brands fa-bilibili
   关于: 
-    介绍: /about/ || icon-gerenziliao
+    介绍: /about/ || fa-solid fa-address-card
 
 
 # Code Blocks (代碼相關)
@@ -51,13 +51,13 @@ social:
 
 # Algolia search
 algolia_search:
-  enable: false
+  enable: true
   hits:
     per_page: 6
 
 # Local search
 local_search:
-  enable: true
+  enable: false
   preload: true
   CDN:
 
@@ -173,8 +173,8 @@ post_meta:
     date_type: both # created or updated or both 主頁文章日期是創建日或者更新日或都顯示
     date_format: relative # date/relative 顯示日期還是相對日期
     categories: false # true or false 主頁是否顯示分類
-    tags: true # true or false 主頁是否顯示標籤
-    label: true # true or false 顯示描述性文字
+    tags: false # true or false 主頁是否顯示標籤
+    label: false # true or false 顯示描述性文字
   post:
     date_type: both # created or updated or both 文章頁日期是創建日或者更新日或都顯示
     date_format: relative # date/relative 顯示日期還是相對日期
@@ -698,7 +698,7 @@ aside:
     sort: date # date or updated
     sort_order: # Don't modify the setting unless you know how it works
   card_categories:
-    enable: true
+    enable: false
     limit: 8 # if set 0 will show all
     expand: none # none/true/false
     sort_order: # Don't modify the setting unless you know how it works
@@ -892,17 +892,16 @@ inject:
     - <link rel="stylesheet" href="/css/modify.css"  media="defer" onload="this.media='all'">
     - <link rel="stylesheet" href="/css/mycss.css"  media="defer" onload="this.media='all'">
     - <link rel="stylesheet" href="/css/font.css"  media="defer" onload="this.media='all'">
+    - <link rel="stylesheet" href="/css/tips.css"  media="defer" onload="this.media='all'">
     - <link rel="stylesheet" href="/css/rightmenu.css">
     - <link rel="stylesheet" href="/css/nav_menu.css"  media="defer" onload="this.media='all'">
     - <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/mainColor/heoMainColor.css">
     - <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/categoryBar/categoryBar.css">
-    - <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_3570527_dthoqrrv2tv.css">
     - <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'">
     - <link rel="stylesheet" href="/css/essay_page/essay_page.css">
     - <link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/swiper.min.css">
     - <link rel="stylesheet" href="/css/essay_page/home_essay_bar.css">
-    - <link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.css"  media="defer" onload="this.media='all'"> #snackbar
-
+    - <link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.css"  media="defer" onload="this.media='all'">
   bottom:
     - <script async data-pjax src="/js/waterfall/waterfall.js"></script>
     - <script data-pjax src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/js/swiper.min.js"></script>
@@ -914,7 +913,9 @@ inject:
     - <script async src="https://at.alicdn.com/t/c/font_3565150_nhn941yed3.js"></script>
     - <script async data-pjax src="/js/custom.js"></script>
     - <div class="aplayer no-destroy" data-id="7247221409" data-server="netease" data-type="playlist"   data-order="list" data-fixed="true" data-preload="auto" data-autoplay="false" data-mutex="true" ></div>
-    
+    - <script src="/js/hygl.js"></script>
+    - <script src="/js/title.js"></script>
+    - <script charset="utf-8" data-pjax="" src="/js/fuzhi.js"></script>
 
 
 # CDN
@@ -1014,8 +1015,8 @@ footer_beautify:
     name: footer-wrap
     index: 0
   # 计时器部分配置项
-  runtime_js: "/js/custom/runtime.js"
-  runtime_css: "/css/runtime.css"
+  runtime_js: js/runtime.js
+  runtime_css: https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css
   # 徽标部分配置项
   swiperpara: 3 #若非0，则开启轮播功能，每行徽标个数
   bdageitem:
@@ -1189,3 +1190,22 @@ swiper:
     gsap_js: https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/gsap/3.9.1/gsap.min.js
     people_js: https://npm.elemecdn.com/hexo-butterfly-swiper-anzhiyu-pro/lib/people.min.js
     categorygroup_css: https://cdn.cbd.int/hexo-butterfly-swiper-anzhiyu-pro/lib/categoryGroup.css
+
+envelope_comment:
+  enable: true #控制开关
+  custom_pic:
+    cover: https://cdn.cbd.int//hexo-butterfly-envelope/lib/violet.jpg #信笺头部图片
+    line: https://cdn.cbd.int/hexo-butterfly-envelope/lib/line.png #信笺底部图片
+    beforeimg: https://cdn.cbd.int/hexo-butterfly-envelope/lib/before.png # 信封前半部分
+    afterimg: https://cdn.cbd.int/hexo-butterfly-envelope/lib/after.png # 信封后半部分
+  message: #信笺正文，多行文本，写法如下
+    - 有什么想问的？
+    - 有什么想说的？
+    - 有什么想吐槽的？
+    - 哪怕是有什么想吃的，都可以告诉我哦~
+  bottom: 自动书记人偶竭诚为您服务！ #仅支持单行文本
+  height: #1050px，信封划出的高度
+  path: #【可选】comments 的路径名称。默认为 comments，生成的页面为 comments/index.html
+  front_matter: #【可选】comments页面的 front_matter 配置
+    title: 留言板
+    comments: true

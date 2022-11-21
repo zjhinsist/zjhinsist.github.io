@@ -1,8 +1,8 @@
 ---
 title: JavaWeb
-background: url(https://s3.bmp.ovh/imgs/2022/08/08/e1c9bda47806a33d.png)
+cover: "https://s2.loli.net/2022/11/21/Sm8lFrjtzUkihVy.webp"
 date: 2022-08-22 10:38:00
-tags: JavaWeb
+tags: JAVA
 description: JavaWeb的简单记录
 categories: JAVA
 ---

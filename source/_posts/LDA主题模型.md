@@ -1,9 +1,9 @@
 ---
 title: LDA主题模型
 date: 2022-05-05 09:56:34
-tags: LDA theam model
+tags: 人工智能
 swiper_index: 1
-background: url(https://s3.bmp.ovh/imgs/2022/08/08/e1c9bda47806a33d.png)
+cover: "https://s2.loli.net/2022/11/21/rWoSUxItliEPYHk.webp"
 description: LDA的介绍，还是比较全面的
 mathjax: true
 categories: 人工智能

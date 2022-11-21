@@ -1,9 +1,9 @@
 ---
 title: CNN
 date: 2022-07-12 16:24:06
-tags: CNN
+tags: 人工智能
 description: CNN讲解
-background: url(https://s3.bmp.ovh/imgs/2022/08/08/e1c9bda47806a33d.png)
+cover: "https://s2.loli.net/2022/11/21/rWoSUxItliEPYHk.webp"
 categories: 人工智能
 ---
 

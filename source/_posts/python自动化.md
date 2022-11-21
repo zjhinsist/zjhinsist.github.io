@@ -1,8 +1,8 @@
 ---
 title: python自动化
 date: 2022-05-05 10:02:54
-tags: python
-background: url(https://s3.bmp.ovh/imgs/2022/08/08/e1c9bda47806a33d.png)
+tags: Python
+cover: "https://s2.loli.net/2022/11/21/jHkgUWLVo2lnuYF.webp"
 description: giao,这几天Excel表的处理快把我弄趴下了，就学了一下python操作Excel处理的方法
 categories: Python
 ---

@@ -1,8 +1,8 @@
 ---
 title: KMP
 date: 2021-05-05 09:54:45
-tags: KMP
-background: url(https://s3.bmp.ovh/imgs/2022/08/08/e1c9bda47806a33d.png)
+tags: 计算机基础
+cover: "https://s2.loli.net/2022/11/21/MAjwIXl1mVgNF4J.webp"
 description: KMP纯代码实现，以后有时间了出一期理论的
 categories: 计算机基础
 ---

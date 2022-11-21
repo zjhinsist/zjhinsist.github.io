@@ -1,8 +1,8 @@
 ---
 title: Java邮件发送
-background: url(https://s3.bmp.ovh/imgs/2022/08/08/e1c9bda47806a33d.png)
+cover: "https://s2.loli.net/2022/11/21/Sm8lFrjtzUkihVy.webp"
 date: 2022-09-16 14:42:21
-tags: JavaWeb
+tags: JAVA
 description: 使用Java发送邮件
 categories: JAVA
 ---

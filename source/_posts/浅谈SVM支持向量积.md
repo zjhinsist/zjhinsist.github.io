@@ -1,8 +1,8 @@
 ---
 title: 浅谈SVM支持向量积
 date: 2022-05-05 10:11:53
-tags: SVM
-background: url(https://s3.bmp.ovh/imgs/2022/08/08/e1c9bda47806a33d.png)
+tags: 人工智能
+cover: "https://s2.loli.net/2022/11/21/rWoSUxItliEPYHk.webp"
 swiper_index: 3
 description: 支持向量机的一些通俗的解释
 categories: 人工智能

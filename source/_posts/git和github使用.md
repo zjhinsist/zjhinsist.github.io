@@ -2,8 +2,8 @@
 description: git的使用方法
 title: git和github使用
 date: 2022-07-21 10:47:55
-tags: git
-background: url(https://s3.bmp.ovh/imgs/2022/08/08/e1c9bda47806a33d.png)
+tags: hexo
+cover: "https://s2.loli.net/2022/11/21/oUDtdkJpx1Tngw7.jpg"
 subtitle: git的使用方法
 categories: hexo
 ---

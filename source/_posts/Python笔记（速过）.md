@@ -1,8 +1,8 @@
 ---
 title: python基础
 date: 2022-07-03 15:00:13
-tags: python
-background: url(https://s3.bmp.ovh/imgs/2022/08/08/e1c9bda47806a33d.png)
+tags: Python
+cover: "https://s2.loli.net/2022/11/21/jHkgUWLVo2lnuYF.webp"
 description: python笔记
 categories: Python
 ---

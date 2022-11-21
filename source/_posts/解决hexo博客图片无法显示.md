@@ -1,6 +1,6 @@
 ---
 title: 解决hexo博客图片无法显示
-background: url(https://s2.loli.net/2022/11/10/6ZiLp2Cz5VImawh.png)
+cover: "https://s2.loli.net/2022/11/21/uidNZVrpm1acvf5.webp"
 mathjax: false
 date: 2022-11-11 22:10:40
 tags: hexo
