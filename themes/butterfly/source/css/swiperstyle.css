@@ -504,7 +504,11 @@
   }
   @media screen and (max-width: 765px) {
     .topGroup .top-group-list-item {
-      width: calc(100% / 4 - 5px) !important;
+      width: calc(100% / 2 - 5px) !important;
+      margin: 2px;
+    }
+    #topGroup{
+      height: 240px;
     }
   }
   
@@ -616,3 +620,4 @@
   .top-group-list-none {
     width: calc(100% / 4 - 5px);
   }
+

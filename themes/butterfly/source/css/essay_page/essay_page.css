@@ -257,6 +257,8 @@
       margin-right: 0px;
     }
   }
+
+  
   [data-theme="dark"] #bber .bber-music .aplayer,
   [data-theme="dark"] #bber .aplayer .aplayer-lrc:before,
   [data-theme="dark"] #bber .aplayer .aplayer-lrc:after {
