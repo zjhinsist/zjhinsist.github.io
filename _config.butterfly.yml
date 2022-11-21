@@ -910,12 +910,15 @@ inject:
     - <script type="text/javascript" src="/js/rightmenu.js"></script>
     - <script async src="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/categoryBar/categoryBar.js"></script>
     - <script src="https://at.alicdn.com/t/c/font_3570527_dthoqrrv2tv.css"></script>
-    - <script async src="https://at.alicdn.com/t/c/font_3565150_nhn941yed3.js"></script>
+    - <script async src="https://at.alicdn.com/t/c/font_3565150_irbl9jx0mvo.js"></script>
+
+    
     - <script async data-pjax src="/js/custom.js"></script>
     - <div class="aplayer no-destroy" data-id="7247221409" data-server="netease" data-type="playlist"   data-order="list" data-fixed="true" data-preload="auto" data-autoplay="false" data-mutex="true" ></div>
     - <script src="/js/hygl.js"></script>
     - <script src="/js/title.js"></script>
     - <script charset="utf-8" data-pjax="" src="/js/fuzhi.js"></script>
+    - <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
 
 
 # CDN
