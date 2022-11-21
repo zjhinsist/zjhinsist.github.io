@@ -952,7 +952,7 @@ CDN:
     # utils:
     # translate:
     # local_search:
-    # algolia_js:
+    algolia_js: https://cdn.jsdelivr.net/gh/Lea321/cdn/js/algolia.min.js
     # algolia_search_v4:
     # instantsearch_v4:
     # pjax:
