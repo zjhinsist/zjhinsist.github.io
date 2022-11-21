@@ -549,8 +549,3 @@
     --anzhiyu-shadow-light2black: 0 5px 12px -5px rgba(102, 68, 68, 0);
     --anzhiyu-card-border: #42444a;
   }
-
-  .loading-img {
-    background: url(https://cdn1.tianli0.top/npm/anzhiyu-blog@2.1.1/img/avatar.webp) no-repeat center center;
-    background-size: cover;
-  }
