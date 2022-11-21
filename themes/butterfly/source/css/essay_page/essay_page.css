@@ -289,9 +289,8 @@
 }
 
 .banner-button-group{
-  position: absolute;
-  bottom: 61rem; 
-  right: 14rem;
+  position: relative;
+  left: 85%;
 }
 
 .banner-button-text{

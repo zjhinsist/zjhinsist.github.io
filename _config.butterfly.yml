@@ -670,7 +670,7 @@ subtitle:
 
 # Loading Animation (加載動畫)
 preloader:
-  enable: false
+  enable: true
   # source
   # 1. fullpage-loading
   # 2. pace (progress bar)
@@ -923,6 +923,7 @@ inject:
 
     
     - <script async data-pjax src="/js/custom.js"></script>
+    - <script async data-pjax src="/js/waterfall/waterfall.js"></script>
     - <div class="aplayer no-destroy" data-id="7247221409" data-server="netease" data-type="playlist"   data-order="list" data-fixed="true" data-preload="auto" data-autoplay="false" data-mutex="true" ></div>
     - <script src="/js/hygl.js"></script>
     - <script src="/js/title.js"></script>
