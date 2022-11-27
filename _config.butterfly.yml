@@ -76,18 +76,18 @@ mathjax:
 # KaTeX
 katex:
   enable: true
-  per_page: true
+  per_page: false
   hide_scrollbar: true
 
 # Image (圖片設置)
 # --------------------------------------
 
 # Favicon（網站圖標）
-favicon: https://s3.bmp.ovh/imgs/2022/07/27/fc28cbf90fcd17d9.png
+favicon: https://s1.ax1x.com/2022/11/27/zUFla6.png
 
 # Avatar (頭像)
 avatar:
-  img: https://s3.bmp.ovh/imgs/2022/07/27/fc28cbf90fcd17d9.png
+  img: https://s1.ax1x.com/2022/11/27/zUFla6.png
   effect: false
 
 # Disable all banner image
@@ -416,7 +416,7 @@ remark42:
 
 # Chat Button [recommend]
 # It will create a button in the bottom right corner of website, and hide the origin button
-chat_btn: true
+chat_btn: false
 
 # The origin chat button is displayed when scrolling up, and the button is hidden when scrolling down
 chat_hide_show: true
@@ -691,7 +691,10 @@ aside:
   button: true
   mobile: false # display on mobile
   position: right # left or right
-  archives: true
+  display:
+    archives: false
+    tags: false
+    category: false
   card_author:
     enable: true
     description:
@@ -915,22 +918,26 @@ inject:
     - <link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.css"  media="defer" onload="this.media='all'">
   bottom:
     - <script async data-pjax src="/js/waterfall/waterfall.js"></script>
-    - <script data-pjax src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/js/swiper.min.js"></script>
-    - <script src="js/myjs.js"></script>
-    - <script type="text/javascript" src="https://cdn1.tianli0.top/npm/jquery@latest/dist/jquery.min.js"></script>
-    - <script type="text/javascript" src="/js/rightmenu.js"></script>
-    - <script async src="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/categoryBar/categoryBar.js"></script>
-    - <script src="https://at.alicdn.com/t/c/font_3570527_dthoqrrv2tv.css"></script>
-    - <script async src="https://at.alicdn.com/t/c/font_3565150_irbl9jx0mvo.js"></script>
-
+    - <script async data-pjax src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/js/swiper.min.js"></script>
+    - <script async data-pjax src="js/myjs.js"></script>
+    - <script async data-pjax type="text/javascript" src="https://cdn1.tianli0.top/npm/jquery@latest/dist/jquery.min.js"></script>
+    - <script async data-pjax type="text/javascript" src="/js/rightmenu.js"></script>
+    - <script async data-pjax src="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/categoryBar/categoryBar.js"></script>
+    - <script async data-pjaxsrc="https://at.alicdn.com/t/c/font_3570527_dthoqrrv2tv.css"></script>
+    - <script async data-pjax src="https://at.alicdn.com/t/c/font_3565150_irbl9jx0mvo.js"></script>
+    - <script async data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper-anzhiyu-pro@1.0.1/lib/swiper_init.js"></script>
     
     - <script async data-pjax src="/js/custom.js"></script>
     - <script async data-pjax src="/js/waterfall/waterfall.js"></script>
     - <div class="aplayer no-destroy" data-id="7247221409" data-server="netease" data-type="playlist"   data-order="list" data-fixed="true" data-preload="auto" data-autoplay="false" data-mutex="true" ></div>
-    - <script src="/js/hygl.js"></script>
-    - <script src="/js/title.js"></script>
-    - <script charset="utf-8" data-pjax="" src="/js/fuzhi.js"></script>
-    - <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    - <script async data-pjax src="/js/hygl.js"></script>
+    - <script async data-pjax src="/js/title.js"></script>
+    - <script async data-pjax charset="utf-8" data-pjax="" src="/js/fuzhi.js"></script>
+    - <script async data-pjax src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    - <script charset="UTF-8" id="LA_COLLECT" src="https://sdk.51.la/js-sdk-pro.min.js"></script>
+    - <script src="https://sdk.51.la/perf/js-sdk-perf.min.js" crossorigin="anonymous"></script>
+    - <script> LA.init({id:"JtJYaCHcGp14Fr4N",ck:"JtJYaCHcGp14Fr4N"})</script>
+    - <script>new LingQue.Monitor().init({id:"YOU ID",sendSuspicious:true});</script>
 
 
 # CDN
@@ -962,6 +969,8 @@ CDN:
   valine: https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js
 
   option:
+    # countupJS
+    countup_js: /js/countup.js
     # main_css:
     # main:
     # utils:

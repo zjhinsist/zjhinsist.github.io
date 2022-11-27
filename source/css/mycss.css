@@ -214,7 +214,6 @@ html.hide-aside .layout > div:first-child {
 /*归档页*/
 
 #archive,#tag,#category {
-  background: #f0f0f0;
   padding: 25px 10px;
 }
 

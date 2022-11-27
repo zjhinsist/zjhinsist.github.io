@@ -1,5 +1,5 @@
 div#post {
-  font-size: 16px;
+  font-size: 23px;
 }
 .article-content-text {
   font-size: 17px;
@@ -24,13 +24,6 @@ div#runtime {
 	color: #1fb7ff;
 } */
 
-div#archive {
-  background: #ffffffd6;
-}
-
-div#post {
-  background: #ffffffd6;
-}
 
 #aside-content .card-info #card-info-btn {
   background-color: #276791;
@@ -43,7 +36,8 @@ div#post {
 }
 
 #page-header:not(.not-top-img):before {
-  background-color: transparent!important;
+  background-color: #00000063!important;
+  backdrop-filter: blur(10px);
 }
 
 

@@ -10,8 +10,9 @@ aside: false
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/3dCard/in3d.css">
 
 <div id='libCategories'>
+
 <div id="lib-cards" class="container">
-<a href='/categories/Java/'>
+<a href='/categories/JAVA/'>
   <card data-image="https://s2.loli.net/2022/11/18/LUn92XF4zW7AQiI.jpg">
     <h1 slot="header">Java</h1>
     <p slot="content">关于JAVA的一些项目</p>

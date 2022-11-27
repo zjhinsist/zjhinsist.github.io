@@ -1,5 +1,5 @@
 ---
-title: python基础
+title: python教程
 date: 2022-07-03 15:00:13
 tags: Python
 cover: "https://s2.loli.net/2022/11/21/jHkgUWLVo2lnuYF.webp"

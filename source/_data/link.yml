@@ -6,28 +6,54 @@
       avatar: https://npm.elemecdn.com/akilar-candyassets/image/author3.webp
       descr: 店长YYDS
       siteshot: https://s3.bmp.ovh/imgs/2022/08/15/35a6cd1a33cf6b5d.jpg
-    - name: 安知鱼
+    - name: 安知鱼`Blog
       link: https://anzhiy.cn/
       avatar: https://image.anzhiy.cn/adminuploads/1/2022/09/15/63232b7d91d22.jpg
-      descr: 博客大佬
+      descr: 生活明朗，万物可爱
+      siteshot: https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/anzhiy.cn.jpg
     - name: Marcus的小窝
       link: https://blog.marcus233.top/
       avatar: https://bu.dusays.com/2022/09/15/632271409f592.png
       descr: 一只有梦想的羊驼 
+    - name: Ariasakaの小窝
+      link: https://yisous.xyz
+      avatar: https://bu.dusays.com/2022/10/22/6352dfd1f3fa3.png
+      descr: 人有悲欢离合 月有阴晴圆缺
+      siteshot: https://vercel.yisous.xyz/img/siteshot.png
 
 - class_name: 博客
-  class_desc: 好友的博客
+  class_desc: 一起玩博客的朋友们
   link_list:
-    - name: Classmate_Zhang
+    - name: Nuyoah
       link: https://262259.xyz/
-      avatar: https://s3.bmp.ovh/imgs/2022/07/27/fc28cbf90fcd17d9.png
+      avatar: https://s1.ax1x.com/2022/11/27/zUFla6.png
       descr: 以梦为马，不负韶华
-      siteshot: https://s2.loli.net/2022/11/19/I1D6E9OyPWgvUx7.png
+      siteshot: https://s1.ax1x.com/2022/11/27/zUFNMd.png
+      # avatar: https://s3.bmp.ovh/imgs/2022/07/27/fc28cbf90fcd17d9.png
+      # siteshot: https://s2.loli.net/2022/11/19/I1D6E9OyPWgvUx7.png
     - name: SamのBlog
       link: https://www.welucky.top/
       avatar: https://pic1.imgdb.cn/item/635ceb7f16f2c2beb1e20c46.jpg
       descr: 念念不忘，必有回响。
       siteshot: https://pic.imgdb.cn/item/637773a616f2c2beb1011025.jpg
+    - name: ShineYu
+      link: https://shineyull.github.io/
+      avatar: https://s3.uuu.ovh/imgs/2022/11/23/129c19d56d22c637.png
+      descr: "Let's go! Target: The Vast Stars!"
+    - name: Ice の小站
+      link: https://081113.xyz/
+      avatar: https://api.ixiaowai.cn/gqapi/gqapi.php
+      descr: 海内存知己，天涯若比邻
+    - name: Rootlex
+      link: https://blog.nalex.top
+      avatar: https://bu.dusays.com/2022/10/21/63527e104561f.png
+      descr: 寒蝉黎明之时，便是重生之日 |
+      siteshot: https://cdn.jsdelivr.net/gh/rootlexblog/ScreenShot@gh-pages/rootlexblog.github.io.jpg
+    - name: 葱苓 
+      link: https://itciraos.cn 
+      avatar: https://itciraos.cn/assets/avatar.webp 
+      descr: Dare && Do 
+      siteshot: https://itciraos.cn/assets/site-shot.webp
     - name: 鲸落
       link: https://xiaojunnanya.github.io/
       avatar: https://xiaojunnanya.github.io/img/1.jpg

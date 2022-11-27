@@ -1,5 +1,5 @@
 ---
-title: JAVA笔记
+title: JAVA教程
 date: 2022-05-16 14:49:44
 tags: JAVA
 cover: "https://s2.loli.net/2022/11/21/Sm8lFrjtzUkihVy.webp"
@@ -354,17 +354,17 @@ public class PersonTest{
          属性：类的属性，根据其类型，都有默认初始化值
 
          			整形（byte, short, int , long）； 0
-   																																																																																																																																																					
+   																																																																																																																																																							
          			浮点型（float,double）； 0.0
-   																																																																																																																																																					
+   																																																																																																																																																							
          			字符型（char）; 0(或‘\u000’)
-   																																																																																																																																																					
+   																																																																																																																																																							
          			布尔型（boolean）; false;
 
          局部变量：没有初始化值
 
          			意味着：我们再调用局部变量之前，一定要先是赋值
-   																																																																																																																																																					
+   																																																																																																																																																							
          			特别地：在形参调用时，我们赋值即可
 
       4. 在加载位置不同
@@ -874,7 +874,7 @@ class Person{
    格式：
 
    	成员内部类：外部类$内部类名.class
-																																																																											
+																																																																												
    	局部内部类：外部类$数字  内部类名.class
 
 6. 注意：
