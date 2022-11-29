@@ -934,10 +934,11 @@ inject:
     - <script async data-pjax src="/js/title.js"></script>
     - <script async data-pjax charset="utf-8" data-pjax="" src="/js/fuzhi.js"></script>
     - <script async data-pjax src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    - <script async data-pjax src="/js/countup.js"></script>
     - <script charset="UTF-8" id="LA_COLLECT" src="https://sdk.51.la/js-sdk-pro.min.js"></script>
     - <script src="https://sdk.51.la/perf/js-sdk-perf.min.js" crossorigin="anonymous"></script>
     - <script> LA.init({id:"JtJYaCHcGp14Fr4N",ck:"JtJYaCHcGp14Fr4N"})</script>
-    - <script>new LingQue.Monitor().init({id:"YOU ID",sendSuspicious:true});</script>
+    - <script> new LingQue.Monitor().init({id:"JtJYaCHcGp14Fr4N",sendSuspicious:true});</script>
 
 
 # CDN

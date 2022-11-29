@@ -688,10 +688,10 @@
     background-size: cover;
     min-height: 300px;
     overflow: hidden;
-    color: violet;
+    color: #e06385;
   }
   .author-content-item.historical-drama::after {
-    box-shadow: 0 -48px 203px 11px #fbe9b8 inset;
+    box-shadow: 0 -48px 203px 11px #638eca inset;
     position: absolute;
     content: "";
     width: 100%;

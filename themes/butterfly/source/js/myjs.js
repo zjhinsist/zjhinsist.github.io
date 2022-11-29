@@ -20,7 +20,7 @@ function percent() {
   r = window.scrollY + document.documentElement.clientHeight;
   p = document.getElementById('post-comment') || document.getElementById('footer');
 
-  p.offsetTop + p.offsetHeight / 2 < r || 90 < result
+  p.offsetTop + p.offsetHeight / 2 < r || 99 < result
     ? (document.querySelector('#nav-totop').classList.add('long'), (btn.innerHTML = '返回顶部'))
     : (document.querySelector('#nav-totop').classList.remove('long'), (btn.innerHTML = result));
 

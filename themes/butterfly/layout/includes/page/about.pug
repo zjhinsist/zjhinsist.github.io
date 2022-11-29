@@ -12,8 +12,8 @@
         | 我叫
         span.inline-word 张锦昊
       .title1
-        | 是一名超级摆烂王
-        span.inline-word 学生
+        | 是一名学生
+        span.inline-word ，超级摆烂王
     .aboutsiteTips.author-content-item
       .author-content-item-tips 追求
       h2
@@ -154,7 +154,7 @@
           .icon-group
             .loading-bar(role='presentation', aria-hidden='true')
               img.no-lightbox(src='https://yuanshen.site/imgs/loading-bar.png', alt='Loading...', longdesc='https://ys.mihoyo.com/main/')
-          .tips.game-yuanshen-uid UID: 125766904
+          .tips.game-yuanshen-uid UID: 168736489
     .author-content-item.historical-drama
       .card-content
         .author-content-item-tips 爱好番剧
@@ -189,8 +189,9 @@
 
 
 
-script(src=url_for(theme.CDN.option.countup_js))
+
 script(src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/gsap/3.9.1/gsap.min.js")
+script(src=url_for(theme.CDN.option.countup_js))
 script.
   (() => {
     fetch('https://v6-widget.51.la/v6/JtJYaCHcGp14Fr4N/quote.js').then(res => res.text()).then((data) => {
@@ -234,7 +235,7 @@ script.
           }
         }
 
-        const selfInfoContentYear = new CountUp('selfInfo-content-year', 0, 2002, 0, 2, {
+        const selfInfoContentYear = new CountUp('selfInfo-content-year', 0, 2010, 0, 2, {
           useEasing: true,
           useGrouping: false,
           separator: ',',
@@ -293,3 +294,4 @@ script.
         })
       })
   })()
+
