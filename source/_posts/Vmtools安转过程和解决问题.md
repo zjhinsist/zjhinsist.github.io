@@ -1,12 +1,15 @@
 ---
-title: Vmtools无法在虚拟机和物理机之间复制粘贴
-mathjax: false
-date: 2022-09-27 10:33:03
-tags: 计算机基础
+abbrlink: ''
+categories:
+- 计算机基础
+date: '2022-09-27 10:33:03'
 description: 在安转完VmTools之后，还是无法在虚拟机和物理机之间进行复制粘贴
-categories: 计算机基础
+mathjax: false
+tags:
+- 计算机基础
+title: Vmtools无法在虚拟机和物理机之间复制粘贴
+updated: '2022-11-29 22:24:33'
 ---
-
 # VMtools
 
 如果没有安装过VMtools的话建议使用简易方法来进行安装
@@ -25,5 +28,4 @@ sudo apt-get install open-vm-tools
 sudo apt-get install open-vm-tools-desktop
 ```
 
-{% tip warning %}经过上面的步骤之后一定要重启！！！！{% endtip %}
-
+{% tip warning %}经过上面的步骤之后一定要重启！！！{% endtip %}
