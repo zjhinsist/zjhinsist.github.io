@@ -16,7 +16,7 @@ tags: win10
 
 {% folding 美化后的效果 %}
 
-![image-20221130200150589](https://s2.loli.net/2022/11/30/D3leHsLZaI9KbpM.png)
+![image-20221130200150589 _1_.png](https://s2.loli.net/2022/12/01/g8ZB7vs2lIeAtdR.png)
 
 {% endfolding %}
 
