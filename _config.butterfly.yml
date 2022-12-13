@@ -926,7 +926,7 @@ inject:
     - <script async data-pjaxsrc="https://at.alicdn.com/t/c/font_3570527_dthoqrrv2tv.css"></script>
     - <script async data-pjax src="https://at.alicdn.com/t/c/font_3565150_irbl9jx0mvo.js"></script>
     - <script async data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper-anzhiyu-pro@1.0.1/lib/swiper_init.js"></script>
-    
+    - <script src="https://cdn.jsdelivr.net/gh/nextapps-de/winbox/dist/winbox.bundle.min.js"></script>
     - <script async data-pjax src="/js/custom.js"></script>
     - <script async data-pjax src="/js/waterfall/waterfall.js"></script>
     - <div class="aplayer no-destroy" data-id="7247221409" data-server="netease" data-type="playlist"   data-order="list" data-fixed="true" data-preload="auto" data-autoplay="false" data-mutex="true" ></div>

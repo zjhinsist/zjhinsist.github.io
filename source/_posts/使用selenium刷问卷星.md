@@ -56,11 +56,29 @@ Python基础，就不介绍怎么安装了
    pip install pymouse -i https://pypi.tuna.tsinghua.edu.cn/simple
    ```
 
-2. 可能需要下载win32 插件
+2. 下载PyHook[下载地址](https://www.lfd.uci.edu/~gohlke/pythonlibs/#pywinhook)
 
-   ```python
-   pip install win32 -i https://pypi.tuna.tsinghua.edu.cn/simple
-   ```
+   ![image-20221206170055286](https://s2.loli.net/2022/12/06/mOscvkyd8rwlHaL.png)
+
+   找到自己对应版本的文件
+
+3. 下载pywin32[下载地址](https://www.lfd.uci.edu/~gohlke/pythonlibs/#pywin32)找到自己对应的版本并下载
+
+![image-20221206170246531](https://s2.loli.net/2022/12/06/H9Pe5mjdJOpw2sG.png)
+
+4. 安装Pywinhook和pywin32，将我们下载好的文件放到一个文件夹中，在地址栏输入CMD并回车，打开终端
+
+   ![image-20221206170423904](https://s2.loli.net/2022/12/06/1EKg29Spxe8nYfU.png)
+
+5. 使用 pip install 自己下载的文件名，进行安装
+
+   ![image-20221206174610716](https://s2.loli.net/2022/12/06/6kdHiKct7TflUb4.png)
+
+6. 更改pyMouse的文件内容找到pymouse的安装路径，如果不知道在哪里可以用pip安装一下，如果已经安装了会自动提示安装路径，通常都是在python或者ide的Lib\site-packages里，比如我的在H:\Python\Python3.11\Lib\site-packages\pymouse。
+
+   进入pymouse的安装路径打开__init__.py文件；把92行的windows改为pymouse.windows.
+
+   在同目录下进入pymouse的安装路径打开windows.py文件；把23行的pyHook改为pyWinhook
 
 # 代码解释
 
