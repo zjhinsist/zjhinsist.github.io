@@ -12,6 +12,8 @@ updated: '2022-11-29 22:24:33'
 ---
 # VMtools
 
+{% tip warning %}该方式适用于Unbuntu，其他虚拟机暂不了解{% endtip %}
+
 如果没有安装过VMtools的话建议使用简易方法来进行安装
 
 {% tip %}简易方法{% endtip %}

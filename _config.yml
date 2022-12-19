@@ -10,7 +10,6 @@ author: Nuyoah
 language: zh-CN
 timezone: 'Asia/Shanghai'
 
-
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://262259.xyz/
@@ -93,9 +92,6 @@ pagination_dir: page
 include:
 exclude:
 ignore:
-
-
-
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
@@ -217,5 +213,5 @@ baidu_url_submit:
 # APlayer
 # https://github.com/MoePlayer/hexo-tag-aplayer/blob/master/docs/README-zh_cn.md
 aplayer:
-  meting: true
+  meting: false
   asset_inject: false

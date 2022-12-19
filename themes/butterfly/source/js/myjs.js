@@ -196,10 +196,10 @@ var nuyoah = {
     },
     // 随即壁纸
     randomBg: (s) => {
-        let api = 'https://api.leonus.cn/'
-        if (s == 'fj') api += 'fengjing'
+        let api
+        if (s == 'fj') api='https://tu.ltyuanfang.cn/api/fengjing.php'
         else if (s == 'mv') api += 'meinv'
-        else api += 'dongman'
+        else api += 'https://api.ixiaowai.cn/api/api.php'
         fetch(api).then(res => res.text()).then((data) => { nuyoah.changeBg("url('" + data + "')") }).catch()
     },
   
