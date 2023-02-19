@@ -11,10 +11,17 @@
       avatar: https://image.anzhiy.cn/adminuploads/1/2022/09/15/63232b7d91d22.jpg
       descr: 生活明朗，万物可爱
       siteshot: https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/anzhiy.cn.jpg
+<<<<<<< HEAD
     - name: Marcus的小窝
       link: https://blog.marcus233.top/
       avatar: https://bu.dusays.com/2022/09/15/632271409f592.png
       descr: 一只有梦想的羊驼 
+=======
+    - name: Marcus 
+      link: https://blog.marcus233.top/ 
+      avatar: https://img01.anzhiy.cn/useruploads/8/2023/01/14/63c23f83f0e11.png 
+      descr: 人间值得，未来可期 嘿嘿
+>>>>>>> 03badbb (github action update)
     - name: Ariasakaの小窝
       link: https://yisous.xyz
       avatar: https://bu.dusays.com/2022/10/22/6352dfd1f3fa3.png
@@ -67,6 +74,13 @@
       link: https://www.luomengguo.top/
       avatar: https://pc.luomengguo.top/C341.jpg
       descr: 追梦少年,敢干敢搏
+<<<<<<< HEAD
+=======
+    - name: 鹿啵包の小窝
+      link: https://pochacco.top/
+      avatar: https://pochacco.top/img/Avatar.gif
+      descr: 落日橘子海，揽尽世间温柔
+>>>>>>> 03badbb (github action update)
     - name: 鲸落
       link: https://xiaojunnanya.github.io/
       avatar: https://xiaojunnanya.github.io/img/1.jpg
@@ -127,6 +141,12 @@
     - name: MSDN
       link: https://next.itellyou.cn/
       avatar: https://static.itellyou.cn/images/logo-white.png
+<<<<<<< HEAD
+=======
+    - name: API
+      link: https://api.aa1.cn/
+      avatar: 
+>>>>>>> 03badbb (github action update)
       
       
 

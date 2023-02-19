@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // 返回顶部 显示网页阅读进度
 window.onscroll = percent; // 执行函数
 // 页面百分比
@@ -27,6 +28,8 @@ function percent() {
   document.getElementById("page-name").innerText = document.title.split(" | Nuyoah")[0];
 }
 
+=======
+>>>>>>> 03badbb (github action update)
 if (document.querySelector('#bber-talk')) {
   var swiper = new Swiper('.swiper-container', {
     direction: 'vertical', // 垂直切换选项
@@ -194,6 +197,7 @@ var nuyoah = {
             nuyoah.saveData('blogbg', s)
         }
     },
+<<<<<<< HEAD
     // 随即壁纸
     randomBg: (s) => {
         let api
@@ -202,6 +206,8 @@ var nuyoah = {
         else api += 'https://api.ixiaowai.cn/api/api.php'
         fetch(api).then(res => res.text()).then((data) => { nuyoah.changeBg("url('" + data + "')") }).catch()
     },
+=======
+>>>>>>> 03badbb (github action update)
   
     // 创建窗口
     winbox: '',
@@ -243,7 +249,11 @@ var nuyoah = {
             margin: 0;
         }
     </style>
+<<<<<<< HEAD
     <div id="article-container" style="padding:10px;"><div class="note info flat"><p>点击对应样式即可切换背景。<br>相册图片也可以当作壁纸哦~ <a href="/wallpaper/">前往相册</a></p>
+=======
+    <div id="article-container" style="padding:10px;"><div class="note info flat"><p>点击对应样式即可切换背景。<br>相册图片也可以当作壁纸哦~ <a href="/gallery/">前往相册</a></p>
+>>>>>>> 03badbb (github action update)
     </div>
     <div class="note pink icon-padding flat"><i class="note-icon fa-solid fa-image"></i><p>有效期为一天，到期切回默认壁纸。</p>
     </div>
@@ -263,9 +273,12 @@ var nuyoah = {
             <a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://s2.loli.net/2022/11/19/B89gcloHOqx2z1E.png)" class="imgbox" onclick="nuyoah.changeBg('url(https\://s2.loli.net/2022/11/19/B89gcloHOqx2z1E.png)')"></a>
             <a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://s2.loli.net/2022/11/19/j5yB7kgfqsJA2cz.png)" class="imgbox" onclick="nuyoah.changeBg('url(https\://s2.loli.net/2022/11/19/j5yB7kgfqsJA2cz.png)')"></a>
             <a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://s2.loli.net/2022/11/19/MkDHwvYu5p8XLBy.jpg)" class="imgbox" onclick="nuyoah.changeBg('url(https\://s2.loli.net/2022/11/19/MkDHwvYu5p8XLBy.jpg)')"></a>
+<<<<<<< HEAD
             <a href="javascript:;" rel="noopener external nofollow" class="imgbox" style="display:flex;justify-content: center;align-items: center; background:#ff4b1f;color:white;" onclick="nuyoah.randomBg('fj')">随机风景背景</a>
             <a href="javascript:;" rel="noopener external nofollow" class="imgbox" style="display:flex;justify-content: center;align-items: center; background:#16bffd;color:white;" onclick="nuyoah.randomBg('mv')">随机美女背景</a>
             <a href="javascript:;" rel="noopener external nofollow" class="imgbox" style="display:flex;justify-content: center;align-items: center; background:#ef5350;color:white;" onclick="nuyoah.randomBg('dm')">随机动漫背景</a>
+=======
+>>>>>>> 03badbb (github action update)
             </div>
         </div>
     </details>

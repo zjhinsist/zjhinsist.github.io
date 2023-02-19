@@ -1,4 +1,5 @@
 if theme.aside.card_author.enable
+<<<<<<< HEAD
   .card-widget.card-info
     .is-center
       .avatar-img
@@ -25,3 +26,31 @@ if theme.aside.card_author.enable
     if(theme.social)
         .card-info-social-icons.is-center
           !=fragment_cache('social', function(){return partial('includes/header/social')}) 
+=======
+  .animate__fadeIn.card-info.card-widget.wow(
+    data-wow-delay="0"
+    data-wow-duration=""
+    data-wow-iteration=""
+    data-wow-offset=""
+    style="visibility: visible; animation-name: fadeIn;"
+  )
+    .author-info-top
+      .card-info-avatar
+        a.avatar-img(data-pjax-state="" href="/about")
+          img.entered.loaded(
+            alt="avatar"
+            src="https://s1.ax1x.com/2022/11/27/zUFla6.png"
+            onerror="this.onerror=null,this.src=\"/img/friend_404.gif\""
+          )
+        .author-status-box
+          .author-status
+            g-emoji.g-emoji(alias="palm_tree" fallback-src="/img/tree_icon.png") 🌴
+            span On vacation
+    #author-info__sayhi.author-info__sayhi 晚安😴！我是
+    h1.author-info__name Nuyoah
+    .author-info__description 热爱生活点滴，分享时刻精彩。
+    .banner-button-group
+      a.banner-button(data-pjax-state="" onclick="pjax.loadUrl(/about/)")
+        i.fa-circle-chevron-right.fa-solid
+        span.banner-button-text 了解更多
+>>>>>>> 03badbb (github action update)

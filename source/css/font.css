@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 div#post {
   font-size: 23px;
 }
+=======
+>>>>>>> 03badbb (github action update)
 .article-content-text {
   font-size: 17px;
 }
@@ -35,10 +38,13 @@ div#runtime {
   background: transparent!important
 }
 
+<<<<<<< HEAD
 #page-header:not(.not-top-img):before {
   background-color: #00000063!important;
   backdrop-filter: blur(10px);
 }
+=======
+>>>>>>> 03badbb (github action update)
 
 
 /*夜间模式伪类遮罩层透明*/
@@ -63,6 +69,7 @@ img {
 
 /* 字体文件 */
 
+<<<<<<< HEAD
 @font-face {
   font-family: font-youyuan;
   src: url(./font/SIMYOU.TTF);
@@ -72,3 +79,231 @@ font-family: font-youyuan, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Lat
 font-size: 17px;
 font-weight: bolder;
 }
+=======
+body {
+font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Lato,Roboto,'PingFang SC','Microsoft YaHei',sans-serif;
+font-size: 17px;
+font-weight: bolder;
+}
+
+/* 波浪css */
+.main-hero-waves-area {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -11px;
+  z-index: 5;
+}
+.waves-area .waves-svg {
+  width: 100%;
+  height: 5rem;
+}
+/* Animation */
+
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+  fill: #f7f9febd;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+  fill: #f7f9fe82;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+  fill: #f7f9fe36;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+  fill: #f7f9fe;
+}
+/* 黑色模式背景 */
+[data-theme="dark"] .parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+  fill: #18171dc8;
+}
+[data-theme="dark"] .parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+  fill: #18171d80;
+}
+[data-theme="dark"] .parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+  fill: #18171d3e;
+}
+[data-theme="dark"] .parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+  fill: #18171d;
+}
+
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .waves-area .waves-svg {
+    height: 40px;
+    min-height: 40px;
+  }
+}
+
+/************************************************* 个人资料卡片 *************************************************/
+#aside-content > .card-widget:first-child {
+  background: #fff url(https://image.anzhiy.cn/adminuploads/1/2022/10/26/6358a07bf21fc.webp) top -24% center no-repeat;
+}
+
+[data-theme=dark] #aside-content>.card-widget:first-child {
+  background: #121212 !important
+}
+
+#aside-content>.card-widget.card-info>#card-info-btn {
+  border-radius: 10px;
+}
+
+.card-widget .author-info-top {
+  margin: 15px auto 0;
+  display: flex;
+  justify-content: center;
+}
+
+.card-widget .card-info-avatar {
+  display: inline-block;
+  position: relative;
+}
+
+.card-info-avatar .avatar-img {
+  width: 100px;
+  height: 100px;
+  display: block;
+}
+
+.avatar-img img {
+  border: 4px solid #f7f9fe;
+  border-radius: 50%;
+}
+
+.card-info-avatar .author-status-box {
+  position: absolute;
+  bottom: 0;
+  left: calc(100% - 28px);
+  width: 28px;
+  height: 28px;
+  border: 1px solid #d0d7de;
+  border-radius: 2em;
+  background-color: #fff;
+  transition: .3s;
+  overflow: hidden;
+}
+
+.card-info-avatar .author-status-box .author-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  padding: 0 5px;
+}
+
+.card-info-avatar .author-status-box:hover {
+  width: 105px
+}
+
+.card-info-avatar .author-status-box:hover .author-status span {
+  width: 105px;
+  margin-left: 4px;
+}
+
+.card-info-avatar .author-status-box .author-status span {
+  width: 0;
+  font-size: 12px;
+  height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: .3s;
+}
+
+div#author-info__sayhi {
+  text-align: left;
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--font-color);
+  border: 1px solid #e3e8f7;
+  font-size: 12px;
+  margin-right: auto;
+  padding: 5px 8px;
+  border-radius: 12px;
+  width: fit-content;
+  display: inline;
+  margin-left: -1px;
+}
+
+.card-widget .author-info__name {
+  line-height: 1.5em;
+  margin: 10px 0 4px;
+}
+
+#aside-content .card-info .author-info__description {
+  margin-top: 1.58em;
+}
+
+.card-widget.card-info .banner-button-group {
+  margin: 15px 0 0;
+  display: flex;
+}
+
+#aside-content .card-info .banner-button {
+  height: 40px;
+  width: 100%;
+  margin-right: unset !important;
+  border-radius: 20px;
+  justify-content: center;
+}
+
+.card-widget.card-info .banner-button-group .banner-button {
+  padding: 20px 12px;
+  background: #3b70fc;
+  border-radius: 12px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  transition: all .3s ease 0s;
+  cursor: pointer;
+}
+
+#aside-content > div.animate__fadeIn.card-info.card-widget.wow > h1 {
+  font-weight: bold;
+  font-size: 1.57em;
+}
+
+#aside-content > div.animate__fadeIn.card-info.card-widget.wow > div.banner-button-group > a > span {
+  color: #fff;
+  font-weight: unset;
+}
+.card-widget.card-info .banner-button-group .banner-button .fa-solid.fa-circle-chevron-right {
+  font-size: 1.3rem;
+  margin-right: 10px;
+}
+
+.card-widget.card-info .banner-button-group .banner-button:hover {
+  background: #1856fb;
+  color: #fff;
+}
+
+#page-header.post-bg{
+  height: 34rem;
+}
+>>>>>>> 03badbb (github action update)

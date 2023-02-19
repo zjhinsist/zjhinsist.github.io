@@ -346,7 +346,11 @@
     transition: 1s ease-in-out;
   }
   [data-theme="dark"] .author-content-item.map {
+<<<<<<< HEAD
     background: url(https://image.anzhiy.cn/adminuploads/1/2022/09/26/6330ebf1f3e65.jpg) no-repeat center;
+=======
+    background: url(https://s2.loli.net/2022/11/27/U4KTpjFug1kBlCS.png) no-repeat center;
+>>>>>>> 03badbb (github action update)
     background-size: 100%;
   }
   

@@ -143,7 +143,11 @@
   }
   
   #bber .bber-bottom .bber-reply {
+<<<<<<< HEAD
     cursor: url(/img/x2.cur), auto !important;
+=======
+    cursor: url(/img/https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur), auto !important;
+>>>>>>> 03badbb (github action update)
   }
   
   #bber .timeline ul li.bber-item:hover {
@@ -292,7 +296,10 @@
 
 .banner-button-group{
   position: relative;
+<<<<<<< HEAD
   left: 85%;
+=======
+>>>>>>> 03badbb (github action update)
 }
 
 .banner-button-text{
@@ -301,7 +308,10 @@
   width: 124px;
   border-radius: 20px;
   justify-content: center;
+<<<<<<< HEAD
   background: var(--anzhiyu-card-bg);
+=======
+>>>>>>> 03badbb (github action update)
   color: var(--font-color);
   display: flex;
   align-items: center;

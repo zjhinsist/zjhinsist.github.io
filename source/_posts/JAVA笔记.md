@@ -140,7 +140,11 @@ byte，char，short，int，long，float，doouble
 
  
 
+<<<<<<< HEAD
 ***位运算符 需要为int型\***
+=======
+位运算符 需要为int型
+>>>>>>> 03badbb (github action update)
 
 << 左移运算符（单目运算符：左移一位 相当于整体乘2， 被移除的高位丢弃，空缺位补0）
 
@@ -189,7 +193,11 @@ Char genderChar = gender.charAt(0); charAt()方法的参数是字符串的第几
 
 如果用户输入的数据类型和源文件中要求输入的数据类型不同的话，那就要做比较，如果用户输入的数据类型所占字节数比源文件中要求的数据类型多，则会报错
 
+<<<<<<< HEAD
 ## **Math****类中的方法**
+=======
+## Math类中的方法
+>>>>>>> 03badbb (github action update)
 
 \1.   double data = Math.pow(2,3) ==== 将2的3次方运算完之后的数字赋值给data
 
@@ -354,17 +362,29 @@ public class PersonTest{
          属性：类的属性，根据其类型，都有默认初始化值
 
          			整形（byte, short, int , long）； 0
+<<<<<<< HEAD
    																																																																																																																																																							
          			浮点型（float,double）； 0.0
    																																																																																																																																																							
          			字符型（char）; 0(或‘\u000’)
    																																																																																																																																																							
+=======
+   																																																																																																																																																															
+         			浮点型（float,double）； 0.0
+   																																																																																																																																																															
+         			字符型（char）; 0(或‘\u000’)
+   																																																																																																																																																															
+>>>>>>> 03badbb (github action update)
          			布尔型（boolean）; false;
 
          局部变量：没有初始化值
 
          			意味着：我们再调用局部变量之前，一定要先是赋值
+<<<<<<< HEAD
    																																																																																																																																																							
+=======
+   																																																																																																																																																															
+>>>>>>> 03badbb (github action update)
          			特别地：在形参调用时，我们赋值即可
 
       4. 在加载位置不同
@@ -874,7 +894,11 @@ class Person{
    格式：
 
    	成员内部类：外部类$内部类名.class
+<<<<<<< HEAD
 																																																																												
+=======
+																																																																																
+>>>>>>> 03badbb (github action update)
    	局部内部类：外部类$数字  内部类名.class
 
 6. 注意：
@@ -5474,11 +5498,23 @@ public void test(){
      ```
      
      3. 泛型在继承方面的使用
+<<<<<<< HEAD
             虽然类A是类B的父类，但是G<A> 和 G<B>二者不具备子父类关系，二者是并列关系
      
      4. 通配符的使用：
         通配符: ?
         类A是类B的父类， G<A> 和 G<B> 是没有关系的，二者共同的父类是：G<?>
+=======
+     
+        ​	虽然类A是类B的父类，但是G<A> 和 G<B>二者不具备子父类关系，二者是并列关系
+     
+     4. 通配符的使用：
+     
+        通配符: ?
+     
+        类A是类B的父类， G<A> 和 G<B> 是没有关系的，二者共同的父类是：G<?>
+     
+>>>>>>> 03badbb (github action update)
         使用通配符定义的变量，不能够向内部添加除了null意外的任何数据
      
         允许读取数据，读取数据的类型是Object
@@ -5491,6 +5527,7 @@ public void test(){
 
 ```java
 
+<<<<<<< HEAD
      */
     @Test
     public void test6(){
@@ -5576,6 +5613,92 @@ public void test(){
         // 编译不通过
         // list1 = list2
         /*
+=======
+@Test
+public void test6(){
+    List<? extends Person> list1 = null;
+    List<? super Person> list2 = null;
+
+    List<Student> list3 = new ArrayList<Student>();
+    List<Person> list4 = new ArrayList<Person>();
+    List<Object> list5 = new ArrayList<Object>();
+
+    list1 = list3;
+    list1 = list4;
+    // 下面这种情况就会报错，因为使用extends方法调用有限制的通配符，只能调用该类以及该类的子类
+    // list1 = list5;
+
+    // 这种情况也会报错，使用super调用的有限制的通配符，只能调用该类以及该类的父类
+    // list2 = list3;
+    list2 = list4;
+    list2 = list5;
+
+    // 读取数据
+    list1 = list3;
+    Person p = list1.get(0);
+    // 编译不通过 使用extends 声明的有限制的通配符， 在获取对象的时候只能是extends的那个类
+    // Student s = list1.get(0);
+
+    list2 = list4;
+    Object obj = list2.get(0);
+    // 编译不通过,使用super声明的有限制的通配符，在获取对象的时候只能是Object
+    // Person person = list2.get(0);
+
+    // 写入数据：
+    // 编译不通过 使用extend声明的有限制的通配符，不能够添加对象
+    // list1.add(new Student());
+
+    // 编译通过, 使用super声明的有限制的通配符，在添加对象的时候只能够添加super后面的类以及它的子类
+    list2.add(new Person());
+    list2.add(new Student());
+
+
+}
+
+@Test
+public void test5(){
+    List<Object> list = null;
+    List<String> list2 = null;
+
+    List<?> list3 = null;
+    // 使用通配符的话，下面这种情况就不会报错
+    list3 = list2;
+    list3 = list;
+
+    list2 = new ArrayList<String>();
+    list2.add("AA");
+    list2.add("BB");
+    list2.add("CC");
+    list3 = list2;
+
+    // 通配符定义的变量不能够添加除了null之外的任何数据
+    // list3.add("DD"); 这样会报错
+    list3.add(null);
+    for(Object obj : list3){
+        // 允许读取数据，读取数据的类型是Object
+        System.out.println(obj); // AA BB CC null
+    }
+}
+
+@Test
+public void test4(){
+    Object obj = null;
+    String str = null;
+    obj = str;
+
+    Object[] arr1 = null;
+    String[] arr2 = null;
+    arr1 = arr2;
+    //        这样编译不通过
+    //        Date date = new Date();
+    //        str = date;
+    List<Object> list1 = null;
+    List<String> list2 = null;
+    // 此时的list1和list2不具备子父类关系
+    // 编译不通过
+    // list1 = list2
+    /*
+>>>>>>> 03badbb (github action update)
         反证法：
         假设list1 = list2 合理的话
         那么 list1.add(123); 因为 list1中的泛型是Object 所以list1可以添加数值为123的数据
@@ -5584,6 +5707,7 @@ public void test(){
 
          */
 
+<<<<<<< HEAD
     }
 
     @Test
@@ -5653,6 +5777,77 @@ public void test(){
             System.out.println(key + "----" + value);
         }
     }
+=======
+}
+
+@Test
+public void test(){
+    // 使用泛型之前的情况
+    ArrayList list = new ArrayList();
+    // 存放学生成绩
+    list.add(82);
+    list.add(92);
+    list.add(85);
+    list.add(96);
+
+    // 问题一：类型不安全， 可能存储一些非成绩的对象
+    //        list.add("Tom");
+
+    for (Object obj : list){
+        // 问题二：强转时会报错：ClassCastException类型转换异常
+        int stuScore = (Integer) obj;
+        System.out.println(stuScore);
+    }
+}
+
+@Test
+public void test2(){
+    // 集合中使用泛型的情况
+    ArrayList<Integer> list = new ArrayList<Integer>();
+    list.add(86);
+    list.add(96);
+    list.add(75);
+    list.add(89);
+    // 如果使用泛型的话，在我们添加的非法类型的时候就会直接报错
+    // 编译时就是进行数据类型检查，保证数据的安全
+    // list.add("AAA");
+
+    // 方式一
+    //for(Integer score : list){
+    //    int stuScore = (int) score;
+    //    System.out.println(stuScore);
+    //}
+
+    // 方式二:
+    Iterator<Integer> iterator = list.iterator();
+    while(iterator.hasNext()){
+        int stuScore = (int) iterator.next();
+        System.out.println(stuScore);
+    }
+}
+
+// 在集合中泛型使用情况
+@Test
+public void test3(){
+    Map<String, Double> map = new HashMap<String, Double>();
+
+    map.put("Tom", 88.0);
+    map.put("Jerry", 98.0);
+    map.put("LiHua", 90.0);
+
+    // 泛型的嵌套
+    Set<Map.Entry<String, Double>> entry =  map.entrySet();
+
+    Iterator<Map.Entry<String, Double>> iterator = entry.iterator();
+
+    while(iterator.hasNext()){
+        Map.Entry<String, Double> next = iterator.next();
+        String key = next.getKey();
+        Double value = next.getValue();
+        System.out.println(key + "----" + value);
+    }
+}
+>>>>>>> 03badbb (github action update)
 ```
 
 ## 泛型类，泛型接口，泛型方法
@@ -5679,13 +5874,22 @@ public void test(){
    
 
 5. 泛型如果不指定，将被擦除，泛型对应的类型均按照Object处理，但不等价于Object。
+<<<<<<< HEAD
        经验:泛型要使用一路都用。要不用，一路都不要用。
+=======
+
+   ​	经验:泛型要使用一路都用。要不用，一路都不要用。
+>>>>>>> 03badbb (github action update)
 
 6. 如果泛型类是一个接口或抽象类，则不可创建泛型类的对象。
 
 7. jdk1.7，泛型的简化操作:ArrayList<Fruit> flist = new ArrayList<>();
 
+<<<<<<< HEAD
 8. 8.泛型的指定中不能使用基本数据类型，可以使用包装类替换。
+=======
+8. 泛型的指定中不能使用基本数据类型，可以使用包装类替换。
+>>>>>>> 03badbb (github action update)
 
 9. 在类/接口上声明的泛型，在本类或本接口中即代表某种类型，可以作为非静态属性的类型、非静态方法的参数类型、非静态方法的返回值类型。但在静态方法中不能使用类的泛型。
 
@@ -7256,13 +7460,21 @@ Reflection(反射)被视为动态语言的关键，反射机制允许程序在�
 反射方式：实例化对象  ---->  getClass() 方法  ----->   得到完整的包类的名称
 
 1. 动态语言
+<<<<<<< HEAD
    是一类在运行时可以改变其结构的语言:例如新的函数、对象、甚至代码可以被引进，已有的函数可以被删除或是其他结构上的发化。{% label 通俗点说就是在运行时代码可以根据某些条件改变自身结构。 red %}
+=======
+   是一类在运行时可以改变其结构的语言:例如新的函数、对象、甚至代码可以被引进，已有的函数可以被删除或是其他结构上的发化。{% label 通俗点说就是在运行时代码可以根据某些条件改变自身结构。 red %}.
+>>>>>>> 03badbb (github action update)
 
 主要动态语言:Object-C、C#、JavaScript、PHP、Python、Erlang。
 
 2. 静态语言
 
+<<<<<<< HEAD
    与动态语言相对应的，运行时结构不可变的语言就是静态语言。如Java、c、C++。
+=======
+   与动态语言相对应的，运行时结构不可变的语言就是静态语言。如Java、C、C++。
+>>>>>>> 03badbb (github action update)
 
 3. Java不是动态语言，但Java可以称之为“{% label 准动态语言 red %}”。即Java有一定的动态性，我们可以利用反射机制、字节码操作获得类似动态语言的特性。
 
@@ -7408,6 +7620,7 @@ ClassLoader：类的加载器，作用是把类（class）加载到内存中的
 
 ```java
 @Test
+<<<<<<< HEAD
     public void test1() {
         // 获取当前自定类ClassLoaderTest加载器
         // 对于自定义类，使用系统类加载器进行加载
@@ -7459,6 +7672,59 @@ ClassLoader：类的加载器，作用是把类（class）加载到内存中的
         System.out.println("name: "+name+"\nage: "+age+"\naccount: "+account+"\npassword: "+password);
 
     }
+=======
+public void test1() {
+    // 获取当前自定类ClassLoaderTest加载器
+    // 对于自定义类，使用系统类加载器进行加载
+    ClassLoader classLoader = ClassLoaderTest.class.getClassLoader();
+    System.out.println(classLoader);
+    // 调用系统类加载器的getParent(): 获取扩展类加载器
+    ClassLoader classLoader1 = classLoader.getParent();
+    System.out.println(classLoader1);
+    // 调用扩展类加载器的getParent(): 无法获取引导类加载器
+    // 引导类加载器主要负责加载java的核心类库，无法加载自定义类的
+    ClassLoader classLoader2 = classLoader1.getParent();
+    System.out.println(classLoader2);
+}
+
+@Test
+public void test2() {
+    Properties properties = new Properties();
+    FileInputStream fis = null;
+
+    // 此时文件默认在当前的module下
+    // 读取配置文件的方式一：
+    //        try {
+    //            fis = new FileInputStream(new File("jdbc.properties"));
+    //        } catch (FileNotFoundException e) {
+    //            throw new RuntimeException(e);
+    //        }
+    //
+    //        try {
+    //            properties.load(fis);
+    //        } catch (IOException e) {
+    //            throw new RuntimeException(e);
+    //        }
+
+    // 读取配置文件的方式二：使用ClassLoader
+    // 配置文件默认识别为当前文件的src下
+    ClassLoader classLoader = ClassLoaderTest.class.getClassLoader();
+    InputStream is = classLoader.getResourceAsStream("jdbc1.properties");
+    try {
+        properties.load(is);
+    } catch (IOException e) {
+        throw new RuntimeException(e);
+    }
+
+    String name = properties.getProperty("name");
+    String age = properties.getProperty("age");
+    String account = properties.getProperty("account");
+    String password = properties.getProperty("password");
+
+    System.out.println("name: "+name+"\nage: "+age+"\naccount: "+account+"\npassword: "+password);
+
+}
+>>>>>>> 03badbb (github action update)
 ```
 
 
@@ -7474,7 +7740,11 @@ public void test() throws InstantiationException, IllegalAccessException {
 
     要想此方法正常的创建运行时类的对象，要求：
     1.运行时类必须提供空参构造器
+<<<<<<< HEAD
     2. 空参构造器的权限需要能够调用
+=======
+    2.空参构造器的权限需要能够调用
+>>>>>>> 03badbb (github action update)
 
     在javabean中要求提供一个public的空参构造器。原因：
     1. 便于通过反射，创建运行时类对象
@@ -7710,6 +7980,17 @@ public void test2() {
     Type[] actualTypeArguments = paramType.getActualTypeArguments();
     System.out.println(actualTypeArguments[0].getTypeName());
 }
+<<<<<<< HEAD
+=======
+/*
+获取父类
+class com.hgu.myssm.basedao.BaseDAO
+获取带泛型父类
+com.hgu.myssm.basedao.BaseDAO<com.hgu.book.pojo.Book>
+获取父类的泛型
+com.hgu.book.pojo.Book
+*/
+>>>>>>> 03badbb (github action update)
 
 @Test
 public void test3() {

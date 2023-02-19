@@ -1,5 +1,11 @@
 - class_name: 即刻短文
   essay_list:
+<<<<<<< HEAD
+=======
+    - content: 2022年12月7日,国务院重磅发布10条防疫政策，宣告我国3年疫情开始全面放开,三年抗疫，终成终章！！！
+      date: 2022/12/7
+      from: Nuyoah
+>>>>>>> 03badbb (github action update)
     - content: 楼上装修，快吵死了，真的要死的那种ψ(*｀ー´)ψ，明明是上面两层，但是为啥感觉就在我头顶啊！！！
       date: 2022/11/21
       from: Nuyoah

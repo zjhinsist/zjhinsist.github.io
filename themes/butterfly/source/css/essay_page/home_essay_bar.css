@@ -33,14 +33,22 @@
   line-height: 22px;
   margin-right: 1rem;
   transition: all 0.3s ease 0s;
+<<<<<<< HEAD
   cursor: url(/img/x2.cur), auto !important;
+=======
+  cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur), auto !important;
+>>>>>>> 03badbb (github action update)
 }
 
 .bber-gotobb {
   line-height: 25px;
   margin-left: 1rem;
   transition: all 0.3s ease 0s;
+<<<<<<< HEAD
   cursor: url(/img/x2.cur), auto !important;
+=======
+  cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur), auto !important;
+>>>>>>> 03badbb (github action update)
 }
 
 #bber-talk .li-style {
@@ -53,7 +61,11 @@
   transition: 0.3s;
   font-weight: 700;
   margin: auto;
+<<<<<<< HEAD
   cursor: url(/img/x2.cur), auto !important;
+=======
+  cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur), auto !important;
+>>>>>>> 03badbb (github action update)
   white-space: nowrap;
 }
 

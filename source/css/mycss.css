@@ -73,6 +73,10 @@ textarea.el-textarea__inner{
 }
 #footer-wrap {
   color: #070202;
+<<<<<<< HEAD
+=======
+  line-height: 30px;
+>>>>>>> 03badbb (github action update)
 }
 #category-bar {
   width: 100%;
@@ -89,18 +93,34 @@ textarea.el-textarea__inner{
 }
 
 #recent-posts > .recent-post-item:not(:first-child){
+<<<<<<< HEAD
     border-radius: 40px;
+=======
+    border-radius: 20px;
+>>>>>>> 03badbb (github action update)
 }
 #recent-posts{
   width: 100%;
 }
 /* tags样式 */
 #aside-content .card-tag-cloud a {
+<<<<<<< HEAD
     color: var(--anzhiyu-fontcolor) !important;
     font-size: 1.05rem !important;
     border-radius: 8px;
     display: inline-block;
     margin-right: 4px;
+=======
+  color: var(--anzhiyu-fontcolor) !important;
+  font-size: 1.05rem !important;
+  border-radius: 8px;
+  display: inline-block;
+  height: 40px;
+  text-align: center;
+  margin-right: 4px;
+  line-height: 40px;
+  font-weight: 500;
+>>>>>>> 03badbb (github action update)
 }
 #aside-content .card-tag-cloud a:hover {
   background: var(--anzhiyu-theme);
@@ -185,6 +205,10 @@ li.card-archive-list-item {
 #aside-content .card-categories ul.card-category-list > .card-category-list-item a span:first-child {
   width: auto;
   flex: inherit;
+<<<<<<< HEAD
+=======
+  margin-top: 20%;
+>>>>>>> 03badbb (github action update)
 }
 #aside-content .card-archives ul.card-archive-list,
 #aside-content .card-categories ul.card-category-list {
@@ -251,7 +275,11 @@ li.card-archive-list-item {
 }
 
 #content-inner{
+<<<<<<< HEAD
   max-width: 1450px;
+=======
+  max-width: 1400px;
+>>>>>>> 03badbb (github action update)
 }
 #home_top {
   margin: 1rem auto 0;
@@ -632,4 +660,19 @@ html.hide-aside .layout > div:first-child {
 }
 .wb-drag{
   background-color: #49b1f5 !important;
+<<<<<<< HEAD
+=======
+}
+
+
+#page-header.not-top-img #nav a{
+  height: 65%;
+}
+#page-header.nav-fixed #nav a, #page-header.nav-fixed #nav #site-name, #page-header.nav-fixed #nav #toggle-menu{
+  height: 65%;
+}
+
+#post{
+  line-height: 1.8;
+>>>>>>> 03badbb (github action update)
 }
