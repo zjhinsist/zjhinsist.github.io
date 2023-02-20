@@ -212,12 +212,7 @@ baidu_url_submit:
 
 # APlayer
 # https://github.com/MoePlayer/hexo-tag-aplayer/blob/master/docs/README-zh_cn.md
-<<<<<<< HEAD
-aplayer:
-  meting: false
-=======
 
 aplayer:
   meting: true
->>>>>>> 03badbb (github action update)
   asset_inject: false
