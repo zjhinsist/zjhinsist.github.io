@@ -1,0 +1,777 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>LDA主题模型 | Nuyoah</title><meta name="keywords" content="人工智能"><meta name="author" content="Nuyoah"><meta name="copyright" content="Nuyoah"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="LDA主题模型"><meta name="application-name" content="LDA主题模型"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="LDA主题模型"><meta property="og:url" content="http://262259.xyz/2022/05/05/LDA%E4%B8%BB%E9%A2%98%E6%A8%A1%E5%9E%8B/index.html"><meta property="og:site_name" content="Nuyoah"><meta property="og:description" content="LDA的介绍，还是比较全面的"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://s2.loli.net/2022/11/21/rWoSUxItliEPYHk.webp"><meta property="article:author" content="Nuyoah"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://s2.loli.net/2022/11/21/rWoSUxItliEPYHk.webp"><meta name="description" content="LDA的介绍，还是比较全面的"><link rel="shortcut icon" href="https://s1.ax1x.com/2022/11/27/zUFla6.png"><link rel="canonical" href="http://262259.xyz/2022/05/05/LDA%E4%B8%BB%E9%A2%98%E6%A8%A1%E5%9E%8B/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: {"enable":true,"title":"与数百名博主无限进步","addFriendPlaceholder":"昵称（请勿包含博客等字样）：\n网站地址（要求博客地址，请勿提交个人主页）：\n头像图片url（请提供尽可能清晰的图片，我会上传到我自己的图床）：\n描述：\n站点截图（可选）：\n"},
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"404！加载失败！","backTitle":"加载成功！"},
+  LA51: undefined,
+  greetingBox: {"enable":true,"default":"晚上好👋","list":[{"greeting":"晚安😴","startTime":0,"endTime":5},{"greeting":"早上好鸭👋, 祝你一天好心情！","startTime":6,"endTime":9},{"greeting":"上午好👋, 状态很好，鼓励一下～","startTime":10,"endTime":10},{"greeting":"11点多啦, 在坚持一下就吃饭啦～","startTime":11,"endTime":11},{"greeting":"午安👋, 宝贝","startTime":12,"endTime":14},{"greeting":"🌈充实的一天辛苦啦！","startTime":14,"endTime":18},{"greeting":"19点喽, 奖励一顿丰盛的大餐吧🍔。","startTime":19,"endTime":19},{"greeting":"晚上好👋, 在属于自己的时间好好放松😌~","startTime":20,"endTime":24}]},
+  twikooEnvId: 'https://twikoo.262259.xyz/',
+  commentBarrageConfig:{"enable":true,"maxBarrage":1,"barrageTime":4000,"accessToken":"","mailMd5":"a665f8c80fd739329dd0d3f3fe7d90fc"},
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","💢 壮汉人狠话不多"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Nuyoah","link":"链接: ","source":"来源: Nuyoah","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: {"enable":true,"delay":100,"shiftDelay":200},
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Nuyoah',
+  title: 'LDA主题模型',
+  postAI: '',
+  pageFillDescription: 'LDA（主题模型）, gamma函数, 对LDA的整体理解：, gamma函数, beta分布, beta分布, beta分布与二项分布共轭, 共轭先验分布, 从Beta分布推广到Dirichlet分布, Dirichlet分布, Dirichlet分布, Dirichlet分布和多项分布共轭, 主题模型LDA, Unigram model, Mixture of unigram model, PLSA模型, LDA模型主题模型条消息数学公式语法李乾文的博客博客语法条消息编辑数学公式的博客博客公式编辑本文是启发是这位大佬的博客博客地址为该文章单纯是为了以后复习使用主要包含一个函数函数四个分布二项分布多项分布分布迪利克雷分布一个概念和一个理念共轭先验和贝叶斯框架两个模型一个采样采样函数对的整体理解主要是可以将文档集中每篇文档中的主题以概率形式给出通过分析一些文档抽取它们主题分布出来之后然后通过主题分布进行文本聚类和文本分类也是一种词袋模型每篇文档是由一组词构成词和词之间没有先后顺序关系就像一个袋子把它们全部装起来这个袋子就是这一片文档其中这些词就是能够表达文档主题的一些词汇没有先后关系但是有逻辑关系一篇文章不是只能拥有一个主题文档可以有很多个主题组成可能占比不同例如一篇文章的主题教育艺术儿童预算首先我们先看一下一篇文档是怎么生成的创始人给出一个例子我们事先确定几个主题例如上面的几个主题通过这几个事先确定好的主题通过机器学习获取每个主题的对应的词语如下图所示然后通过一定概率选取上面四个主题之一在一一定概率选取每个主题下面的一个词不断重复而后就能够生成一篇文章不同颜色的代表不同的主题当我们看到一篇文章的时候如果我们想要推理一下该文章的作者是如何写出这篇文章的大部分人写文章的时候首先第一步我们就需要确定我们文章的几个主题例如一个主要主题几个次要主题然后寻找在这几个主题下的词语通过一定的逻辑关系进行组合然后便能生成一篇文章主要就是做上面的步骤的通过一篇文章反推其主题分布借助大佬的话通俗的理解就是假设我们认定现在网络上出现的文章都是以上述方式生成的现在有一些人先用通过来做一件事情就是通过分析网上众多文章获取这些文章都写了一些什么主题并且找出每篇文章的各个主题之间的比例主题分布在模型中一篇文章的生成步骤如下从服从分布的中取样生成文档的主题分布各个主题之间的比例从主题的多项式分布中取样生成文章的第个词的主题就是获取文档众多主题其中一个从服从分布的中取样生成主题对应的词语就是获取每个词语之间的比例从词语的多项式分布中采样出最终的词语重复上述几个过程其中分布是二项分布的共轭先验概率分布而分布是多项式的共轭先验概率分布结构图如下图所示上面我们不断重复二项分布多项分布分布分布这些分布究竟是什么下面我们进行一些简单的描述二项分布二项分布是通过伯努利分布来推进出来的又称为两点分布或分布是一个离散型随机分布其中随机变量止只有两种情况非正即负二项分布就是做次伯努利实验记作就是做一次实验就是伯努利实验做次就是二项分布要么是要么是只有这两种情况二项分布的概率函数为多项分布就是二项分布扩展到多维的情况在二项分布中我们的取值只能是或者但是在多项分布中我们取值会变得多样化会出现但是多个概率相加还是等于一多项分布的概率密度函数为分布二项分布的共轭先验分布给定参数和取值范围为的随机变量的概率密度函数其中就是函数函数就是阶乘的具体化分布是分布在高维度上的推广分布的密度函数形式和分布的密度函数形式几乎一样其中这两个式子和上面两个式子的形式几乎一致区别就在于下面这两个式子有多个变量而上面的式子只有两个变量剩下的计算形式类似好整体的叙述完毕之后我们来看一下函数到底是什么函数函数是阶乘在实数范围内的推广一般的阶乘例如的阶乘为但是如果我想要求的阶乘呢这时候我们所理解的阶乘公式就不再适用了这时候欧拉想出了阶乘的一般函数形式即函数这时候我们来想一个问题问题随机变量把这个变量排序之后我们得到顺序统计量请问这里的分布是什么因为这些数据都是在之间的而且我们都已经进行排序了这时候如果我们求一下落在区间的概率是多少这样就能够求出这些随机变量的分布比例是多少了先把区间划分为三份这里说明区间的大小就代表这个区间的占整体的比例也就是落在这个区间内的概率假设个数中有个落在了区间由于这个区间内的数据是第大的所以范围内应该有个数据区间内应该有个数据如图所示由上所述我们求出事件对于上述事件有其中表示的高阶无穷小显然由于不同的排列组合即个数中有一个落在区间的有种取法余下个数中有个落在的有种组合所以和事件等价的事件一共有个如果有两个数落在这个区间里面呢由上面可得如果再次区间的数据超过一个的话那个这件事情的概率就几乎为零由此可得从而得出的概率密度函数为由此问题一得到解决如果我们仔细观察这个式子就会发现这个式子的系数为阶乘的形式这时候如果配上函数的话然后我们取变量转成得出由此可见我们推出了分布分布分布在概率论中分布是一组定义在区间内的连续分布有两个参数和并且和分布的概率密度函数为随机变量服从参数为和的分布通常写作分布与二项分布共轭我们先来了解一下共轭分布什么叫做共轭分布后验概率分布函数和先验概率分布函数具有相同的形式为什么要采用共轭分布可以使得后验概率和先验概率的形式相同这里一部分是符合人的直观理念他们应该是相同的分布另一方面可以形成一个先验链即现在的后验概率可以作为下一次计算的先验分布如果形式相同就可以形成一个链条这时候我们回顾一下开头所提出的问题问题一随机变量把这个随机变量排序后得到顺序统计变量然后想求出的分布是什么如果我们在这之上增加一些观测数据变成问题二对应的统计变量是需要猜测中有个比小个比大问题是的分布是什么根据条件二我们得出中有个比小个比大所以在中是其中的第大的数据根据上面的事件推出事件服从分布从而我们推出的概率密度函数为我们先看一下什么是先验概率和后验概率是在发生的情况下发生的可能性首先事件发生之前我们对事件的发生有一个基本的概率判断称为的先验概率用表示其次事件发生之后我们对事件的发生概率重新评估称为的后验概率用表示类似的事件发生之前我们对事件的发生有一个基本的概率判断称为的先验概率用表示同样事件发生之后我们对事件的发生概率重新评估称为的后验概率用表示这个的推理过程类似贝叶斯的推理过程为了猜测在获得一定的观测数据前我们对的认知为这称为的先验分布然后我们获得这个结果中有个比小个比大针对是做了次伯努利实验所以服从在给定数据之后的后验分布变成了贝叶斯理论中先验分布样本信息后验分布上面公式的得出就是新观察到的样本信息将修正人们之前对该事件的认知通俗的说是人们对的认知是先验分布在等到新样本信息之后人们对的认知变成了映射到这个问题上就是其中和对应的是二项分布的的计数推广到更一般的形式就是对于非负实数和我们有如下关系对于观测数据符合二项分布参数的先验分布和后验分布都是分布这种情况我们称为分布和二项分布共轭分布称为二项分布的共轭先验概率分布二项分布和分布是共轭分布意味着如果我们为二项分布的参数选取的先验分布是分布那么以为参数的二项分布用贝叶斯估计得到的后验分布仍然服从分布共轭先验分布共轭函数分布就是一个参数的先验概率分布和后验概率分布具有相同的格式那么先验分布和后验分布被叫做共轭分布同时先验分布叫做似然函数的共轭先验分布例如我们观察的数据服从时当观测到新的数据时需要考虑以下问题是否可以根据观测到的数据更新根据观测到的数据在多大程度上能够改变即当我们从新估计参数的时候给出新的参数分布即根据贝叶斯公式可得其中表示以预估为参数的概率分布能够直接求出是已有原始的概率分布所以我们选取的共轭先验作为的分布那么乘以然后归一化的结果跟的形式一样先验分布是后验分布是投硬币的例子使用参数的伯努利模型为硬币正面的概率那么结果的分布为其共轭先验分布为分布后验概率为后验概率归一化之后会得到另一个分布从而证明分布就是伯努利分布的共轭先验分布从分布推广到分布分布的性质之一期望上面式子的右边积分为其分布类似概率分布对于这个分布有从而求得的结果为最后将结果带入的计算式得出最后这个结果意味着对于分布的随机变量其均值期望可以使用来估计此外对于分布也有类似的结论即如果参数满足分布的话同样可以证明以下结论成立分布分布分布的概率密度函数为其中表示多项函数函数与函数的关系为把这个形式和分布中的多项函数相比果然是一一对应的加法对加法乘法对乘法不同的就是参数的个数不同在中并且并且在维的单纯形上在其它区域概率为零单纯形表示在维单纯形上有个顶点例如一维表示线段二维表示三角形三维表示四面体各个面都相等分布的另一种形式为其中称为分布的归一化系数并且根据分布的积分为概率的基本性质可以得到分布和多项分布共轭继上面问题二之后我们再提出问题三排序后对应的顺序统计量问的联合分布是什么为了方便计算选取了满足但只有和是变量如下图所示从而有继而得到的联合分布为观察上述式子的最终结果可以看出其实就是三维的分布令于是分布密度可以写为为了验证分布是多项分布是共轭分布的共轭先验分布我们引出问题四问题四排序之后对应的顺序统计量令注这里的不是变量只是为了方便计算现在要猜测中落到这三个区间的个数分别为问后验分布的分布是什么为了方便讨论记以及根据已知条件中落到三个区间的个数为和可得分别是这个个数中大和大的数于是后验分布应该是即一般化形式表示为同样的按照贝叶斯逻辑整理为下我们要猜测参数其先验分布为数据落到三个区间的个数分别是所以服从多项分布当我们提供数据之后先验分布就变成了上述贝叶斯过程直观的表达为令等于可以把从整数集合延伸到实数集合从而得到更一般的表达式和上面一样针对观测到数据符合多项分布其先验概率分布后验概率分布都符合分布的情况下就是分布和多项分布共轭我们为多项分布的参数选取的先验分布是分布那么以为参数的多项分布用贝叶斯估计得到的后验分布仍然服从分布一般的分布定义如下而对于给定的和其多项分布是最后结论是分布和多项分布是共轭关系主题模型在开始进行这部的内容之前我们先回顾一下上面的内容通过上面的内容我们得到分布是二项分布的共轭先验分布对于非负实数和有如下关系其中是二项分布的计数针对这些观测到的数据符合二项分布参数的先验概率分布和后验概率分布都符合分布的我们称之为分布和二项分布共轭分布是多项分布的共轭先验分布把从整数集合扩展到实数集合从而得到更一般的表达式如下针对这些观测数据符合多项分布参数的先验概率分布和后验概率分布都符合分的情况我们称为分布和多项分布共轭贝叶斯派思考问题的方式先验分布样本信息后验分布上述表达方式为新观察到的样本信息将修正人们之前对事物的认知换句话说在得到新的样本信息之前人们对的认知是先验分布在得到样本信息之后人们对的认知为在我们进行模型的时候我们先要进行一些基础模型的认识以及和最为接近的模型为了方便解释这些模型我们定义一下下面这几个变量表示词表示所有单词的个数固定值表示主题是主题的个数预先给定固定值表示语料库其中的是语料库中的文档数固定值表示文档其中表示一个中文文档中的词数随机变量对于文档用表示词的先验概率生成文档的概率为其图模型为图中被涂色的表示可观测变量表示一篇文章中一共有个单词表示篇文档另一种表示方法为假设文本中的词服从分布而且我们已经知道分布的先验分布为分布上述的表示在文本中观察到的第个词表示该文本中一共有个词加上方框表示重复即一共有个这样的随机变量其中和是隐含未知变量是服从分布的参数是分布即分布的先验分布的参数一般由经验事先给定由观察到的文本中出现的词学习得到表示文本中出现每个词的概率该模型的生成过程是先给文档一个主题然后根据该主题生成文档该文档中所有词都是来自一个主题假设主题由生成文档的概率为其图模型为图中被涂色的表示可观测变量未涂色的表示为止的隐变量表示文档中一共有个词表示篇文档模型模型是和模型比较接近的一个模型就是模型加上一个贝叶斯框架我们在上面的模型中假定的是一篇文档中只是有一个主题生成但是实际上一篇文档是由多个主题共同生成只是比例不同分布比如在介绍一个国家的文档中我们还要从教育经济军事等等主题进行介绍其中国家是大主题占比比较大其余的是小主题占比比较小那么在模型中文档是怎么生成的呢先看生成文章的过程如果需要生成篇文章每一篇文章由各个不同的词组成需要确定每篇文章每个位置对应的词假设一共有个可选的主题有个可选词通过投骰子来生成一篇文档在写文档的时候我们可以制作一个有面文档主题的骰子扔骰子能够得到个主题中的任意一个通过投骰子来进行选取主题和个面的主题词语骰子每个骰子对应一个主题个骰子对应个主题面对应的个词语假设我们设制作一个面的文档主题骰子这三个主题我们设置为教育经济交通然后令制作三个有三个面的主题词语骰子具体情况如下每写一个词我们都要通过投掷文档主题骰子获取一个主题得到主题之后我们从对应的主题的主题词语骰子中投掷选择我们要写的词语上面这个投骰子产生词的过程简化下便是先以一定的概率选取主题再以一定的概率选取词事实上一开始可供选择的主题有个教育经济交通那为何偏偏选取教育这个主题呢其实是随机选取的只是这个随机遵循一定的概率分布比如可能选取教育主题的概率是选取经济主题的概率是选取交通主题的概率是那么这个主题的概率分布便是教育经济交通我们把各个主题在文档中出现的概率分布称之为主题分布且是一个多项分布同样的从主题分布中随机抽取出教育主题后依然面对着个词大学老师课程这个词都可能被选中但它们被选中的概率也是不一样的比如大学这个词被选中的概率是老师这个词被选中的概率是课程被选中的概率是那么这个词的概率分布便是大学老师课程我们把各个词语在主题下出现的概率分布称之为词分布这个词分布也是一个多项分布所以选主题和选词都是两个随机的过程先从主题分布教育经济交通中抽取出主题教育然后从该教育主题对应的词分布大学老师课程中抽取出词大学然后不断重复步骤重复次完成一篇文档重复这一篇文档的生成方法次我们生成了篇文档上述过程为文档生成模型在上面的文档生成方法中我们并未关注词与词之间的先后顺序因此是一个词袋模型这些词虽然表面上没有顺序关系但是通过一些词逻辑上的关系我们可以得到这篇文章的隐藏的主题类别这里我们定义表示海量文档中某篇文档被选中的概率表示词在给定文档中出现的概率计算方式对于海量文档对所有文档进行分类之后我们得到一个词汇表每篇文档就是一个词语的集合对于每个词语出现次数比上所有的词的个数最后结果就是这个词在这篇文档中出现的概率表示具体某个主题在给定文档中出现的概率表示某个词在主题中出现的概率与主题关系越密切的词出现的概率越大利用上述个概率我们可以根据以下步骤生成文档词项模型按照概率选择一篇文档选定文章后其主题分布中按照概率选择一个隐含的主题类别选定后从词分布表中按照概率选择一个词所以中生成文档的过程为选定文档生成主题确定主题生成词上述是生成文档的过程下面为分析文档的的过程根据文档反推其主题分布主要内容是通过生成文档的过程反推已有的文档中的主题分布生产文档的逆过程建模的目的就是自动的发现文档集中的主题分布换句话来说就是人们根据文档生成模型生成了各种各样的文章然后递交给计算机计算机的目的就是根据一篇篇文章中的一系列词语的分布推测各个主题出现的概率分布主题分布即单词和文章是能够观测到的而主题是隐含的我们的目的就是找到这隐含的主题分布如下图所示图中涂色的表示可以观察到的数据和表示隐含的数据表示一篇文档中一共有个单词表示一共有篇文档上图中文档和词是我们得到的样本样本随机参数虽然不知道但是是固定的所以数据频率派思想区别于下文要介绍的中样本固定参数为止但不固定是一个随机变量服从一定的分布所以属于贝叶斯派思想可以观测到对于任意一一篇文档其是已知的从而可以根据大量已知的文档词项信息训练出文档主题和主题词项如下图公式所示故得到文档中每个词出现的概率为由于可以事先计算求出而和未知所以就是我们要估计的参数值通俗点说就是要最大化这个用什么方法进行估计呢常用的参数估计法有极大似然估计最大后验估计贝叶斯估计等等因为该待估计的参数中含有隐变量所以我们可以考虑算法模型和模型比较相似就是给模型加上了一个贝叶斯框架模型生成文档和参数估计按照先验概率选择一篇文档选定文档后确定文档的主题分布从主题分布后按照概率选择一个隐含的主题类型选定后确定主题下的词分布从词分布中按照概率选择一个词模型生成文档和参数估计先根据先验概率选择一篇文档从迪利克雷分布分布中取样生成文档的主题分布换句话说就是主题分布由超参数为的分布形成从主题多项式分布中取样生成文档的第个主题词从迪利克雷分布分布中取样生成主题对应的词语分布换言之词语分布由参数为的分布生成从词语的多项式分布中采样生成最后的词语从上面的两个过程可以看出在的基础上为主题分布和词分布增加了两个先验分布选取一个词的过程先从主题分布为教育经济交通中抽取出主题教育然后从该主题对应的词分布大学老师课程中抽取出词大学选取一个词的过程也是上面的方法先选取一个主题然后通过这个主题下面的词分布中选取一个词语和的区别就是主题分布和词分布不在是确定的他是随机可变的但是这个变化符合一个分布规律就是分布中主题分布和词分布确定之后以一定的概率分别选取具体的主题和词项生成好文档然后根据生成好的文档来反推其主题分布词分布的同时之后使用算法极大似然估计法求解出两个为止参数的值由转换而来和由转换而来文档产生主题的概率主题产生单词的概率都是两个固定值例子给定一篇文档主题分布是一定的比如可能就是表示这个主题被文档选中的概率都是个固定的值如下图所示图截取自沈博上在模型中我们不再认为主题分布和词分布是唯一确定的而是由很多种可能但是一篇文档总要确定一个主题把采用了两个先验参数这个先验分布为某篇文档随机抽取了某个主题分布和词分布文档产生主题准确的说其实是先验为文档生成主题分布然后根据主题分布产生主题的概率主题产生单词的概率都不再是准确的两个值而是随机变量总而言之在的基础上给这两个参数加了两个先验分布的参数贝叶斯话一个主题的先验分布分布和一个词语分布的先验分布分布这两个模型的本质都是为了能够找到给定文档生成主题给定主题生成词语的概率中主题分布比如等于或是由先验给定的不是根据文档产生的所以生成文档的过程中先从先验中随机抽取出主题分布然后从主题分布中随机抽取出主题最后从确定后的主题对应的词分布中随机抽取出词先验随机抽取主题分布方式事实上从分布中随机抽取主题分布这个过程并不是完全随机的事实上如果我们选取三个事件的话可以建立一个三维坐标系在这个三维坐标点中每一个坐标点就对应这一个主题分布而且某一个点的大小代表着主题出现的概率大小因为各个主题出现的概率和为所以比如便对应着主题分布这个空间中有很多个这个点意味着有很多主题分布可以选择分布选择主题的方法是可以将上面三角形放到映射到地面平面上便得到如下所示的一些彩图个彩图种每个点对应着一个主题分布高度代表着某个主题呗分布选中的概率且选择不同的分布会偏向不同的主题分布在中的作用较高的表示主题稀疏性的影响较小在一个文章中包含着大多主题而比较第的值代表着我们希望文档覆盖少数主题如果我们只想在这些文档中发掘出两个主题那么可能所有文档都包含两个主题因此我们可以有一个比较大的值如果我们想发现一个主题很可能大多数文档不会覆盖所有个主题只可能包含较小的一部分稀疏性很高因此我们采用较小的值来解释这个问题预期的稀疏性同样在主题中的单词稀疏性中起作用较高的值代表着主题比较一般单词频率更加统一第值意味着主题应该更加具体他们单词概率将更不均匀在比较少的单词上面放着更高的概率这也与要发现的主题数量有关高的意味着很少但是比较常见的主题被发现第用于更具体的主题',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-06-13 14:50:18',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/mycss.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 7.1.1"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://s1.ax1x.com/2022/11/27/zUFla6.png"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://262259.xyz/" title="个人主页"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s1.ax1x.com/2022/11/27/zUFla6.png" alt="个人主页"/><span class="back-menu-item-text">个人主页</span></a><a class="back-menu-item" href="https://262259.xyz/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s1.ax1x.com/2022/11/27/zUFla6.png" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">管理</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://qexo.262259.xyz/" title="博客后端"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://unpkg.com/qexo-static@1.4.0/assets/img/brand/qexo.png" alt="博客后端"/><span class="back-menu-item-text">博客后端</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Nuyoah</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://s2.loli.net/2022/08/16/weL31EHsON5ldDU.png" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/08/16/weL31EHsON5ldDU.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://s2.loli.net/2022/08/16/2yRjVx9gFKQaidA.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/08/16/2yRjVx9gFKQaidA.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Gitee/" style="font-size: 1.05rem;">Gitee<sup>1</sup></a><a href="/tags/JAVA/" style="font-size: 1.05rem; font-weight: 500; color: var(--anzhiyu-lighttext)">JAVA<sup>5</sup></a><a href="/tags/JS/" style="font-size: 1.05rem;">JS<sup>1</sup></a><a href="/tags/MySQL/" style="font-size: 1.05rem;">MySQL<sup>1</sup></a><a href="/tags/Python/" style="font-size: 1.05rem;">Python<sup>7</sup></a><a href="/tags/Spring/" style="font-size: 1.05rem;">Spring<sup>2</sup></a><a href="/tags/hexo/" style="font-size: 1.05rem;">hexo<sup>4</sup></a><a href="/tags/win10/" style="font-size: 1.05rem;">win10<sup>1</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E6%97%A5%E8%AE%B0/" style="font-size: 1.05rem;">个人日记<sup>1</sup></a><a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" style="font-size: 1.05rem;">人工智能<sup>15</sup></a><a href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%BA%8E%E9%80%BB%E8%BE%91/" style="font-size: 1.05rem;">数字电路于逻辑<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/" style="font-size: 1.05rem;">算法实现<sup>12</sup></a><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="font-size: 1.05rem;">计算机基础<sup>13</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">二月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/12/"><span class="card-archive-list-date">十二月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">三月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/02/"><span class="card-archive-list-date">二月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/01/"><span class="card-archive-list-date">一月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">十二月 2022</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/11/"><span class="card-archive-list-date">十一月 2022</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div><div class="console-btn-item" id="consoleKeyboard" onclick="anzhiyu.keyboardToggle()" title="快捷键开关"><a class="keyboard-switch"><i class="anzhiyufont anzhiyu-icon-keyboard"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url">人工智能</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>人工智能</span></a></span></div></div><h1 class="post-title" itemprop="name headline">LDA主题模型</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2022-05-05T01:56:34.000Z" title="发表于 2022-05-05 09:56:34">2022-05-05</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2023-06-13T06:50:18.486Z" title="更新于 2023-06-13 14:50:18">2023-06-13</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为石家庄"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>石家庄</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://s2.loli.net/2022/11/21/rWoSUxItliEPYHk.webp"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://262259.xyz/2022/05/05/LDA%E4%B8%BB%E9%A2%98%E6%A8%A1%E5%9E%8B/"><header><a class="post-meta-categories" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url">人工智能</a><a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" tabindex="-1" itemprop="url">人工智能</a><h1 id="CrawlerTitle" itemprop="name headline">LDA主题模型</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Nuyoah</span><time itemprop="dateCreated datePublished" datetime="2022-05-05T01:56:34.000Z" title="发表于 2022-05-05 09:56:34">2022-05-05</time><time itemprop="dateCreated datePublished" datetime="2023-06-13T06:50:18.486Z" title="更新于 2023-06-13 14:50:18">2023-06-13</time></header><h1 id="LDA（主题模型）"><a href="#LDA（主题模型）" class="headerlink" title="LDA（主题模型）"></a>LDA（主题模型）</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Leytton/article/details/103745169">(5条消息) KaTeX数学公式语法_李乾文的博客-CSDN博客_katex语法</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43627106/article/details/123648485">(5条消息) Typora编辑数学公式_Ambitious°的博客-CSDN博客_typora公式编辑</a></p>
+<p>本文是启发是  <a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/41209515">v_JULY_v这位大佬的博客</a> 博客地址为：<a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/41209515">https://blog.csdn.net/v_JULY_v/article/details/41209515</a></p>
+<p>该文章单纯是为了以后复习使用！！</p>
+<p>LDA主要包含：</p>
+<p>一个函数：gamma函数</p>
+<p>四个分布：二项分布，多项分布，beta分布，Dirichlet（迪利克雷）分布</p>
+<p>一个概念和一个理念：共轭先验和贝叶斯框架</p>
+<p>两个模型：pLSA， LDA</p>
+<p>一个采样：Gibbs采样</p>
+<h2 id="gamma函数"><a href="#gamma函数" class="headerlink" title="gamma函数"></a>gamma函数</h2><h3 id="对LDA的整体理解："><a href="#对LDA的整体理解：" class="headerlink" title="对LDA的整体理解："></a>对LDA的整体理解：</h3><p>LDA 主要是可以将文档集中每篇文档中的主题以概率形式给出， 通过分析一些文档抽取它们主题（分布）出来之后，然后通过主题（分布）进行文本聚类和文本分类。LDA也是一种词袋模型，每篇文档是由一组词构成，词和词之间没有先后顺序关系，就像一个袋子，把它们全部装起来，这个袋子就是这一片文档，其中这些词就是能够表达文档主题的一些词汇，没有先后关系，但是有逻辑关系。</p>
+<p>一篇文章不是只能拥有一个主题，文档可以有很多个主题组成，可能占比不同，例如一篇文章的主题 &#x3D; 教育 * 0.6 + 艺术 * 0.1 + 儿童 * 0.1 + 预算 * 0.1</p>
+<p><strong>首先</strong>：我们先看一下一篇文档是怎么生成的LDA 创始人给出一个例子：我们事先确定几个主题（topic），例如上面的 几个主题Education， Arts， Children， Budgets，通过这几个事先确定好的主题，通过机器学习获取每个主题的对应的词语，如下图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/05/tkchLZg36OWHiNU.png" alt="image-20220320211238263.png"></p>
+<p>然后通过一定概率选取上面四个主题之一，在一一定概率选取每个主题下面的一个词，不断重复，而后就能够生成一篇文章，不同颜色的代表不同的主题</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/05/7JOdnoFaq94mHks.png" alt="image-20220320211427423.png"></p>
+<p>当我们看到一篇文章的时候，如果我们想要推理一下该文章的作者是如何写出这篇文章的，大部分人写文章的时候：首先第一步我们就需要确定我们文章的几个主题，例如一个主要主题，几个次要主题，然后寻找在这几个主题下的词语，通过一定的逻辑关系进行组合，然后便能生成一篇文章。</p>
+<p><strong>LDA 主要就是做上面的步骤的：通过一篇文章反推其主题分布</strong></p>
+<p>借助 v_JULY_v 大佬的话通俗的理解就是：<strong>假设我们认定现在网络上出现的文章都是以上述方式生成的，现在有一些人先用通过LDA来做一件事情，就是通过分析网上众多文章，获取这些文章都写了一些什么主题，并且找出每篇文章的各个主题之间的比例（主题分布）</strong></p>
+<p>在LDA模型中一篇文章的生成步骤如下：</p>
+<ul>
+<li>从服从Dirichlet分布的α中 取样生成文档 i 的主题分布θi(各个主题之间的比例)</li>
+<li>从主题的多项式分布θi 中取样生成文章 i 的第 j 个词的主题Z i j ( 就是获取文档i众多主题其中一个 ) </li>
+<li>从服从Dirichlet分布的 β 中取样生成主题Z i j 对应的词语φ Z i j（就是获取每个词语之间的比例 ）</li>
+<li>从词语的多项式分布φZ i j 中采样出最终的词语Wij </li>
+<li>重复上述几个过程</li>
+</ul>
+<p>其中beta分布是二项分布的共轭先验概率分布，而Dirichet分布是多项式的共轭先验概率分布</p>
+<p>结构图如下图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/05/74xYtfeFRnZKEgm.png" alt="image-20220320213445058.png"></p>
+<p>上面我们不断重复二项分布，多项分布，beta分布，Dirichlet分布，这些分布究竟是什么，下面我们进行一些简单的描述。</p>
+<ul>
+<li><p>二项分布（<strong>Binomial distribution</strong>）</p>
+<p>二项分布是通过伯努利分布来推进出来的，又称为两点分布或0-1分布， 是一个离散型随机分布，其中随机变量止只有两种情况非正即负，二项分布就是做n次伯努利实验 记作X~B（n， p）,就是做一次实验就是伯努利实验，做n次就是二项分布。要么是 p 要么是1-p 只有这两种情况</p>
+<p>二项分布的概率函数为：<br>$$<br>P(K&#x3D;k)&#x3D;\begin{pmatrix} n \ k\end{pmatrix}p^k(1-p)^{n-k}<br>$$</p>
+</li>
+<li><p><strong>多项分布，就是二项分布扩展到多维的情况</strong></p>
+<p>在二项分布中我们的取值只能是p 或者1-p 但是在多项分布中 我们取值会变得多样化会出现 p1 p2 p3 …. pk 但是多个概率相加还是等于一</p>
+<p>多项分布的概率密度函数为：<br>$$<br>P(x_1,x_2,…x_k;n,p_1,p_2,..p_k)&#x3D;\frac{n!}{x_1!…x_k!}p_1^{x_1}…p_k^{x_k}<br>$$</p>
+</li>
+<li><p><strong>Beta分布，二项分布的共轭先验分布</strong></p>
+<p>给定参数α&gt;0和β&gt;0,取值范围为[ 0 , 1 ] 的随机变量x的概率密度函数：<br>$$<br>f(x;\alpha,\beta)&#x3D;\frac{1}{B(\alpha,\beta)}x^{\alpha-1}(1-x)^{\beta-1}<br>$$<br>其中：<br>$$<br>\frac{1}{B(\alpha,\beta)}&#x3D;\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)},\Gamma(z)&#x3D;\int_{0}^{\infty}{t^{-1}e^{-t}}dt<br>$$</p>
+<p>$\Gamma(x)$就是gamma函数 ，gamma函数就是阶乘的具体化</p>
+</li>
+</ul>
+<p>$$<br>  f(x;α,β) &#x3D;\frac{(α + β)!}{(α!\cdot β!)}\cdot x^{(α-1)}\cdot(1-x)^{(β-1)}<br>$$</p>
+<ul>
+<li><p><strong>Dirichlet分布，是beta分布在高维度上的推广</strong></p>
+<p>Dirichlet分布的密度函数形式和beta分布的密度函数形式几乎一样<br>$$<br>f(x_1,x_2,…x_k;\alpha_1,\alpha_2,..\alpha_k)&#x3D;\frac{1}{B(\alpha)}\prod_{i&#x3D;1}^{k}{x_i^{a^i-1}}<br>$$<br>其中：<br>$$<br>B(\alpha)&#x3D;\frac{\prod_{i&#x3D;1}^{k}{\Gamma(\alpha^i)}}{\Gamma(\sum_{i&#x3D;1}^{k}{a_n})}\sum{x_i&#x3D;1}<br>$$<br>这两个式子和上面两个式子的形式几乎一致，区别就在于下面这两个式子有多个变量而上面的式子只有两个变量，剩下的计算形式类似。</p>
+<p>好整体的LDA叙述完毕之后，我们来看一下gamma函数到底是什么：</p>
+</li>
+</ul>
+<h3 id="gamma函数-1"><a href="#gamma函数-1" class="headerlink" title="gamma函数"></a>gamma函数</h3><p>gamma函数是阶乘在实数范围内的推广，一般的阶乘例如：3的阶乘为 3 * 2 * 1 &#x3D; 6， 但是如果我想要求0.5的阶乘呢？，这时候我们所理解的阶乘公式就不再适用了，这时候 <strong>欧拉</strong>想出了阶乘的一般函数形式，即gamma函数<br>$$<br>\Gamma(x)&#x3D;\int_{0}^{+\infty}e^{-t}t^{x-1}dt<br>$$</p>
+<p>这时候我们来想一个问题：</p>
+<!--本文一共有四个问题：1.推导Beta分布密度函数，2.推导Beta和二项分布共轭，3.推导Dirichlet分布密度函数，4.推导Dirichlet分布和多项分布共轭--->
+
+<p><strong>问题1：</strong> 随机变量$X_1,X_2,…,X_n$$\sim Uniform(0,1)$</p>
+<p>把这n个变量排序之后我们得到顺序统计量$x_{(1)},x_{(2)}…x_{(n)}$</p>
+<p>请问这里$|x_{(k)}|$的分布是什么</p>
+<p>因为这些数据都是在0-1之间的，而且我们都已经进行排序了，这时候如果我们求一下$|x_{(k)}|$落在区间$[x, x+\Delta x]$的概率是多少，这样就能够求出这些随机变量的分布（比例）是多少了</p>
+<p>先把[0,1]区间划分为三份[0,x),[x, x+Δx], (x+Δx, 1], 这里说明区间的大小就代表这个区间的占整体的比例，也就是落在这个区间内的概率，假设n个数中有1个落在了区间[x, x+Δx]，由于这个区间内的数据$X(k)$是第k大的所以[0,x) 范围内应该有k-1个数据，(x+Δx, 1]区间内应该有 n-k个数据，如图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/05/eLb1vXB9NZQ73hG.png" alt="image-20220321090642741.png"></p>
+<p>由上所述我们求出事件E：<br>$$<br>E&#x3D;X_1\in[x,x+\Delta x],\X_i\in<a href="j=k+1,..,n">0,x)(i&#x3D;2,..k),\X_j\in(x+\Delta x, 1</a><br>$$<br>对于上述事件E，有：<br>$$<br>P(E)&#x3D;\prod_{i&#x3D;1}^{n}{X_i} \&#x3D; x^{k-1}(1-x-\Delta x)^{n-k}\Delta x \&#x3D; x^{k+1}(1-x)^{n-k}\Delta x + o(\Delta x)<br>$$<br> 其中，o(Δx)表示Δx的高阶无穷小。显然，由于不同的排列组合，即n个数中有一个落在 [x,x+Δx]区间的有n种取法，余下n−1个数中有k−1个落在[0,x)的有$\begin{pmatrix} n-1 \ k-1\end{pmatrix}$种组合，所以和事件E等价的事件一共有$n\begin{pmatrix} n-1 \ k-1\end{pmatrix}$个。</p>
+<p>如果有两个数落在$[x, x+\Delta x]$这个区间里面呢：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/05/Ri5BWAtQ7IdpxPf.png" alt="image-20220321093120736.png"><br>$$<br>E’ &#x3D; X_1, X_2 \in [x, x+\Delta x],\X_i \in [0, x] (i&#x3D;3,…k), \X_j \in (x+\Delta x, 1) (j &#x3D; k+1,…,n)<br>$$</p>
+<p>$$<br>P(E’) &#x3D; x^{k-2}(1-x-\Delta x)^{n-k}(\Delta x)^2\&#x3D;o({\Delta x})<br>$$</p>
+<p>由上面可得如果再次区间的数据超过一个的话那个这件事情的概率就几乎为零</p>
+<p>由此可得：<br>$$<br>P(x\leq X_{(k)}\leq x + \Delta x) \&#x3D; n\begin{pmatrix} n-1 \ k-1\end{pmatrix}P(E)+o(\Delta x) \&#x3D; n\begin{pmatrix} n-1 \ k-1\end{pmatrix}x^{k-1}(1-x)^{n-k}\Delta x + o(\Delta x)<br>$$</p>
+<p>从而得出$X_{(k)}$的概率密度函数为：<br>$$<br>f(x)&#x3D;\lim_{\Delta x\rightarrow0}{\frac{P(x\leq X_{(k)}\leq x+\Delta x)}{\Delta x}}\&#x3D;n\begin{pmatrix} n-1 \ k-1\end{pmatrix}x^{k+1}(1-x)^{n-k}\&#x3D;\frac{n!}{(k-1)!(n-k)!}x^{k-1}(1-x)^{n-k},x\in[0,1]<br>$$</p>
+<p>由此问题一得到解决，如果我们仔细观察这个式子就会发现，这个式子的系数为阶乘的形式，这时候如果配上gamma函数的话：</p>
+<p>$f(x)&#x3D;\frac{\Gamma(n+1)}{\Gamma(k)\Gamma(n-k+1)}x^{k-1}(1-x)^{n-k}$</p>
+<p>然后我们取变量α &#x3D; k, β &#x3D; n-k+1 ，转成f(x)得出：</p>
+<p>$f(x)&#x3D;\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-k}$</p>
+<p>由此可见，我们推出了beta分布</p>
+<h2 id="beta分布"><a href="#beta分布" class="headerlink" title="beta分布"></a>beta分布</h2><h3 id="beta分布-1"><a href="#beta分布-1" class="headerlink" title="beta分布"></a>beta分布</h3><p>在概率论中beta分布是一组定义在区间（0-1）内的连续分布，有两个参数α和β，并且α和β &gt; 0</p>
+<p>beta分布的概率密度函数为：<br>$$<br>f(x;\alpha,\beta)&#x3D;\frac{x^{\alpha-1}(1-x)^{\beta-1}}{\int_0^1u^{\alpha-1}(1-u)^{\beta-1}du}\&#x3D;\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1}\&#x3D;\frac{1}{B(\alpha,\beta)}x^{\alpha-1}(1-x)^{\beta-1}<br>$$</p>
+<p>随机变量x服从参数为α和β的beta分布，通常写作：X ~ Be(α,β)</p>
+<h3 id="beta分布与二项分布共轭"><a href="#beta分布与二项分布共轭" class="headerlink" title="beta分布与二项分布共轭"></a>beta分布与二项分布共轭</h3><p>我们先来了解一下共轭分布</p>
+<ol>
+<li>什么叫做共轭分布：后验概率分布函数和先验概率分布函数具有相同的形式。</li>
+<li>为什么要采用共轭分布：可以使得后验概率和先验概率的形式相同，这里一部分是符合人的直观理念（他们应该是相同的分布），另一方面，可以形成一个先验链，即现在的后验概率可以作为下一次计算的先验分布，如果形式相同，就可以形成一个链条</li>
+</ol>
+<p>这时候我们回顾一下开头所提出的问题“问题一：随机变量$X_1,X_2,…,X_n$$\sim Uniform(0,1)$，把这n个随机变量排序后得到顺序统计变量$X_{(1)},X_{(2)},…,X_{(n)}$，然后想求出$X_{(k)}$的分布是什么。”如果我们在这之上增加一些观测数据，变成问题二：</p>
+<ul>
+<li>$X_1,X_2,…,X_n$$\sim Uniform(0,1)$，，对应的统计变量是，需$X_{(1)},X_{(2)},…,X_{(n)}$要猜测$p&#x3D;X_{(k)}$</li>
+<li>$Y_1,Y_2,…,Y_n$$\sim Uniform(0,1)$，，Yi中有m1个比p小，m2个比p大</li>
+<li>问题是$P(p|Y_1,Y_2,…,Y_M)$的分布是什么</li>
+</ul>
+<p>根据条件二我们得出”Yi中有m1个比p小，m2个比p大”, 所以在$X_1,X_2,…,X_n,$$Y_1,Y_2,…,Y_n$ $\sim Uniform(0,1)$中Xk是其中的第m1+k大的数据</p>
+<p>根据上面的事件推出事件服从Beta分布从而我们推出$P&#x3D;X_{(k)}$的概率密度函数为：$Beta(p|k+m_1,n-k+1+m_2)$</p>
+<p>我们先看一下什么是先验概率和后验概率</p>
+<p>P(A|B)是在B发生的情况下A发生的可能性。</p>
+<p>首先，事件B发生之前，我们对事件A的发生有一个基本的概率判断，称为A的先验概率，用P(A)表示；<br>其次，事件B发生之后，我们对事件A的发生概率重新评估，称为A的后验概率，用P(A|B)表示；<br>类似的，事件A发生之前，我们对事件B的发生有一个基本的概率判断，称为B的先验概率，用P(B)表示；<br>同样，事件A发生之后，我们对事件B的发生概率重新评估，称为B的后验概率，用P(B|A)表示。</p>
+<p>这个的推理过程类似贝叶斯的推理过程：</p>
+<ol>
+<li><p>为了猜测$p&#x3D;X_{(k)}$，在获得一定的观测数据前，我们对p的认知为：$f(p)&#x3D;Beta(p|k,n-k+1)$这称为p的先验分布</p>
+</li>
+<li><p>然后我们获得这个结果“$Y_i$中有$m_1$个比p小，$m_2$个比$p$大”，针对$Y_i$是做了m次伯努利实验，所以服从$B(m,p)$</p>
+</li>
+<li><p>在给定数据（m1， m2）之后，p的后验分布变成了：$f_1(p|m_1,m_2)&#x3D;Beta(p|k+m_1,n-k+1+m_2)$</p>
+<p>贝叶斯理论中：<strong>先验分布</strong>$\pi(\theta)$+<strong>样本信息</strong>$\chi$&#x3D;&gt;<strong>后验分布</strong>$\pi(\theta|x)$</p>
+<p>上面公式的得出就是，新观察到的样本信息将修正人们之前对该事件的认知，通俗的说是人们对θ的认知是先验分布$\pi(\theta)$在等到新样本信息之后，人们对θ的认知变成了$\pi(\theta|x)$</p>
+<p>映射到这个问题上就是：<br>$$<br>Beta(p|k,n-k+1)+Count(m_1,m_2)&#x3D;Beta(p|k+m_1,n-k+1+m_2)<br>$$<br>其中m1和m2对应的是二项分布的$B(m_1+m_2,p)$的计数</p>
+<p>推广到更一般的形式就是，对于非负实数α和β，我们有如下关系：<br>$$<br>Beta(p|\alpha,\beta)+Count(m_1,m_2)&#x3D;Beta(p|\alpha+m_1,\beta+m_2)<br>$$<br>对于观测数据符合二项分布，参数的先验分布和后验分布都是beta分布，这种情况我们称为 beta分布和二项分布共轭，Beta分布称为二项分布的共轭先验概率分布</p>
+<p>二项分布和Beta分布是共轭分布意味着，如果我们为二项分布的参数p选取的先验分布是Beta分布，那么以p为参数的二项分布用贝叶斯估计得到的后验分布仍然服从Beta分布。</p>
+</li>
+</ol>
+<h3 id="共轭先验分布"><a href="#共轭先验分布" class="headerlink" title="共轭先验分布"></a>共轭先验分布</h3><p>共轭函数分布就是一个参数的先验概率分布$P(\theta)$和后验概率分布$P(\theta|x)$ 具有相同的格式，那么先验分布和后验分布被叫做共轭分布，同时先验分布叫做似然函数的，共轭先验分布。</p>
+<p>例如我们观察的数据服从$P(\theta)$时，当观测到新的X数据时，需要考虑以下问题：</p>
+<ul>
+<li>是否可以根据观测到的数据更新θ</li>
+<li>根据观测到的数据在多大程度上能够改变θ,即$\theta\leftarrow \theta+\Delta \theta$  </li>
+<li>当我们从新估计参数θ的时候，给出新的参数θ分布即$P(\theta|x)$</li>
+</ul>
+<p>根据贝叶斯公式可得：<br>$$<br>P(\theta|x)&#x3D;\frac{P(x|\theta)\cdot P(\theta)}{P(x)}\varpropto P(x|\theta)\cdot P(\theta)<br>$$<br>其中$P(x|\theta)$表示以预估θ为参数的x概率分布，能够直接求出，p(θ)是已有原始的θ概率分布。</p>
+<p>所以我们选取P(x|θ) 的共轭先验作为p(θ)的分布，那么p(x|θ)乘以p(θ)， 然后归一化的结果p(θ|x)跟p(θ)的形式一样，先验分布是p(θ)，后验分布是p(θ|x)</p>
+<p>投硬币的例子：使用参数θ的伯努利模型，θ为硬币正面的概率，那么结果x的分布为:<br>$$<br>P(x|\theta)&#x3D;\theta^x\cdot (1-\theta)^{1-x}<br>$$<br>其共轭先验分布为beta分布：<br>$$<br>P(\theta|\alpha,\beta)&#x3D;\frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{\int_0^1\theta^{\alpha-1}(1-\theta)^{\beta-1}d\theta}<br>$$</p>
+<p>后验概率为：<br>$$<br>P(\theta|x)\\varpropto P(x|\theta)\cdot P(\theta)\\varpropto(\theta^x(1-\theta)^x)(\theta^{\alpha-1}(1-\theta^{\beta-1}))\&#x3D;\theta^{x+\alpha-1}(1-\theta)^{1-x+\beta-1}<br>$$</p>
+<p>后验概率归一化之后会得到另一个Beta分布，从而证明Beta分布就是伯努利分布的共轭先验分布</p>
+<h3 id="从Beta分布推广到Dirichlet分布"><a href="#从Beta分布推广到Dirichlet分布" class="headerlink" title="从Beta分布推广到Dirichlet分布"></a>从Beta分布推广到Dirichlet分布</h3><p>beta分布的性质之一：期望E：<br>$$<br>E(p) &#x3D; \int_0^1 t\cdot Beta(t|\alpha,\beta)dt\&#x3D;\int_0^1t\cdot\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}t^{\alpha-1}(1-t)^{\beta-1}dt\&#x3D;\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}\int_0^1t^\alpha(1-t)^{\beta-1}dt<br>$$</p>
+<p>上面式子的右边积分为：</p>
+<p>$\int_0^1t^\alpha(1-t)^{\beta-1}$</p>
+<p>其分布类似概率分布$Beta(t|\alpha+1,\beta)$，对于这个分布有<br>$$<br>\int_0^1\frac{\Gamma(\alpha+\beta+1)}{\Gamma(\alpha+1)\Gamma(\beta)}t^\alpha(1-t)^{\beta-1}dt&#x3D;1<br>$$</p>
+<p>从而求得$\int_0^1t^\alpha(1-t)^{\beta-1}dt$​的结果为：<br>$$<br>\frac{\Gamma(\alpha+1)\Gamma(\beta)}{\Gamma(\alpha+\beta+1)}<br>$$<br>最后将结果带入E(p)的计算式得出:<br>$$<br>E(p)&#x3D;\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}\cdot\frac{\Gamma(\alpha+1)\Gamma(\beta)}{\Gamma(\alpha+\beta+1)}\&#x3D;\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha+\beta+1)}\cdot\frac{\Gamma(\alpha+)1}{\alpha}\&#x3D;\frac{\alpha}{\alpha+\beta}<br>$$</p>
+<p>最后这个结果意味着对于Beta分布的随机变量，其均值(期望)可以使用$\frac{\alpha}{\alpha+\beta}$来估计。</p>
+<p>此外对于Dirichlet分布也有类似的结论，即如果参数满足Dirichlet分布$\overrightarrow{p}\backsim Dir(\overrightarrow{t}|\overrightarrow{\alpha})$的话同样可以证明以下结论成立：<br>$$<br>E(\overrightarrow{p})&#x3D;\bigg(\frac{\alpha_1}{\sum_{i&#x3D;1}^K\alpha_i}, \frac{\alpha_2}{\sum_{i&#x3D;1}^K\alpha_i},…,\frac{\alpha_K}{\sum_{i&#x3D;1}^{K}\alpha_i}\bigg)<br>$$</p>
+<h2 id="Dirichlet分布"><a href="#Dirichlet分布" class="headerlink" title="Dirichlet分布"></a>Dirichlet分布</h2><h3 id="Dirichlet分布-1"><a href="#Dirichlet分布-1" class="headerlink" title="Dirichlet分布"></a>Dirichlet分布</h3><p>Dirichlet分布的概率密度函数为：<br>$$<br>f(x_1,…,x_{k-1};\alpha_1,…,\alpha_{(k)}) &#x3D; \frac{1}{B{(\alpha)}}\prod_{i&#x3D;1}^{k}x_i^{\alpha_i-1}<br>$$</p>
+<p>其中B(α)表示多项Beta函数：<br>$$<br>B(\alpha)&#x3D;\frac{\prod_{i&#x3D;1}^{k}\Gamma(\alpha_i)}{\Gamma(\sum_{i&#x3D;1}^K\alpha_i)}<br>$$</p>
+<p>Beta函数与Gamma函数的关系为：<br>$$<br>\frac{1}{B(\alpha,\beta)} &#x3D; \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}<br>$$</p>
+<p>把这个形式和Dirichelt分布中的多项beta函数相比，果然是一一对应的 加法对加法，乘法对乘法，不同的就是，参数的个数不同</p>
+<p>在B(α)中$\alpha&#x3D;(\alpha_1,…,\alpha_k)$，并且x1+x2+x3+……+xk &#x3D; 1, x1,x2,x3,….,xk-1 &gt; 0，并且在(k-1)维的单纯形上，在其它区域概率为零</p>
+<p>单纯形：表示在n维单纯形上有n+1个顶点，例如一维表示线段，二维表示三角形，三维表示四面体，各个面都相等</p>
+<p>Dirichlet分布的另一种形式为：<br>$$<br>\begin{aligned}<br>p(\overrightarrow{p}|\overrightarrow{\alpha})<br>&amp;&#x3D;Dir(\overrightarrow{p}| \overrightarrow{\alpha})\<br>&amp;\stackrel{\Delta}{&#x3D;} \frac{\Gamma(\sum_{k-1}^K)\alpha_K}{\prod_{k&#x3D;1}^K\Gamma(\alpha_k)}\prod_{k&#x3D;1}^{K}p_k^{\alpha_k-1}\<br>&amp;\stackrel{\Delta}{&#x3D;}\frac{1}{\Delta(\overrightarrow{\alpha})}\prod_{k&#x3D;1}^{K}p_k^{\alpha_k-1}<br>\end{aligned}<br>$$<br>其中$\Delta(\overrightarrow{\alpha})$称为Dirichlet分布的归一化系数：<br>$$<br>\Delta(\overrightarrow{\alpha})&#x3D;\frac{\prod_{k&#x3D;1}^{dima}\Gamma(\alpha_k)}{\Gamma(\sum_{k&#x3D;1}^{dima})\alpha_k}\&#x3D;int\prod_{k&#x3D;1}^{V}p_k^{\alpha_k-1}d\overrightarrow{p}<br>$$<br>并且根据Dirichlet分布的积分为1“概率的基本性质”，可以得到：<br>$$<br>\int_\overrightarrow{p}\prod_{k&#x3D;1}^{K}p_k^{\alpha}d\overrightarrow{p}&#x3D;\Delta(\overrightarrow\alpha)<br>$$</p>
+<h3 id="Dirichlet分布和多项分布共轭"><a href="#Dirichlet分布和多项分布共轭" class="headerlink" title="Dirichlet分布和多项分布共轭"></a>Dirichlet分布和多项分布共轭</h3><p>继上面问题二之后我们再提出问题三：<br>$$<br>X_1,X_2,…,X_n\sim Uniform(0,1)<br>$$</p>
+<ul>
+<li>排序后对应的顺序统计量$X_1,X_2,…,X_n$</li>
+<li>问$(X_{(k_1)},X_{k_1+k_2})$的联合分布是什么</li>
+</ul>
+<p>为了方便计算，选取了x3满足 x1+x2+x3 &#x3D; 1，但只有x1和x2是变量，如下图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/05/osvMR4DQEGFnOzx.png" alt="image-20220322152232229.png"></p>
+<p>从而有：<br>$$<br>\begin{aligned}<br>&amp;P\bigg(X_{k_1}\in(x_1,x_1+\Delta x), X_{(k_1+k_2)}\bigg)\<br>&amp;&#x3D;n(n-1)\begin{pmatrix} n-2 \ {k_1-1,k_2-1}\end{pmatrix}x_1^{k_1-1}x_2^{k_2-1}x_3^{n-k_1-k_2}(\Delta x)^2\<br>&amp;&#x3D;\frac{n!}{(k_1-1)!(k_2-1)!(n-k_1-k_2)!} x_1^{k_1-1}x_2^{k_2-1}x_3^{n-k_1-k_2}(\Delta x)^2<br>\end{aligned}<br>$$</p>
+<p>继而得到$(X_{(k_1)}, X_{(k_1+k_2)}$的联合分布为：<br>$$<br>\begin{aligned}<br>&amp;f(x_1, x_2, x_3)\<br>&amp;&#x3D;\frac{n!}{(k_1-1)!(k_2-1)!(n-k_1-k_2)!} x_1^{k_1-1}x_2^{k_2-1}x_3^{n-k_1-k_2}\<br>&amp;&#x3D;\frac{\Gamma(n+1)}{\Gamma(k_1)\Gamma(k_2)\Gamma(n-k_1-k_2+1)} x_1^{k_1-1}x_2^{k_2-1}x_3^{n-k_1-k_2}<br>\end{aligned}<br>$$</p>
+<p>观察上述式子的最终结果，可以看出其实就是三维的Dirichlet分布</p>
+<p>$Dir(x_1,x_2,x_3|k_1,k_2,n-k_1-k_2+1)$</p>
+<p>令：$\alpha_1&#x3D;k_1,\alpha_2&#x3D;k_2,\alpha_3&#x3D;n-k_1-k_2+1$，于是分布密度可以写为：<br>$$<br>f(x_1,x_2,x_3)&#x3D;\frac{\Gamma(\alpha_1+\alpha_2+\alpha_3)}{\Gamma(\alpha_1)\Gamma(\alpha_2)\Gamma(\alpha_3)}x_1^{\alpha_1-1}x_2^{\alpha_2-1}x_3^{\alpha_3-1}<br>$$</p>
+<p>为了验证Dirichlet分布是多项分布是共轭分布的共轭先验分布，我们引出问题四：</p>
+<p>问题四：</p>
+<ol>
+<li>$X_1,X_2,…,X_n\sim Uniform(0,1)$排序之后对应的顺序统计量$X_{(1)},X_{(2)}…X_{(n)}$</li>
+<li>令$p_1&#x3D;X_{(k_1)},p_2&#x3D;X_{(k_1+k_2)},p3&#x3D;1-p_1-p_2$注：这里的p3不是变量，只是为了方便计算，现在要猜测$\overrightarrow{p}&#x3D;(p_1,p_2,p_3)$</li>
+<li>$Y_1,Y_2,…,Y_n\sim Uniform(0,1)$中Yi落到$[0,p_1),[p_1,p_2),[p_2,1]$这三个区间的个数分别为m1，m2，m3，m&#x3D;m1+m2+m3；</li>
+<li>问后验分布$P(\overrightarrow{p}|Y_1,Y_2,..,Y_m)$的分布是什么</li>
+</ol>
+<p>为了方便讨论，记$\overrightarrow{m}&#x3D;(m_1,m_2,m_3)$，以及$\overrightarrow{k}&#x3D;(k_1,k_2,n-k_1-k_2+1)$，根据已知条件$Y_1,Y_2,…,Y_n\sim Uniform(0,1)$，Yi中落到三个区$[0,p_1),[p_1,p_2),[p_2,1]$ 间的个数为m1和m2，可得p1 p2分别是这个m+n个数中k1+m1大和k2+m2大的数，于是后验分布$P(\overrightarrow{p}|Y_1,Y_2,..,Y_m)$应该是$Dir(\overrightarrow{p}|k_1+m_1,k_1+m_2,n-k_1-k_2+1+m_3$即一般化形式表示为：$Dir(\overrightarrow{p}|\overrightarrow{k}+\overrightarrow{m})$</p>
+<p>同样的，按照贝叶斯逻辑，整理为下：</p>
+<ol>
+<li>我们要猜测参数$\overrightarrow{p}&#x3D;(p_1,p_2,p_3)$，其先验分布为：$Dir(\overrightarrow{p}|\overrightarrow{k})$</li>
+<li>数据Yi落到三个区间$[0,p_1),[p_1,p_2),[p_2,1]$的个数分别是m1,m2,m3，所以服$\overrightarrow{m}&#x3D;(m_1,m_2,m_3)$从多项分布$Mult(\overrightarrow{m}|\overrightarrow{p})$</li>
+<li>当我们提供数据之后先验分布就变成了$Dir(\overrightarrow{p}|\overrightarrow{k}+\overrightarrow{m})$</li>
+</ol>
+<p>上述贝叶斯过程直观的表达为：<br>$$<br>Dir(\overrightarrow{p}|\overrightarrow{k})+MultCount(\overrightarrow{m})&#x3D;Dir(\overrightarrow{p}|\overrightarrow{k}+\overrightarrow{m})<br>$$<br>令α等于k，可以把α从整数集合延伸到实数集合，从而得到更一般的表达式：<br>$$<br>Dir(\overrightarrow{p}|\overrightarrow{\alpha})+MultCount(\overrightarrow{m})&#x3D;Dir(\overrightarrow{p}|\overrightarrow{\alpha}+\overrightarrow{m})<br>$$<br>和上面一样，针对观测到数据符合多项分布，其先验概率分布后验概率分布都符合Dirichlet分布的情况下，就是Dirichlet分布和多项分布共轭</p>
+<p>我们为多项分布的参数p选取的先验分布是Dirichlet分布，那么以p为参数的多项分布用贝叶斯估计得到的后验分布仍然服从Dirichlet分布。</p>
+<p>一般的Dirichlet分布定义如下：<br>$$<br>Dir(\overrightarrow{p}|\overrightarrow{\alpha})&#x3D;\frac{\Gamma(\sum_{k&#x3D;1}^K\alpha_k)}{\prod_{k&#x3D;1}^K\Gamma(\alpha_k)}\prod_{k&#x3D;1}^{K}p_k^{\alpha_k-1}<br>$$<br>而对于给定的P和N，其多项分布是：<br>$$<br>Mult(\overrightarrow{n}|\overrightarrow{p},N)&#x3D;\begin{pmatrix} N \{\overrightarrow{n}}\end{pmatrix}\prod_{k&#x3D;1}^Kp_k^{n_k}<br>$$<br>最后结论是Dirichelt分布$Dir(\overrightarrow{p}|\overrightarrow{\alpha})$和多项分布$Mult(\overrightarrow{n}|\overrightarrow{p},N)$是共轭关系</p>
+<h2 id="主题模型LDA"><a href="#主题模型LDA" class="headerlink" title="主题模型LDA"></a>主题模型LDA</h2><p>在开始进行这部的内容之前，我们先回顾一下上面的内容：</p>
+<p>通过上面的内容我们得到：</p>
+<ol>
+<li><p>Beta分布是二项分布的共轭先验分布：</p>
+<p>对于非负实数α和β有如下关系：<br>$$<br>Beta(p|\alpha,\beta)+Count(m_1,m_2)&#x3D;Beta(p|\alpha+m_1, \beta+m_2)<br>$$<br>其中（m1，m2）是二项分布B(m1+m2,p)的计数，针对这些观测到的数据符合二项分布，参数的先验概率分布和后验概率分布都符合Beta分布的我们称之为Beta分布和二项分布共轭</p>
+</li>
+<li><p>Dirichlet分布是多项分布的共轭先验分布</p>
+<p>把α从整数集合扩展到实数集合，从而得到更一般的表达式如下：<br>$$<br>Dir(\overrightarrow{p}|\overrightarrow{\alpha})+MultCount(\overrightarrow{m})&#x3D;Dir(\overrightarrow{p}|\overrightarrow{\alpha}+\overrightarrow{m})<br>$$<br>针对这些观测数据符合多项分布，参数的先验概率分布和后验概率分布都符合Dirichelt分的情况，我们称为Dirichelt分布和多项分布共轭</p>
+</li>
+<li><p>贝叶斯派思考问题的 方式：</p>
+<p><strong>先验分布</strong>$\pi(\theta)$+<strong>样本信息</strong>$\chi$&#x3D;&gt;<strong>后验分布</strong>$\pi(\theta|x)$</p>
+<p>上述表达方式为，新观察到的样本信息将修正人们之前对事物的认知，换句话说，在得到新的样本信息之前，人们对θ的认知是先验分布$\pi(\theta)$，在得到样本信息$\chi$之后，人们对θ的认知为$\pi(\theta|x)$</p>
+</li>
+</ol>
+<p>在我们进行LDA模型的时候我们先要进行一些基础模型的认识：Unigram model,mixture of unigram model,以及和LDA最为接近的pLSA模型</p>
+<p>为了方便解释这些模型我们定义一下下面这几个变量:</p>
+<ul>
+<li>w表示词，V表示所有单词的个数（固定值）</li>
+<li>z表示主题，k是主题的个数（预先给定，固定值）</li>
+<li>D &#x3D; (W1，W2,…..Wm)表示语料库，其中的M是语料库中的文档数(固定值)</li>
+<li>W &#x3D; (w1,w2,…..,wn)表示文档，其中n表示一个中文文档中的词数（随机变量）</li>
+</ul>
+<h3 id="Unigram-model"><a href="#Unigram-model" class="headerlink" title="Unigram model"></a>Unigram model</h3><p>对于文档$w&#x3D;(w_1,w_2,…,w_N)$,用$p(w_n)$表示词wn的先验概率，生成文档w的概率为：</p>
+<p>$p(w)&#x3D;\prod_{n&#x3D;1}^{N}p(w_n)$</p>
+<p>其图模型为(图中被涂色的w表示可观测变量，N表示一篇文章中一共有N个单词，M表示M篇文档)：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/06/gz9eUm2CSZqNLOp.png" alt="image-20220322204225579"></p>
+<p>另一种表示方法为：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/05/P95XbzLxmEnCRoA.png" alt="image-20220322204940889.png"></p>
+<p>unigram model假设文本中的词服从Multinomial分布，而且我们已经知道Multinomial分布的先验分布为Dirichlet分布</p>
+<p>上述的$w_n$表示在文本中观察到的第n个词，n∈[1,N]表示该文本中一共有N个词。加上方框表示重复，即一共有N个这样的随机变量。$w_n$其中，p和α是隐含未知变量：</p>
+<ul>
+<li>p是服从Multinomial分布的参数</li>
+<li>α是Dirichlet分布(即Multinomial分布的先验分布)的参数。</li>
+</ul>
+<p>一般α由经验事先给定，p由观察到的文本中出现的词学习得到，表示文本中出现每个词的概率。</p>
+<h3 id="Mixture-of-unigram-model"><a href="#Mixture-of-unigram-model" class="headerlink" title="Mixture of unigram model"></a>Mixture of unigram model</h3><p>该模型的生成过程是：先给文档一个主题z，然后根据该主题生成文档，该文档中所有词都是来自一个主题，假设主题由$z_1,…,z_k$，生成文档w的概率为：<br>$$<br>p(w)&#x3D;p(z_1)\prod_{n&#x3D;1}^{N}p(w_n|z_1)+\cdot\cdot\cdot+p(z_k)\prod_{n&#x3D;1}^Np(w_n|z_k)&#x3D;\sum_zp(z)\prod_{n&#x3D;1}^Np(w_n|z)<br>$$<br>其图模型为（图中被涂色的w表示可观测变量，未涂色的z表示为止的隐变量，N表示文档中一共有N个词，M表示M篇文档）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/05/KlO1kzRLMJdSrB8.png" alt="image-20220322210250233.png"></p>
+<h3 id="PLSA模型"><a href="#PLSA模型" class="headerlink" title="PLSA模型"></a>PLSA模型</h3><p>pLSA模型是和LDA模型比较接近的一个模型，LDA就是pLSA模型加上一个贝叶斯框架</p>
+<p>我们在上面的Mixture of unigram model模型中，假定的是一篇文档中只是有一个主题生成，但是实际上，一篇文档是由多个主题共同生成，只是比例不同（分布），比如在介绍一个国家的文档中，我们还要从教育，经济，军事等等主题进行介绍，其中国家是大主题占比比较大，其余的是小主题，占比比较小，那么在pLSA模型中，文档是怎么生成的呢？</p>
+<p>先看生成文章的过程：</p>
+<p>如果需要生成m篇文章，每一篇文章由各个不同的词组成，需要确定每篇文章每个位置对应的词</p>
+<p>假设一共有k个可选的主题，有v个可选词通过投骰子，来生成一篇文档</p>
+<ol>
+<li><p>在写文档的时候我们可以制作一个有k面（文档-主题）的骰子（扔骰子能够得到k个主题中的任意一个），通过投骰子来进行选取主题，和k个v面的“主题-词语”骰子（每个骰子对应一个主题，k个骰子对应k个主题， v面对应的v个词语）</p>
+<ul>
+<li><p>假设，我们设k &#x3D; 3，制作一个3面的（文档-主题）骰子，这三个主题我们设置为：教育，经济，交通，然后令V&#x3D;3,制作三个有三个面的（主题-词语）骰子，具体情况如下：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/05/lx8nZM6IWBeV2GS.png" alt="image-20220323155535268.png"></p>
+</li>
+</ul>
+</li>
+<li><p>每写一个词，我们都要通过投掷（文档-主题）骰子获取一个主题，得到主题之后，我们从对应的主题的（主题-词语）骰子中投掷选择我们要写的词语</p>
+<ul>
+<li>上面这个投骰子产生词的过程简化下便是：“先以一定的概率选取主题，再以一定的概率选取词”。事实上，一开始可供选择的主题有3个：教育、经济、交通，那为何偏偏选取教育这个主题呢？其实是随机选取的，只是这个随机遵循一定的概率分布。比如可能选取教育主题的概率是0.5，选取经济主题的概率是0.3，选取交通主题的概率是0.2，那么这3个主题的概率分布便是{教育：0.5，经济：0.3，交通：0.2}，我们把各个主题z在文档d中出现的概率分布称之为主题分布，且是一个多项分布。</li>
+<li>同样的，从主题分布中随机抽取出教育主题后，依然面对着3个词：大学、老师、课程，这3个词都可能被选中，但它们被选中的概率也是不一样的。比如大学这个词被选中的概率是0.5，老师这个词被选中的概率是0.3，课程被选中的概率是0.2，那么这3个词的概率分布便是{大学：0.5，老师：0.3，课程：0.2}，我们把各个词语w在主题z下出现的概率分布称之为词分布，这个词分布也是一个多项分布。</li>
+<li>所以，选主题和选词都是两个随机的过程，先从主题分布{教育：0.5，经济：0.3，交通：0.2}中抽取出主题：教育，然后从该教育主题对应的词分布{大学：0.5，老师：0.3，课程：0.2}中抽取出词：大学。</li>
+</ul>
+</li>
+<li><p>然后不断重复步骤2，重复N次，完成一篇文档，重复这一篇文档的生成方法m次，我们生成了m篇文档</p>
+</li>
+</ol>
+<p>上述过程为pLSA文档生成模型，在上面的文档生成方法中我们并未关注词与词之间的先后顺序，因此pLSA是一个词袋模型。这些词虽然表面上没有顺序关系，但是通过一些词逻辑上的关系，我们可以得到这篇文章的隐藏的主题类别$z_k\in z_1,..,z_k$，这里我们定义：</p>
+<ul>
+<li>$P(d_i)$表示海量文档中某篇文档被选中的概率。</li>
+<li>$P(w_j|d_i)$表示词$w_j$在给定文档$d_i$中出现的概率<ul>
+<li>计算方式，对于海量文档，对所有文档进行分类之后，我们得到一个词汇表，每篇文档就是一个词语的集合，对于每个词语，出现次数比上所有的词的个数，最后结果就是这个词在这篇文档中出现的概率</li>
+</ul>
+</li>
+<li>$P(z_k)$表示具体某个主题$z_k$在给定文档$d_i$中出现的概率</li>
+<li>$P(w_j|z_k)$表示某个词$w_j$在主题$z_k$中出现的概率，与主题关系越密切的词出现的概率越大</li>
+</ul>
+<p>利用上述1，3，4个概率，我们可以根据以下步骤生成“文档-词项”模型</p>
+<ol>
+<li>按照概率$P(d_i)$选择一篇文档$d_i$</li>
+<li>选定文章$d_i$后其主题分布中按照概率$P(z_k|d_i)$选择一个隐含的主题类别$z_k$选定$z_k$后，从词分布表中按照概率$P(w_j|z_k)$选择一个词$w_j$</li>
+</ol>
+<p>所以pLSA中生成文档的过程为选定文档，生成主题，确定主题生成词</p>
+<p><strong>上述是生成文档的过程，下面为分析文档的的过程</strong></p>
+<p>根据文档反推其主题分布：</p>
+<p>主要内容是：通过生成文档的过程，反推已有的文档中的主题分布（生产文档的逆过程），建模的目的就是，自动的发现文档集中的主题分布。</p>
+<p>换句话来说就是，人们根据文档生成模型生成了各种各样 的文章，然后递交给计算机<strong>计算机的目的就是根据一篇篇文章中的一系列词语的分布，推测各个主题出现的概率（分布）：主题分布</strong>，即单词w和文章d是能够观测到的，而主题，是隐含的，我们的目的就是找到这隐含的主题分布，</p>
+<p>如下图所示：图中涂色的表示可以观察到的数据d和w ，z表示隐含的数据，N表示一篇文档中一共有N个单词，M表示一共有M篇文档</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/05/hCBX3mA2PjzKYOQ.png" alt="image-20220323163645751.png"></p>
+<p>上图中文档d和词w是我们得到的样本（样本随机，参数虽然不知道但是是固定的，所以pLSA数据频率派思想，区别于下文要介绍的LDA中：样本固定，参数为止，但不固定，是一个随机变量，服从一定的分布，所以LDA属于贝叶斯派思想），可以观测到对于任意一一篇文档，其$P(w_j|d_i)$是已知的</p>
+<p>从而可以根据，大量已知的文档-词项信息$P(w_j|d_i)$训练出文档-主题$P(z_k|d_i)$和主题词项$P(w_j|z_k)$如下图公式所示：<br>$$<br>P(w_j|d_i)&#x3D;\sum_{k&#x3D;1}^{K}P(w_j|z_k)P(z_k|d_i)<br>$$<br>故得到文档中每个词出现的概率为：<br>$$<br>\begin{aligned}<br>&amp;P(d_i,w_j)\<br>&amp;&#x3D;P(d_i)P(w_j|d_i)\<br>&amp;&#x3D;P(d_i)\sum_{k&#x3D;1}^{K}P(w_j|z_k)P(z_k|d_i)<br>\end{aligned}<br>$$<br>由于p(di)可以事先计算求出，而$P(w_j|z_k)$和$P(z_k|d_i)$未知，所以$\theta&#x3D;(P(w_j|z_k)), P(z_k|d_i))$就是我们要估计的参数（值) ，通俗点说就是要最大化这个θ。</p>
+<p>用什么方法进行估计呢，常用的参数估计法有极大似然估计MLE，最大后验估计MAP，贝叶斯估计等等，因为该待估计的参数中含有隐变量z，所以我们可以考虑EM算法</p>
+<h3 id="LDA模型"><a href="#LDA模型" class="headerlink" title="LDA模型"></a>LDA模型</h3><p>LDA和pLSA模型比较相似，就是给pLSA模型加上了一个贝叶斯框架</p>
+<p>pLSA模型生成文档和参数估计：</p>
+<ol>
+<li>按照先验概率$P(d_i)$选择一篇文档$d_i$</li>
+<li>选定文档$d_i$后，确定文档的主题分布</li>
+<li>从主题分布后按照概率$P(z_k|d_i)$选择一个隐含的主题类型$z_k$</li>
+<li>选定$z_k$后，确定主题下的词分布</li>
+<li>从词分布中按照概率$P(w_j|z_k)$选择一个词$w_j$</li>
+</ol>
+<p>LDA模型生成文档和参数估计：</p>
+<ol>
+<li>先根据先验概率$P(d_i)$选择一篇文档$d_i$</li>
+<li>从迪利克雷分布（Dirichlet分布）α中取样生成文档$d_i$的主题分布$\theta_i$，换句话说就是主题分布$\theta_i$由超参数为α的Dirichlet分布形成</li>
+<li>从主题多项式分布$\theta_i$中取样生成文档$d_i$的第j个主题词$z_{i,j}$</li>
+<li>从迪利克雷分布（Dirichlet分布）β中取样生成主题$z_{i,j}$对应的词语分布$\Phi_{z_i,j}$，换言之，词语分布$\Phi_{z_i,j}$由参数为β的Dirichlet分布生成</li>
+<li>从词语的多项式分布$\Phi_{z_i,j}$中采样生成最后的词语$w_{i,j}$</li>
+</ol>
+<p>从上面的两个过程可以看出，LDA在pLSA的基础上，为主题分布和词分布增加了两个Dirichlet先验</p>
+<p>pLSA分布选取一个词的过程，先从主题分布为{教育：0.5，经济：0.3，交通：0.2}中抽取出主题：教育，然后从该主题对应的词分布{大学：0.5，老师：0.3，课程：0.2}中抽取出词：大学。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/05/1XgyaDvt8UjrKsS.png" alt="image-20220402155352232.png"></p>
+<p>LDA选取一个词的过程也是上面的方法，先选取一个主题，然后通过这个主题下面的词分布中选取一个词语，LDA和pLSA的区别就是主题分布和词分布不在是确定的，他是随机可变的，但是这个变化符合一个分布规律就是Dirichlet分布</p>
+<p><strong>pLSA中</strong>，主题分布和词分布确定之后，以一定的概率$(p(z_k|d_i),p(w_j|z_k))$分别选取具体的主题和词项，生成好文档，然后根据生成好的文档来反推其主题分布，词分布的同时，之后使用EM算法（极大似然估计法）求解出两个为止参数的值：$\Phi_{z_i,j}$（由$P(w_j|z_k)$转换而来），和$\theta_{i,k}$由（转换而来$P(z_k|d_i)$)</p>
+<ul>
+<li><p>文档d产生主题z的概率，主题z产生单词w的概率都是两个固定值。</p>
+<ul>
+<li><p>例子：给定一篇文档d，主题分布是一定的，比如{ P(zi|d), i &#x3D; 1,2,3 }可能就是{0.4,0.5,0.1}，表示z1、z2、z3，这3个主题被文档d选中的概率都是个固定的值：P(z1|d) &#x3D; 0.4、P(z2|d) &#x3D; 0.5、P(z3|d) &#x3D; 0.1，如下图所示（图截取自沈博PPT上）：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/05/si7S9tXe24GZ6IB.png" alt="image-20220402162033453.png"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>在LDA模型中我们不再认为主题分布和词分布是唯一确定的，而是由很多种可能，但是一篇文档总要确定一个主题把，LDA采用了两个Dirichlet先验参数，这个Dirichlet先验分布为某篇文档随机抽取了某个主题分布和词分布</p>
+<ul>
+<li>文档d产生主题z（准确的说，其实是Dirichlet先验为文档d生成主题分布θ，然后根据主题分布θ产生主题z）的概率，主题z产生单词w的概率都不再是准确的两个值，而是随机变量。</li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/05/CylXLur7cR1IJOw.png" alt="image-20220402164316439.png"></li>
+</ul>
+<p>总而言之LDA在pLSA的基础上给这两个参数$(P(z_k|d_i),P(w_j|z_k))$加了两个先验分布的参数（贝叶斯话）：一个主题的先验分布Dirichlet分布α，和一个词语分布的先验分布Dirichlet分布β</p>
+<p>这两个模型的本质都是为了能够找到给定文档生成主题，给定主题生成词语的概率</p>
+<p>LDA中，主题分布 —— 比如{ P(zi), i &#x3D;1,2,3 }等于{0.4,0.5,0.1}或{0.2,0.2,0.6} —— 是由dirichlet先验给定的，不是根据文档产生的。所以，LDA生成文档的过程中，先从dirichlet先验中“随机”抽取出主题分布，然后从主题分布中“随机”抽取出主题，最后从确定后的主题对应的词分布中“随机”抽取出词。</p>
+<p>Dirichlet先验随机抽取主题分布方式：</p>
+<p>事实上，从Dirichlet分布中随机抽取主题分布，这个过程并不是完全随机的。事实上，如果我们选取三个事件的话，可以建立一个三维坐标系：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/05/okTaqrdn3GpZXfY.png" alt="image-20220402213248327.png"></p>
+<p>在这个三维坐标点中每一个坐标点（p1, p2,p3）就对应这一个主题分布，而且某一个点（p1,p2,p3）的大小代表着主题123出现的概率大小（因为各个主题出现的概率和为1），所以p1+p2+p3 &#x3D; 1，比如(p1,p2,p3) &#x3D; (0.4,0.5,0.1)便对应着主题分布{ P(zi), i &#x3D;1,2,3 } &#x3D; {0.4,0.5,0.1}。</p>
+<p>这个空间中有很多个这个点，意味着有很多主题分布可以选择，Dirichlet分布选择主题的方法是可以将上面三角形放到，映射到地面平面上，便得到如下所示的一些彩图（3个彩图种，每个点对应着一个主题分布，高度代表着某个主题呗dirichelt分布选中的概率，且选择不同的α，dirichlet分布会偏向不同的主题分布）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/05/ZKSQc2IPwv13H6D.png" alt="image-20220402214321175.png"></p>
+<p>α在LDA中的作用，较高的α表示主题稀疏性的影响较小，在一个文章中包含着大多主题，而比较第的α值代表着我们希望文档覆盖少数主题，如果我们只想在这些文档中发掘出两个主题（k&#x3D;2），那么可能所有文档都包含两个主题，因此我们可以有一个比较大的alpha&#x3D;0.5值。如果我们想发现一个k&#x3D;1000主题，很可能大多数文档不会覆盖所有1000个主题，只可能包含较小的一部分（稀疏性很高），因此我们采用较小的α值来解释这个问题预期的稀疏性。</p>
+<p>同样β在主题中的单词稀疏性中起作用，较高的β值代表着主题比较一般，单词频率更加统一。第β值意味着主题应该更加具体，他们单词概率将更不均匀，在比较少的单词上面放着更高的概率。这也与要发现的主题数量有关，高的β意味着很少但是比较常见的主题被发现，第β用于更具体的主题</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s1.ax1x.com/2022/11/27/zUFla6.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s1.ax1x.com/2022/11/27/zUFla6.png" title="头像" alt="头像"></a><div class="post-copyright__author_name">Nuyoah</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://262259.xyz/2022/05/05/LDA%E4%B8%BB%E9%A2%98%E6%A8%A1%E5%9E%8B/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://262259.xyz/2022/05/05/LDA%E4%B8%BB%E9%A2%98%E6%A8%A1%E5%9E%8B/')">LDA主题模型</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://s2.loli.net/2022/08/16/weL31EHsON5ldDU.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/08/16/weL31EHsON5ldDU.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://s2.loli.net/2022/08/16/2yRjVx9gFKQaidA.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/08/16/2yRjVx9gFKQaidA.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://262259.xyz/2022/05/05/LDA%E4%B8%BB%E9%A2%98%E6%A8%A1%E5%9E%8B/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=LDA主题模型&amp;url=http://262259.xyz/2022/05/05/LDA%E4%B8%BB%E9%A2%98%E6%A8%A1%E5%9E%8B/&amp;pic=https://s2.loli.net/2022/11/21/rWoSUxItliEPYHk.webp" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://262259.xyz" target="_blank">Nuyoah</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>人工智能<span class="tagsPageCount">15</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2022/11/19/qOod8SkyLhct653.jpg?_r_=59e97a7e-8f6f-3dbf-6549-7af9f2178e4b" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/05/05/JypyterThemes/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/21/jHkgUWLVo2lnuYF.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">JypyterThemes</div></div></a></div><div class="next-post pull-right"><a href="/2022/05/05/GiteeCreat/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/21/lR5VkPQzU2tcTAJ.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Gitee仓库创建方法</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2022/07/12/CNN/" title="CNN"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/21/rWoSUxItliEPYHk.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-07-12</div><div class="title">CNN</div></div></a></div><div><a href="/2022/07/08/PyTorch/" title="PyTorch"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/21/rWoSUxItliEPYHk.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-07-08</div><div class="title">PyTorch</div></div></a></div><div><a href="/2022/05/05/python%E4%B8%ADjieba%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/" title="python中jieba库的使用"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/21/rWoSUxItliEPYHk.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-05-05</div><div class="title">python中jieba库的使用</div></div></a></div><div><a href="/2022/07/19/%E6%89%8B%E5%86%99%E4%BD%93%E8%AF%86%E5%88%AB/" title="手写体识别"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/21/rWoSUxItliEPYHk.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-07-19</div><div class="title">手写体识别</div></div></a></div><div><a href="/2022/06/05/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%BA%93/" title="数据分析库（pandas，numpy，matplotlib）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/21/rWoSUxItliEPYHk.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-06-05</div><div class="title">数据分析库（pandas，numpy，matplotlib）</div></div></a></div><div><a href="/2022/07/03/%E6%96%87%E6%A1%A3%E6%89%AB%E6%8F%8FOCR%E8%AF%86%E5%88%AB/" title="文档扫描OCR识别"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/21/rWoSUxItliEPYHk.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-07-03</div><div class="title">文档扫描OCR识别</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)" style="display: none">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s1.ax1x.com/2022/11/27/zUFla6.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description"></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">Nuyoah</h1><div class="author-info__desc"></div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/zjhinsist" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=2152889763@qq.com" target="_blank" title="Email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a></div></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LDA%EF%BC%88%E4%B8%BB%E9%A2%98%E6%A8%A1%E5%9E%8B%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">LDA（主题模型）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#gamma%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.</span> <span class="toc-text">gamma函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9LDA%E7%9A%84%E6%95%B4%E4%BD%93%E7%90%86%E8%A7%A3%EF%BC%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">对LDA的整体理解：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gamma%E5%87%BD%E6%95%B0-1"><span class="toc-number">1.1.2.</span> <span class="toc-text">gamma函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#beta%E5%88%86%E5%B8%83"><span class="toc-number">1.2.</span> <span class="toc-text">beta分布</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#beta%E5%88%86%E5%B8%83-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">beta分布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#beta%E5%88%86%E5%B8%83%E4%B8%8E%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83%E5%85%B1%E8%BD%AD"><span class="toc-number">1.2.2.</span> <span class="toc-text">beta分布与二项分布共轭</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B1%E8%BD%AD%E5%85%88%E9%AA%8C%E5%88%86%E5%B8%83"><span class="toc-number">1.2.3.</span> <span class="toc-text">共轭先验分布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8EBeta%E5%88%86%E5%B8%83%E6%8E%A8%E5%B9%BF%E5%88%B0Dirichlet%E5%88%86%E5%B8%83"><span class="toc-number">1.2.4.</span> <span class="toc-text">从Beta分布推广到Dirichlet分布</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dirichlet%E5%88%86%E5%B8%83"><span class="toc-number">1.3.</span> <span class="toc-text">Dirichlet分布</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dirichlet%E5%88%86%E5%B8%83-1"><span class="toc-number">1.3.1.</span> <span class="toc-text">Dirichlet分布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dirichlet%E5%88%86%E5%B8%83%E5%92%8C%E5%A4%9A%E9%A1%B9%E5%88%86%E5%B8%83%E5%85%B1%E8%BD%AD"><span class="toc-number">1.3.2.</span> <span class="toc-text">Dirichlet分布和多项分布共轭</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98%E6%A8%A1%E5%9E%8BLDA"><span class="toc-number">1.4.</span> <span class="toc-text">主题模型LDA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Unigram-model"><span class="toc-number">1.4.1.</span> <span class="toc-text">Unigram model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mixture-of-unigram-model"><span class="toc-number">1.4.2.</span> <span class="toc-text">Mixture of unigram model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PLSA%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.4.3.</span> <span class="toc-text">PLSA模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LDA%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.4.4.</span> <span class="toc-text">LDA模型</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/29/SpringCloud/" title="SpringCloud"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/19/qOod8SkyLhct653.jpg?_r_=59e97a7e-8f6f-3dbf-6549-7af9f2178e4b" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringCloud"/></a><div class="content"><a class="title" href="/2024/03/29/SpringCloud/" title="SpringCloud">SpringCloud</a><time datetime="2024-03-29T01:37:06.000Z" title="发表于 2024-03-29 09:37:06">2024-03-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/17/%E9%AB%98%E7%89%88%E6%9C%ACJDK%E5%BA%94%E7%94%A8JWT%E9%97%AE%E9%A2%98/" title="mybatis-plus"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/19/c1KxnECr4VL3qN5.jpg?_r_=deaddbc1-cbb5-ebc8-f395-c888aea379ca" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="mybatis-plus"/></a><div class="content"><a class="title" href="/2024/03/17/%E9%AB%98%E7%89%88%E6%9C%ACJDK%E5%BA%94%E7%94%A8JWT%E9%97%AE%E9%A2%98/" title="mybatis-plus">mybatis-plus</a><time datetime="2024-03-17T00:49:28.000Z" title="发表于 2024-03-17 08:49:28">2024-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/12/SpringSecurity/" title="mybatis-plus"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s3.bmp.ovh/imgs/2022/11/08/ad62143435c86b71.png?_r_=d6db35b9-5b22-e7de-96a5-6fec6b910d6d" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="mybatis-plus"/></a><div class="content"><a class="title" href="/2024/03/12/SpringSecurity/" title="mybatis-plus">mybatis-plus</a><time datetime="2024-03-12T00:49:28.000Z" title="发表于 2024-03-12 08:49:28">2024-03-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/08/mybatis-plus/" title="mybatis-plus"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2022/11/11/PRhut51DVxg9XBc.jpg?_r_=3e867c44-4fde-e616-23ac-14d4974ca06d" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="mybatis-plus"/></a><div class="content"><a class="title" href="/2024/03/08/mybatis-plus/" title="mybatis-plus">mybatis-plus</a><time datetime="2024-03-08T00:49:28.000Z" title="发表于 2024-03-08 08:49:28">2024-03-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/08/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" title="mybatis-plus"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s3.bmp.ovh/imgs/2022/11/08/3b73e41bdfc1757c.png?_r_=36f72492-f91a-71f0-ce63-0281cceee990" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="mybatis-plus"/></a><div class="content"><a class="title" href="/2024/03/08/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" title="mybatis-plus">mybatis-plus</a><time datetime="2024-03-08T00:49:28.000Z" title="发表于 2024-03-08 08:49:28">2024-03-08</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="anzhiyu-footer"><div class="footer-group"><div class="footer-title">服务</div><div class="footer-links"><a class="footer-item" title="51la统计" target="_blank" rel="noopener" href="https://v6.51.la/">51la统计</a><a class="footer-item" title="十年之约" target="_blank" rel="noopener" href="https://www.foreverblog.cn/">十年之约</a><a class="footer-item" title="开往" target="_blank" rel="noopener" href="https://github.com/travellings-link/travellings">开往</a></div></div><div class="footer-group"><div class="footer-title">主题</div><div class="footer-links"><a class="footer-item" title="文档" href="/docs/">文档</a><a class="footer-item" title="源码" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu">源码</a><a class="footer-item" title="更新日志" href="/update/">更新日志</a></div></div><div class="footer-group"><div class="footer-title">导航</div><div class="footer-links"><a class="footer-item" title="即刻短文" href="/essay/">即刻短文</a><a class="footer-item" title="友链文章" href="/fcircle/">友链文章</a><a class="footer-item" title="留言板" href="/comments/">留言板</a></div></div><div class="footer-group"><div class="footer-title">协议</div><div class="footer-links"><a class="footer-item" title="隐私协议" href="/privacy/">隐私协议</a><a class="footer-item" title="Cookies" href="/cookies/">Cookies</a><a class="footer-item" title="版权协议" href="/copyright/">版权协议</a></div></div><div class="footer-group"><div class="footer-title-group"><div class="footer-title">友链</div><a class="random-friends-btn" id="footer-random-friends-btn" href="javascript:addFriendLinksInFooter();" title="换一批友情链接"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i></a></div><div class="footer-links" id="friend-links-in-footer"></div></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2024 By <a class="footer-bar-link" href="/" title="Nuyoah" target="_blank">Nuyoah</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">77</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">9</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://262259.xyz/" title="个人主页"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s1.ax1x.com/2022/11/27/zUFla6.png" alt="个人主页"/><span class="back-menu-item-text">个人主页</span></a><a class="back-menu-item" href="https://262259.xyz/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s1.ax1x.com/2022/11/27/zUFla6.png" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">管理</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://qexo.262259.xyz/" title="博客后端"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://unpkg.com/qexo-static@1.4.0/assets/img/brand/qexo.png" alt="博客后端"/><span class="back-menu-item-text">博客后端</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Gitee/" style="font-size: 0.88rem;">Gitee<sup>1</sup></a><a href="/tags/JAVA/" style="font-size: 0.88rem; font-weight: 500; color: var(--anzhiyu-lighttext)">JAVA<sup>5</sup></a><a href="/tags/JS/" style="font-size: 0.88rem;">JS<sup>1</sup></a><a href="/tags/MySQL/" style="font-size: 0.88rem;">MySQL<sup>1</sup></a><a href="/tags/Python/" style="font-size: 0.88rem;">Python<sup>7</sup></a><a href="/tags/Spring/" style="font-size: 0.88rem;">Spring<sup>2</sup></a><a href="/tags/hexo/" style="font-size: 0.88rem;">hexo<sup>4</sup></a><a href="/tags/win10/" style="font-size: 0.88rem;">win10<sup>1</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E6%97%A5%E8%AE%B0/" style="font-size: 0.88rem;">个人日记<sup>1</sup></a><a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" style="font-size: 0.88rem;">人工智能<sup>15</sup></a><a href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E4%BA%8E%E9%80%BB%E8%BE%91/" style="font-size: 0.88rem;">数字电路于逻辑<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/" style="font-size: 0.88rem;">算法实现<sup>12</sup></a><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="font-size: 0.88rem;">计算机基础<sup>13</sup></a></div></div><hr/></div></div><div id="keyboard-tips"><div class="keyboardTitle">博客快捷键</div><div class="keybordList"><div class="keybordItem"><div class="keyGroup"><div class="key">shift K</div></div><div class="keyContent"><div class="content">关闭快捷键功能</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift A</div></div><div class="keyContent"><div class="content">打开/关闭中控台</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift M</div></div><div class="keyContent"><div class="content">播放/暂停音乐</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift D</div></div><div class="keyContent"><div class="content">深色/浅色显示模式</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift S</div></div><div class="keyContent"><div class="content">站内搜索</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift R</div></div><div class="keyContent"><div class="content">随机访问</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift H</div></div><div class="keyContent"><div class="content">返回首页</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift F</div></div><div class="keyContent"><div class="content">友链鱼塘</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift L</div></div><div class="keyContent"><div class="content">友链页面</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift P</div></div><div class="keyContent"><div class="content">关于本站</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift I</div></div><div class="keyContent"><div class="content">原版/本站右键菜单</div></div></div></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><a id="switch-commentBarrage" href="javascript:anzhiyu.switchCommentBarrage();" title="开关弹幕"><i class="anzhiyufont anzhiyu-icon-danmu"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.12",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Nuyoah 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.262259.xyz/',
+      region: '',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.25/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.262259.xyz/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"><script async src="/js/anzhiyu/comment_barrage.js"></script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo.262259.xyz/',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.25/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
